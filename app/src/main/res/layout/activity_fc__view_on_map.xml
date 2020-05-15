@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".FCFragment.FCDashboardFragment.FCHomeFragmentViewOnMap.FC_ViewOnMapActivity">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <fragment xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/map_intro_address"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:ignore="RedundantNamespace" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                tools:ignore="UselessParent">
+
+                <ImageView
+                    android:id="@+id/img_backBtn"
+                    android:layout_width="@dimen/_12sdp"
+                    android:layout_height="@dimen/_12sdp"
+                    android:layout_gravity="center|left"
+                    android:layout_marginStart="@dimen/_20ssp"
+                    android:src="@drawable/back"
+                    tools:ignore="ContentDescription,RtlHardcoded" />
+
+
+                <food.user.demand.FCViews.AC_Textview
+                    style="@style/FC_BoldTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/restaurants" />
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_searchLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:background="@drawable/search_restaurant_on_map_outline"
+                android:gravity="center"
+
+                android:orientation="horizontal"
+                android:padding="@dimen/_10sdp">
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/search"
+                    tools:ignore="ContentDescription" />
+
+                <View
+                    android:layout_width="@dimen/_1sdp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:background="@color/txt_gray_color" />
+
+                <food.user.demand.FCViews.AC_Edittext
+                    android:id="@+id/edtsearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:background="@null"
+                    android:hint="@string/search_restaurant"
+                    android:textColorHint="@color/txt_gray_color"
+                    android:textSize="@dimen/_8ssp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="bottom">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_hotelDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_50sdp"/>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+
+</LinearLayout>

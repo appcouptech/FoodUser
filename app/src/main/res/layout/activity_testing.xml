@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+  <!--  <food.user.demand.FCUtils.LocationAutocompletePicker.CustomAutoCompleteTextView
+        android:id="@+id/atv_places"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:hint="@string/current" />-->
+
+  <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/rv_savedaddress"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/_20sdp"
+      android:layout_marginTop="@dimen/_10sdp"
+      android:layout_marginEnd="@dimen/_20sdp" />
+
+
+
+
+</RelativeLayout>
+
+

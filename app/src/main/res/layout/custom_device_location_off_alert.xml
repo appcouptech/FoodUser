@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp">
+
+
+        <ImageView
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:background="@drawable/bg_triangle"/>
+
+        <LinearLayout
+            android:layout_width="@dimen/_180sdp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/alert_blue_bg"
+            android:layout_marginTop="@dimen/_25sdp">
+
+            <food.user.demand.FCViews.AC_Textview
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:text="@string/device_location_off"
+                android:textSize="@dimen/_10ssp"
+                android:textColor="#fff"/>
+
+            <food.user.demand.FCViews.AC_Textview
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:text="@string/location_improve"
+                android:textSize="@dimen/_8ssp"
+                android:textColor="#fff"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_5sdp">
+
+                <food.user.demand.FCViews.AC_Textview
+                    android:id="@+id/txt_noThanks"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:background="@drawable/rec_apply_btn_bg_blue"
+                    android:text="@string/no_thanks"
+                    android:textSize="@dimen/_8ssp"
+                    android:textColor="#fff"/>
+
+                <food.user.demand.FCViews.AC_Textview
+                    android:id="@+id/txt_enableLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:background="@drawable/rec_apply_btn_bg_blue"
+                    android:text="@string/enable_location"
+                    android:textSize="@dimen/_8ssp"
+                    android:textColor="#fff"/>
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+
+</LinearLayout>

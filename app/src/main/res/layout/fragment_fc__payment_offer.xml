@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_frame"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FCFragment.FCDashboardFragment.FCAccountActivity.FCOfferActivity.FC_PaymentOfferFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <food.user.demand.FCUtils.Loader.LoaderTextView
+        android:id="@+id/lt_cardOffers"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_20sdp" />
+
+    <LinearLayout
+        android:id="@+id/ll_cardOffers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:background="@drawable/offers_outline"
+        android:orientation="horizontal"
+        android:visibility="gone">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_couponItems"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp"/>
+        <food.user.demand.FCViews.AC_Textview
+            android:id="@+id/txt_emptyview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:text="@string/no_itemsfound"
+            android:layout_margin="@dimen/_5ssp"
+            android:padding="@dimen/_5sdp"
+            tools:ignore="RtlHardcoded" />
+    </LinearLayout>
+
+</FrameLayout>

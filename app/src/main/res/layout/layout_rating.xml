@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="@dimen/_20sdp">
+
+    <food.user.demand.FCUtils.Loader.LoaderTextView
+        android:id="@+id/lt_restaurantName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/restaurant_rating"
+        android:textColor="@color/alert_blue_bg"
+        android:gravity="center"
+        style="@style/FC_RegularThickTextView"
+        android:visibility="visible"
+        android:layout_marginTop="@dimen/_15ssp"
+        android:layout_marginBottom="15sp"/>
+
+    <LinearLayout
+        android:id="@+id/ll_restaurantInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <food.user.demand.FCUtils.Loader.LoaderCircluarImageView
+            android:id="@+id/lc_imgRestaurant"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_100sdp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:orientation="vertical">
+
+            <food.user.demand.FCUtils.Loader.LoaderTextView
+                android:id="@+id/lt_restaurantname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/FC_RegularThickTextView"
+                android:visibility="visible"/>
+
+            <food.user.demand.FCUtils.Loader.LoaderTextView
+                android:id="@+id/lt_cuisine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                style="@style/FC_SmallTextView"
+                android:visibility="visible"/>
+
+
+            <RatingBar
+                android:id="@+id/ratingBar_restaurant"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5ssp"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <food.user.demand.FCViews.AC_Edittext
+        android:id="@+id/edt_commentres"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:background="@drawable/view_item_outline"
+        android:cursorVisible="true"
+        android:hint="@string/comments"
+        android:gravity="center"
+        android:layout_margin="@dimen/_10sdp"
+        android:padding="@dimen/_5sdp"
+        style="@style/FC_SmallThickTextView"/>
+
+    <food.user.demand.FCUtils.Loader.LoaderTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/driver_rating"
+        android:textColor="@color/my_pink"
+        android:gravity="center"
+        style="@style/FC_RegularThickTextView"
+        android:visibility="visible"
+        android:layout_marginTop="@dimen/_15ssp"
+        android:layout_marginBottom="15sp"/>
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <food.user.demand.FCUtils.Loader.LoaderCircluarImageView
+            android:id="@+id/lc_imgdriver"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_100sdp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:orientation="vertical">
+
+            <food.user.demand.FCUtils.Loader.LoaderTextView
+                android:id="@+id/lt_drivername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/FC_RegularThickTextView"
+                android:visibility="visible"/>
+            <RatingBar
+                android:id="@+id/ratingBar_driver"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5ssp"/>
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+    <food.user.demand.FCViews.AC_Edittext
+        android:id="@+id/edt_commentdriver"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:background="@drawable/view_item_outline"
+        android:cursorVisible="true"
+        android:hint="@string/drivercomments"
+        android:gravity="center"
+        android:layout_margin="@dimen/_10sdp"
+        android:padding="@dimen/_5sdp"
+        style="@style/FC_SmallThickTextView"/>
+    <food.user.demand.FCViews.AC_Textview
+        android:id="@+id/txt_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ripple_reorder_effect_green"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginBottom="@dimen/_20sdp"
+        android:gravity="center"
+        android:text="@string/submit"
+        android:padding="@dimen/_5sdp"
+        android:textSize="@dimen/_10ssp"
+        android:textColor="@color/white"
+        android:visibility="gone"/>
+
+</LinearLayout>

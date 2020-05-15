@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".FCFragment.FCDashboardFragment.FCAccountActivity.FC_FavoritesActivity">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        tools:ignore="UselessParent">
+
+        <ImageView
+            android:id="@+id/img_backBtn"
+            android:layout_width="@dimen/_12sdp"
+            android:layout_height="@dimen/_12sdp"
+            android:layout_gravity="center|left"
+            android:layout_marginStart="@dimen/_20ssp"
+            android:src="@drawable/back"
+            tools:ignore="ContentDescription,RtlHardcoded" />
+
+
+        <food.user.demand.FCViews.AC_Textview
+            style="@style/FC_BoldTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/favorites" />
+
+    </FrameLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:background="@color/txt_lite_gray_color" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_favorites"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"/>
+
+    <food.user.demand.FCViews.AC_Textview
+        android:id="@+id/txt_emptyview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:gravity="center"
+        android:visibility="gone"
+        android:text="@string/favouritelist"
+        android:layout_margin="@dimen/_5ssp"
+        android:padding="@dimen/_5sdp"
+        tools:ignore="RtlHardcoded" />
+
+</LinearLayout>

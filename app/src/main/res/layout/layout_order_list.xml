@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_3sdp"
+            android:padding="@dimen/_5sdp"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+
+                <food.user.demand.FCUtils.Loader.LoaderTextView
+                    android:id="@+id/lt_orderRestaurant"
+                    style="@style/FC_SmallTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    tools:ignore="RtlSymmetry"
+                    android:layout_weight="1"
+                    android:padding="@dimen/_2ssp"/>
+                <food.user.demand.FCUtils.Loader.LoaderTextView
+                    android:id="@+id/lt_orderStatus"
+                    style="@style/FC_SmallTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:ignore="RtlSymmetry"
+                    android:layout_weight="1"
+                    android:padding="@dimen/_2ssp"/>
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:background="@color/txt_lite_gray_color"/>
+</LinearLayout>

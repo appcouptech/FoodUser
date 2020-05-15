@@ -1,0 +1,728 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/lin_frame"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+        <food.user.demand.FCViews.AC_Textview
+            android:id="@+id/txt_emptyview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:visibility="visible"
+            android:text="@string/no_itemsfound"
+            android:layout_margin="@dimen/_5ssp"
+            android:padding="@dimen/_5sdp"
+            tools:ignore="RtlHardcoded" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_searchLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/ll_mainLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                tools:ignore="UselessParent">
+                <ImageView
+                    android:id="@+id/img_backBtn"
+                    android:layout_width="@dimen/_12sdp"
+                    android:layout_height="@dimen/_12sdp"
+                    android:layout_gravity="center|left"
+                    android:layout_marginStart="@dimen/_20ssp"
+                    android:src="@drawable/back"
+                    tools:ignore="ContentDescription,RtlHardcoded" />
+                <food.user.demand.FCUtils.LikeButton.LikeButton
+                    android:id="@+id/vector_android_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|center"
+                    android:layout_marginEnd="@dimen/_60sdp"
+                    app:circle_end_color="@color/txt_site_red_color"
+                    app:circle_start_color="@color/txt_site_red_color"
+                    app:dots_primary_color="@color/txt_site_red_color"
+                    app:dots_secondary_color="@color/txt_lite_red_color"
+                    app:icon_size="@dimen/_12sdp"
+                    app:icon_type="Heart"
+                    android:visibility="gone"/>
+
+
+                <ImageView
+                    android:id="@+id/img_search"
+                    android:layout_width="13dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right|center"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:src="@drawable/search_black"
+                    tools:ignore="ContentDescription,RtlHardcoded" />
+
+                <LinearLayout
+                    android:id="@+id/ll_toolbarTextLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/_50sdp"
+                    android:layout_marginEnd="@dimen/_60sdp"
+                    android:layout_gravity="center"
+                    android:visibility="gone"
+                    android:orientation="vertical">
+
+                    <food.user.demand.FCViews.AC_Textview
+                        android:id="@+id/txt_restaurantNameHeader"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="visible"
+                        android:text="Holiday Food"
+                        android:textSize="@dimen/_8ssp"
+                        android:textColor="@color/colordarkgrey"
+                        android:textStyle="bold"/>
+
+                    <food.user.demand.FCViews.AC_Textview
+                        android:id="@+id/txt_restaurantTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="visible"
+                        android:text="25 Mints"
+                        android:textSize="@dimen/_8ssp"
+                        android:textColor="@color/colordarkgrey"
+                        android:textStyle="bold"/>
+
+                </LinearLayout>
+            </FrameLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@color/txt_lite_gray_color" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:id="@+id/ll_contentMainLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <androidx.core.widget.NestedScrollView
+                        android:id="@+id/nsv_hotelsDetails"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:id="@+id/ll_insideNested"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:descendantFocusability="blocksDescendants"
+                            android:orientation="vertical">
+
+                            <View
+                                android:id="@+id/view_scroll"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_1sdp"
+                                android:layout_marginTop="@dimen/_2sdp"/>
+
+                            <food.user.demand.FCUtils.Loader.LoaderTextView
+                                android:id="@+id/lt_hotelDetails"
+                                android:layout_marginStart="@dimen/_20sdp"
+                                android:layout_marginEnd="@dimen/_20sdp"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_20sdp"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:orientation="vertical"/>
+
+                            <LinearLayout
+                                android:visibility="gone"
+                                android:id="@+id/ll_hotelDetails"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_20sdp"
+                                android:layout_marginEnd="@dimen/_20sdp"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+
+                                    <food.user.demand.FCViews.AC_Textview
+                                        style="@style/FC_RegularThickTextView"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/txt_restaurantName"
+                                        android:layout_marginTop="@dimen/_5sdp"
+                                        android:paddingTop="@dimen/_5sdp"
+                                        android:paddingEnd="@dimen/_5sdp"
+                                        android:paddingBottom="@dimen/_5sdp"
+                                        android:text="Holiday Food"
+                                        android:layout_weight="1"
+                                        android:ellipsize="end"
+                                        android:maxLines="1"
+                                        tools:ignore="RtlSymmetry" />
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginTop="@dimen/_5sdp"
+                                        android:gravity="right|center"
+                                        android:orientation="horizontal"
+                                        tools:ignore="RtlHardcoded">
+
+                                        <LinearLayout
+                                            android:id="@+id/ll_rating"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:orientation="horizontal"
+                                            tools:ignore="UselessParent">
+
+                                            <ImageView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:padding="@dimen/_1sdp"
+                                                android:src="@drawable/star_white"
+                                                tools:ignore="ContentDescription" />
+
+
+
+                                        </LinearLayout>
+                                        <food.user.demand.FCViews.AC_Textview
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:padding="@dimen/_1sdp"
+                                            android:text="4.2"
+                                            android:id="@+id/txt_rating"
+                                            android:textColor="@color/colorgrey"
+                                            android:paddingLeft="@dimen/_2sdp"
+                                            android:paddingRight="@dimen/_2sdp"
+                                            android:layout_marginLeft="@dimen/_2sdp"
+                                            android:layout_marginRight="@dimen/_2sdp"
+                                            android:textSize="@dimen/_10ssp"
+                                            android:textStyle="bold" />
+
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                                <food.user.demand.FCViews.AC_Textview
+                                    style="@style/FC_RegularTextView"
+                                    android:id="@+id/txt_cuisines"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:paddingTop="@dimen/_2sdp"
+                                    android:paddingEnd="@dimen/_2sdp"
+                                    android:paddingBottom="@dimen/_2sdp"
+                                    android:ellipsize="end"
+                                    android:maxLines="2"
+                                    android:text="Chinese,Indian,Italian"
+                                    android:layout_marginBottom="@dimen/_3sdp"
+                                    tools:ignore="RtlSymmetry" />
+
+                            </LinearLayout>
+
+                            <food.user.demand.FCUtils.Loader.LoaderTextView
+                                android:id="@+id/lt_hotelTiming"
+                                android:layout_marginStart="@dimen/_20sdp"
+                                android:layout_marginEnd="@dimen/_20sdp"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_20sdp"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:orientation="vertical"/>
+
+                            <LinearLayout
+                                android:visibility="gone"
+                                android:id="@+id/ll_hotelTiming"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_20sdp"
+                                android:layout_marginEnd="@dimen/_20sdp"
+                                android:background="@drawable/dashed_border_lite_gray"
+                                android:orientation="horizontal"
+                                tools:ignore="DisableBaselineAlignment">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:orientation="horizontal"
+                                        tools:ignore="UselessParent">
+
+                                        <ImageView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:src="@drawable/time"
+                                            tools:ignore="ContentDescription" />
+
+                                        <food.user.demand.FCViews.AC_Textview
+                                            android:id="@+id/txt_deliveryEstimation"
+                                            style="@style/FC_RegularThickTextView"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="@dimen/_3sdp"
+                                            android:text="25 - 35 " />
+
+                                        <food.user.demand.FCViews.AC_Textview
+                                            android:visibility="gone"
+                                            style="@style/FC_RegularThickTextView"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="@dimen/_3sdp"
+                                            android:text="mins" />
+
+                                    </LinearLayout>
+
+                                    <food.user.demand.FCViews.AC_Textview
+                                        style="@style/FC_SmallTextView"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/_3sdp"
+                                        android:layout_marginTop="@dimen/_1sdp"
+                                        android:text="@string/delivery_time" />
+
+                                </LinearLayout>
+
+                                <View
+                                    android:layout_width="@dimen/_1sdp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginTop="@dimen/_5sdp"
+                                    android:layout_marginBottom="@dimen/_5sdp"
+                                    android:background="@color/txt_lite_gray_color" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:orientation="horizontal"
+                                        tools:ignore="UselessParent">
+
+                                        <food.user.demand.FCViews.AC_Textview
+                                            style="@style/FC_RegularThickTextView"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="@string/currency"
+                                            android:id="@+id/txt_currency"
+                                            android:textColor="@color/txt_site_red_color" />
+
+                                        <food.user.demand.FCViews.AC_Textview
+                                            android:id="@+id/txt_costLimit"
+                                            style="@style/FC_RegularThickTextView"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="@dimen/_5sdp"
+                                            android:text="200" />
+
+                                    </LinearLayout>
+
+                                    <food.user.demand.FCViews.AC_Textview
+                                        style="@style/FC_SmallTextView"
+                                        android:id="@+id/txt_personLimit"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/_1sdp"
+                                        android:text="For Two" />
+
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <food.user.demand.FCUtils.Loader.LoaderTextView
+                                android:id="@+id/lt_restaurantInfo"
+                                android:layout_marginStart="@dimen/_20sdp"
+                                android:layout_marginEnd="@dimen/_20sdp"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_20sdp"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:orientation="vertical"/>
+                            <LinearLayout
+                                android:visibility="gone"
+                                android:id="@+id/ll_restaurantInfo"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_20sdp"
+                                android:layout_marginEnd="@dimen/_20sdp"
+                                android:orientation="vertical">
+
+
+                                <food.user.demand.FCViews.AC_Textview
+                                    style="@style/FC_RegularThickTextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/_5sdp"
+                                    android:paddingTop="@dimen/_5sdp"
+                                    android:paddingEnd="@dimen/_5sdp"
+                                    android:paddingBottom="@dimen/_5sdp"
+                                    android:text="@string/restaurant_info"
+                                    tools:ignore="RtlSymmetry" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_10sdp"
+                                    android:layout_marginEnd="@dimen/_10sdp"
+                                    android:orientation="horizontal">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal">
+
+                                            <ImageView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:src="@drawable/res_location" />
+
+                                            <food.user.demand.FCViews.AC_Textview
+                                                android:id="@+id/txt_addAddress"
+                                                style="@style/FC_SmallThickTextView"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginStart="@dimen/_5sdp"
+                                                android:text="14th Gandhipuram, coimbatore" />
+
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="@dimen/_5sdp"
+                                            android:orientation="horizontal">
+
+                                            <ImageView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:src="@drawable/res_call" />
+
+                                            <food.user.demand.FCViews.AC_Textview
+                                                android:id="@+id/txt_phone"
+                                                style="@style/FC_SmallThickTextView"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginStart="@dimen/_5sdp"
+                                                android:text="+91 1234567890" />
+
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal">
+
+                                            <ImageView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:src="@drawable/res_time" />
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginStart="@dimen/_5sdp"
+                                                android:orientation="vertical">
+
+                                                <food.user.demand.FCViews.AC_Textview
+                                                    android:id="@+id/txt_day"
+                                                    style="@style/FC_SmallThickTextView"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="@string/every_day" />
+
+                                                <food.user.demand.FCViews.AC_Textview
+                                                    android:id="@+id/txt_timing"
+                                                    style="@style/FC_SmallTextView"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="10.00 AM - 11.00 PM" />
+
+                                            </LinearLayout>
+
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_2sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:background="@color/txt_lite_gray_color" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_20sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_marginEnd="@dimen/_20sdp"
+                                android:gravity="center|left"
+                                android:orientation="horizontal">
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center|left"
+                                    android:orientation="horizontal">
+                                    <ImageView
+                                        android:id="@+id/img_VegNonVeg"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:id="@+id/ll_vegNonVegType"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center|left"
+                                    android:orientation="horizontal">
+                                    <food.user.demand.FCViews.AC_Textview
+                                        android:id="@+id/txt_vegNonveg"
+                                        style="@style/FC_SmallThickTextView"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/_10sdp"
+                                        android:text="@string/veg_nonveg" />
+
+                                    <androidx.appcompat.widget.SwitchCompat
+                                        android:id="@+id/sw_vegNonveg"
+                                        android:layout_width="@dimen/_40sdp"
+                                        android:layout_height="wrap_content"
+                                        android:checked="false"
+                                        android:thumb="@drawable/thumb_selector"
+                                        app:track="@drawable/track_selector" />
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/_20sdp"
+                                        android:src="@drawable/egg"
+                                        android:visibility="gone"/>
+
+                                    <food.user.demand.FCViews.AC_Textview
+                                        style="@style/FC_SmallThickTextView"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/_10sdp"
+                                        android:text="@string/include_egg"
+                                        android:visibility="gone"/>
+
+                                    <androidx.appcompat.widget.SwitchCompat
+                                        android:layout_width="@dimen/_40sdp"
+                                        android:layout_height="wrap_content"
+                                        android:thumb="@drawable/thumb_selector"
+                                        app:track="@drawable/track_selector"
+                                        android:visibility="gone"/>
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginBottom="@dimen/_50sdp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_20sdp"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:layout_marginEnd="@dimen/_20sdp"
+                                android:orientation="vertical">
+
+                                <food.user.demand.FCViews.AC_Textview
+                                    style="@style/FC_RegularThickTextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/_5sdp"
+                                    android:paddingTop="@dimen/_5sdp"
+                                    android:paddingEnd="@dimen/_5sdp"
+                                    android:paddingBottom="@dimen/_5sdp"
+                                    android:text="@string/recommended"
+                                    tools:ignore="RtlSymmetry"
+                                    android:visibility="gone"/>
+
+                                <food.user.demand.FCUtils.StatefulRecyclerView.StatefulRecyclerView
+                                    android:id="@+id/rv_allRestaurants"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginTop="@dimen/_5sdp" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </androidx.core.widget.NestedScrollView>
+
+                </LinearLayout>
+
+            </FrameLayout>
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/fl_menuLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/ll_menuMainLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:id="@+id/ll_viewCart"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_30sdp"
+                        android:layout_marginEnd="@dimen/_20sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:background="@drawable/view_cart_bg_green"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <food.user.demand.FCViews.AC_Textview
+                            android:id="@+id/txt_totalQty"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:padding="@dimen/_5sdp"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_10ssp"
+                            android:textStyle="bold"
+                            tools:ignore="NestedWeights" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/_2sdp"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <View
+                                android:layout_width="@dimen/_1sdp"
+                                android:layout_height="@dimen/_8sdp"
+                                android:layout_gravity="center"
+                                android:background="@color/white" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <food.user.demand.FCUtils.Loader.LoaderTextView
+                                    android:id="@+id/lt_cartCurrency"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_10ssp"
+                                    android:padding="@dimen/_5sdp"
+                                    android:text="@string/currency"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_10ssp"
+                                    android:textStyle="bold" />
+
+                                <food.user.demand.FCUtils.Loader.LoaderTextView
+                                    android:id="@+id/lt_totalPrice"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_5sdp"
+                                    android:text="200 "
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_10ssp" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="@dimen/_1sdp"
+                            android:layout_height="@dimen/_18sdp"
+                            android:layout_gravity="center"
+                            android:background="@color/white" />
+
+
+                        <LinearLayout
+                            android:id="@+id/ll_viewCartLayoutBtn"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_2sdp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <food.user.demand.FCViews.AC_Textview
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:padding="@dimen/_5sdp"
+                                android:text="@string/view_cart"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_10ssp"
+                                android:textStyle="bold" />
+
+                            <ImageView
+                                android:layout_width="@dimen/_12sdp"
+                                android:layout_height="@dimen/_12sdp"
+                                android:src="@drawable/cart_white" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </FrameLayout>
+
+
+
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+    </FrameLayout>
+</LinearLayout>

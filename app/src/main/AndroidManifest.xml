@@ -1,21 +1,462 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="food.user.demand">
 
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <permission
+        android:name="food.user.demand.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <!--
+     To retrieve OAuth 2.0 tokens or invalidate tokens to disconnect a user. This disconnect
+     option is required to comply with the Google+ Sign-In developer policies
+    -->
+    <uses-permission android:name="android.permission.CALL_PHONE" /> <!-- To retrieve the account name (email) as part of sign-in: -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="food.user.demand.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="food.user.demand.permission.MAPS_RECEIVE" />
+
+    <permission
+        android:name="food.user.demand.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="food.user.demand.permission.C2D_MESSAGE" />
+
     <application
+        android:name=".FCViews.Initializer"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:hardwareAccelerated="true"
+        android:icon="@drawable/logo512"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:largeHeap="true"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:roundIcon="@drawable/logo512"
+        android:screenOrientation="portrait"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning,InnerclassSeparator,MissingApplicationIcon,UnusedAttribute">
+        <activity android:name=".Testing_New.RegisterTesting" />
+        <activity
+            android:name=".FCFragment.FCDashboardFragment.FCAccountActivity.FCHelp.Fc_HelpActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/FCAppStatusBarChange"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="InnerclassSeparator" />
+
+       <!-- <service
+            android:name=".FCPushNotifications.MyFirebaseMessagingService"
+            android:exported="false"
+            tools:ignore="InnerclassSeparator">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>-->
+        <service
+            android:name=".FireBasePushNotification.firebasenotifications.service.MyFirebaseMessagingService"
+            android:exported="false"
+            tools:ignore="InnerclassSeparator">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <receiver
+            android:name=".FireBasePushNotification.firebasenotifications.service.NotificationReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </receiver>
+        <activity android:name=".FCFragment.FCDashboardFragment.FCHomeFragment.Testingdashboard">
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity
+            android:name=".FCFragment.FCDashboardFragment.FC_Couponcode.Fc_Coupon"
+            android:launchMode="singleTop"
+            android:theme="@style/FCAppStatusBarChange"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="InnerclassSeparator" />
+        <activity
+            android:name=".FCActivity.FCIntroScreenActivity.FC_IntroScreen"
+            android:launchMode="singleTop"
+            android:theme="@style/FCAppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="InnerclassSeparator">
+
+            <!--
+                <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity
+            android:name=".FCLogin.FC_Login"
+            android:theme="@style/FCAppTheme"
+            tools:ignore="InnerclassSeparator" />
+        <activity
+            android:name=".FCSplash.FC_Splash"
+            android:clearTaskOnLaunch="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTask"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/FCAppTheme"
+            tools:ignore="InnerclassSeparator,LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".FCActivity.FCProfile.FC_IntroProfileActivity"
+            android:theme="@style/FCAppStatusBarChange"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="InnerclassSeparator" />
+        <activity
+            android:name=".FCActivity.FCProfile.FC_IntroAddressActivity"
+            android:theme="@style/FCAppStatusBarChange"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="InnerclassSeparator" />
+        <activity
+            android:name=".FCActivity.FCProfile.FC_locationPickerActivty"
+            android:theme="@style/FCAppStatusBarChange"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="InnerclassSeparator" />
+        <activity
+            android:name=".FCActivity.FCCartActivity.FC_CartAddressActivity"
+            android:theme="@style/FCAppStatusBarChange"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="InnerclassSeparator" />
+        <activity
+            android:name=".FCActivity.FCCartActivity.FC_CartlocationPickerActivty"
+            android:theme="@style/FCAppStatusBarChange"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="InnerclassSeparator" />
+        <activity
+            android:name=".FCActivity.FCNewUserAddressSet.FC_NewUserIntroActivity"
+            android:theme="@style/FCAppStatusBarChange"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="InnerclassSeparator" />
+        <activity
+            android:name=".FCActivity.FCNewUserAddressSet.FC_NewUserAddressActivity"
+            android:theme="@style/FCAppStatusBarChange"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="InnerclassSeparator" />
+        <activity
+            android:name=".FCActivity.FCNewUserAddressSet.FC_NewUserLocationPickerActivty"
+            android:theme="@style/FCAppStatusBarChange"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="InnerclassSeparator" />
+        <activity
+            android:name=".FCActivity.FCDashboard.FC_DashboardActivity"
+            android:theme="@style/FCAppStatusBarChange"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="InnerclassSeparator">
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity
+            android:name=".Testing_New.RecyclerViewActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/FCAppStatusBarChange"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="InnerclassSeparator">
+
+            <!--
+             <intent-filter>
+                 <action android:name="android.intent.action.MAIN" />
+
+                 <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
+            -->
+        </activity>
+        <activity
+            android:name=".FCFragment.FCDashboardFragment.FCHomeFragment.FC_SearchActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/FCAppStatusBarChange"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="InnerclassSeparator" />
+        <activity
+            android:name=".FCFragment.FCDashboardFragment.FCHomeFragmentItemActivity.FC_ItemActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/FCFullAppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="InnerclassSeparator" />
+        <activity
+            android:name=".FCActivity.FCCartActivity.FC_CartActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/FCAppStatusBarChange"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="InnerclassSeparator" />
+        <activity
+            android:name=".FCActivity.FCPayment.PaymentActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/FCAppStatusBarChange"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="InnerclassSeparator" />
+
+        <activity
+            android:name=".FCFragment.FCDashboardFragment.FCAccountActivity.FC_OrderHistoryActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/FCAppStatusBarChange"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="InnerclassSeparator" />
+        <activity
+            android:name=".FCFragment.FCDashboardFragment.FCAccountActivity.FCOfferActivity.FC_PendingOrderActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/FCAppStatusBarChange"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="InnerclassSeparator" />
+        <activity
+            android:name=".FCFragment.FCDashboardFragment.FCAccountActivity.FC_FavoritesActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/FCAppStatusBarChange"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="InnerclassSeparator" />
+        <activity
+            android:name=".FCFragment.FCDashboardFragment.FCAccountActivity.FC_OffersActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/FCAppStatusBarChange"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="InnerclassSeparator" />
+        <activity
+            android:name=".FCFragment.FCDashboardFragment.FCAccountActivity.FC_ReferralsActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/FCAppStatusBarChange"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="InnerclassSeparator" />
+        <activity
+            android:name=".FCFragment.FCDashboardFragment.FCAccountActivity.FCManageAddressActivity.FC_ManageAddressActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/FCAppStatusBarChange"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="InnerclassSeparator" />
+        <activity
+            android:name=".FCFragment.FCDashboardFragment.FCAccountActivity.FCManageAddressActivity.FC_ManageEditAddressActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/FCAppStatusBarChange"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="InnerclassSeparator" />
+        <activity
+            android:name=".FCFragment.FCDashboardFragment.FCAccountActivity.FCManageAddressActivity.FC_ManagelocationPickerActivty"
+            android:launchMode="singleTop"
+            android:theme="@style/FCAppStatusBarChange"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="InnerclassSeparator" />
+        <activity
+            android:name=".FCFragment.FCDashboardFragment.FCHomeFragmentHotelDetailsActivity.FC_HotelDetailsActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/FCAppStatusBarChange"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="InnerclassSeparator" />
+        <activity
+            android:name=".FCFragment.FCDashboardFragment.FCCartFragmentOrderPickActivity.FC_OrderPickedUpActivity"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
+            android:launchMode="singleTask"
+            android:resizeableActivity="true"
+            android:supportsPictureInPicture="true"
+            android:theme="@style/FCAppStatusBarChange"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="InnerclassSeparator" />
+        <activity
+            android:name=".FCFragment.FCDashboardFragment.FCHomeFragmentViewOnMap.FC_ViewOnMapActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/FCAppStatusBarChange"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="InnerclassSeparator" />
+        <activity
+            android:name=".FCFragment.FCDashboardFragment.FCHomeFragmentGreatOffersActivity.FCGreatOfferForSetOFHotelsActivity.FC_SetOfHotelsOfferActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/FCAppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="InnerclassSeparator">
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+
+        </activity>
+        <activity
+            android:name=".FCFragment.FCDashboardFragment.FCHomeFragment.FCHomeSeeAllRestaurants.Fc_HomeSeeAllRestaurants"
+            android:launchMode="singleTop"
+            android:theme="@style/FCAppStatusBarChange"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="InnerclassSeparator" />
+        <activity
+            android:name=".FCFragment.FCDashboardFragment.FCHomeFragment.FCHomeSeeAllRestaurants.Fc_CuisineSeeAllRestaurants"
+            android:launchMode="singleTop"
+            android:theme="@style/FCAppStatusBarChange"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="InnerclassSeparator" />
+        <activity
+            android:name=".FCFragment.FCDashboardFragment.FCHomeFragment.FCTopPickRestaurants.Fc_TopPickRestaurant"
+            android:launchMode="singleTop"
+            android:theme="@style/FCAppStatusBarChange"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="InnerclassSeparator" />
+        <activity
+            android:name=".FCFragment.FCDashboardFragment.FCHomeFragmentHotSellersActivity.FC_HotSellersHotelActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/FCAppStatusBarChange"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="InnerclassSeparator" />
+        <activity
+            android:name=".Activity.TestRecycleView"
+            android:launchMode="singleTop"
+            android:theme="@style/FCAppStatusBarChange"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="InnerclassSeparator" />
+        <activity
+            android:name=".Activity.Distance.PolyActivity"
+            tools:ignore="InnerclassSeparator" />
+        <!--
+ <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="INSERT_API_KEY" />
+        -->
+        <activity android:name=".Activity.Distance.Distance_new" />
+        <activity android:name=".Activity.Distance_Maos_new">
+
+            <!--
+                <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity android:name=".Activity.AutoAlertWithMapTravel">
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+
+        </activity>
+        <activity android:name=".Activity.DistanceMaps" />
+        <activity android:name=".Activity.Main2Activity" />
+        <activity android:name=".Activity.MapsActivity" />
+        <activity
+            android:name=".Activity.GoogleMaps"
+            android:label="@string/title_activity_google_maps" />
+        <activity android:name=".Activity.TestActivity" />
+        <activity android:name=".Activity.MainActivity">
+
+            <!--
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+            -->
+        </activity>
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <!--
+<activity android:name=".Activity.PUBNUB.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Activity.PUBNUB.DriverActivity" />
+        <activity android:name=".Activity.PUBNUB.PassengerActivity"></activity>
+        -->
+        <!--
+ <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="@string/google_maps_key" />
+        -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <service android:name=".Activity.GPSTracker" />
+
+        <receiver
+            android:name=".FCViews.NetworkChangeReceiver"
+            android:enabled="true" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <!-- Add your API key here -->
+        <meta-data
+            android:name="com.razorpay.ApiKey"
+            android:value="rzp_test_OnV4xcxLMYD5cD"
+            />
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/splash_bg_sw_600" />
+        <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
+
     </application>
 
 </manifest>

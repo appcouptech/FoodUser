@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".FCFragment.FCDashboardFragment.FCAccountActivity.FC_ReferralsActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        tools:ignore="UselessParent">
+
+        <ImageView
+            android:id="@+id/img_backBtn"
+            android:layout_width="@dimen/_12sdp"
+            android:layout_height="@dimen/_12sdp"
+            android:layout_gravity="center|left"
+            android:layout_marginStart="@dimen/_20ssp"
+            android:src="@drawable/back"
+            tools:ignore="ContentDescription,RtlHardcoded" />
+
+
+        <food.user.demand.FCViews.AC_Textview
+            style="@style/FC_BoldTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/referrals" />
+
+    </FrameLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/_250sdp"
+                android:layout_height="@dimen/_230sdp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:src="@drawable/referrals_img" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:gravity="center"
+                android:background="@drawable/dashed_border_red"
+                android:orientation="vertical">
+
+                <food.user.demand.FCViews.AC_Textview
+                    android:id="@+id/txt_referrals"
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="wrap_content"
+                    android:text="REFERRALS"
+                    android:gravity="center"
+                    android:textColor="@color/txt_site_red_color"
+                    android:textSize="@dimen/_12ssp" />
+
+                <View
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="@dimen/_1sdp"
+                    android:background="@color/txt_site_red_color"/>
+
+                <food.user.demand.FCViews.AC_Textview
+                    style="@style/FC_verySmallTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:gravity="center"
+                    android:text="@string/r_refer_frnd" />
+
+
+            </LinearLayout>
+
+            <food.user.demand.FCViews.AC_Textview
+                android:id="@+id/txt_inviteFrnds"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_40sdp"
+                android:layout_marginStart="@dimen/_40sdp"
+                android:layout_marginEnd="@dimen/_40sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:background="@drawable/rec_logout_btn_bg_green"
+                android:text="@string/r_invite"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_10ssp"
+                android:padding="@dimen/_8sdp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

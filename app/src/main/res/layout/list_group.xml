@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/_10sdp"
+    android:background="#fff">
+
+
+    <food.user.demand.FCViews.AC_Textview
+        android:id="@+id/lblListHeader"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/_15ssp"
+        android:paddingTop="@dimen/_10ssp"
+        android:paddingBottom="@dimen/_10ssp"
+        android:textColor="@color/alert_blue"
+        android:paddingEnd="?android:attr/expandableListPreferredItemPaddingLeft"
+        style="@style/FC_RegularThickTextView"/>
+
+</LinearLayout>

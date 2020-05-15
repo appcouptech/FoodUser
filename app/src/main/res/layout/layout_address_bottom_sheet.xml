@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/bg_lite_blue"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:orientation="vertical">
+
+        <food.user.demand.FCViews.AC_Textview
+            android:id="@+id/txt_orderHeader"
+            style="@style/FC_BoldTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/_15sdp"
+            android:paddingBottom="@dimen/_15sdp"
+            android:text="@string/b_choose_address" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:background="@color/txt_lite_gray_color"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:gravity="center"
+        android:visibility="visible"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_marginStart="@dimen/_10sdp" />
+
+    <food.user.demand.FCViews.AC_Textview
+        android:id="@+id/txt_emptyview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:gravity="center"
+        android:visibility="gone"
+        android:text="@string/noitem"
+        android:layout_margin="@dimen/_5ssp"
+        android:padding="@dimen/_5sdp"
+        tools:ignore="RtlHardcoded" />
+
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:gravity="center"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/home_location"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:orientation="vertical">
+
+                <food.user.demand.FCViews.AC_Textview
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/FC_RegularThickTextView"
+                    android:text="@string/b_home"/>
+
+                <food.user.demand.FCViews.AC_Textview
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/FC_RegularTextView"
+                    android:text="Gandhipuram ,Coimbatore"/>
+
+                <food.user.demand.FCViews.AC_Textview
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/FC_RegularTextView"
+                    android:text="32 Mins"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:background="@color/txt_lite_gray_color"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:gravity="center"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/cart_location"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:orientation="vertical">
+
+                <food.user.demand.FCViews.AC_Textview
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/FC_RegularThickTextView"
+                    android:text="@string/b_work"/>
+
+                <food.user.demand.FCViews.AC_Textview
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/FC_RegularTextView"
+                    android:text="Saravnamppati ,Coimbatore"/>
+
+                <food.user.demand.FCViews.AC_Textview
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/FC_RegularTextView"
+                    android:text="40 Mins"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:background="@color/txt_lite_gray_color"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:gravity="center"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/cart_location"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:orientation="vertical">
+
+                <food.user.demand.FCViews.AC_Textview
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/FC_RegularThickTextView"
+                    android:text="@string/b_other"/>
+
+                <food.user.demand.FCViews.AC_Textview
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/FC_RegularTextView"
+                    android:text="Echanari ,Coimbatore"/>
+
+                <food.user.demand.FCViews.AC_Textview
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/FC_RegularTextView"
+                    android:text="1 Hour"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:background="@color/txt_lite_gray_color"/>
+
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_addNewAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:gravity="center"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_40sdp"
+            android:src="@drawable/plus_green"/>
+
+        <food.user.demand.FCViews.AC_Textview
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:text="@string/b_add_new"
+            android:textSize="@dimen/_12ssp"
+            android:textColor="@color/txt_site_green_color"/>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:orientation="vertical">
+
+        <food.user.demand.FCViews.AC_Textview
+            android:id="@+id/txt_header"
+            style="@style/FC_BoldTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/_15sdp"
+            android:paddingBottom="@dimen/_15sdp"
+            android:text="@string/paymentmode" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:background="@color/txt_lite_gray_color"/>
+    <LinearLayout
+        android:id="@+id/ll_payment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:orientation="vertical">
+
+    <food.user.demand.FCViews.AC_Textview
+        android:id="@+id/txt_paytm"
+        style="@style/FC_SmallThickTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/onlinepay"
+        android:drawableEnd="@drawable/ac_payment"
+        android:padding="@dimen/_20sdp"/>
+        <food.user.demand.FCViews.AC_Textview
+            android:id="@+id/txt_payumoney"
+            style="@style/FC_SmallThickTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/payUmoney"
+            android:visibility="gone"
+            android:padding="@dimen/_10sdp"/>
+        <food.user.demand.FCViews.AC_Textview
+            android:id="@+id/txt_cashon"
+            style="@style/FC_SmallThickTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/cashon"
+            android:drawableEnd="@drawable/ac_offers"
+            android:padding="@dimen/_20sdp"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_clearcart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:visibility="gone"
+        android:orientation="vertical">
+        <food.user.demand.FCViews.AC_Textview
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/alreadyitem"
+            android:layout_marginLeft="@dimen/_5ssp">
+        </food.user.demand.FCViews.AC_Textview>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5ssp"
+            android:padding="@dimen/_5ssp">
+            <food.user.demand.FCViews.AC_Textview
+                android:id="@+id/txt_ok"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ok"
+                android:layout_weight="1"
+                android:layout_margin="@dimen/_5ssp"
+                android:padding="@dimen/_5ssp"
+                android:background="@color/colorend"
+                android:textColor="@color/white"
+                android:gravity="center">
+            </food.user.demand.FCViews.AC_Textview>
+            <food.user.demand.FCViews.AC_Textview
+                android:id="@+id/txt_cancel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cancel"
+                android:layout_weight="1"
+                android:layout_margin="@dimen/_5ssp"
+                android:padding="@dimen/_5ssp"
+                android:background="@color/rejected"
+                android:textColor="@color/white"
+                android:gravity="center">
+            </food.user.demand.FCViews.AC_Textview>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

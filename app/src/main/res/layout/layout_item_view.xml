@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:background="@drawable/view_item_outline"
+        android:orientation="vertical">
+
+        <food.user.demand.FCUtils.Loader.LoaderCircluarImageView
+            android:id="@+id/lc_item"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_margin="@dimen/_5sdp"/>
+
+        <food.user.demand.FCViews.CircleImageView
+            android:id="@+id/lc_circleItem"
+            android:visibility="gone"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_margin="@dimen/_5sdp"/>
+
+        <food.user.demand.FCViews.AC_Textview
+            android:id="@+id/txt_itemName"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:layout_marginBottom="@dimen/_3sdp"
+            style="@style/FC_RegularThickTextView"/>
+
+    </LinearLayout>
+
+</LinearLayout>

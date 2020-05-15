@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".FCActivity.FCProfile.FC_IntroAddressActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+
+            android:id="@+id/ll_mainLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:ignore="UselessLeaf">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/img_back"
+                    android:layout_width="@dimen/_12sdp"
+                    android:layout_height="@dimen/_12sdp"
+                    android:layout_gravity="center|left"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:src="@drawable/back"
+                    tools:ignore="ContentDescription,RtlHardcoded" />
+
+                <food.user.demand.FCViews.AC_BoldTextview
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:theme="@style/FC_BoldTextView"
+                    android:padding="@dimen/_10sdp"
+                    android:text="@string/address"/>
+
+            </FrameLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:background="@color/txt_lite_gray_color"
+                android:layout_marginTop="@dimen/_10sdp"/>
+
+            <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/map_intro_address"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_250sdp"
+                android:visibility="gone"
+                tools:ignore="RedundantNamespace" />
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
+            android:orientation="vertical"
+            tools:ignore="UselessLeaf">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:gravity="center"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:src="@drawable/home_location"/>
+
+                    <food.user.demand.FCViews.AC_Textview
+                        android:id="@+id/txt_locationMainField"
+                        style="@style/FC_BoldTextView"
+                        android:layout_width="match_parent"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+                    <food.user.demand.FCViews.AC_Textview
+                        android:id="@+id/txt_locationStreetField"
+                        style="@style/FC_RegularLiteTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:ellipsize="end"
+                        android:maxLines="2"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_weight="1.5">
+
+                    <food.user.demand.FCViews.AC_Textview
+                        android:id="@+id/txt_changeBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:layout_gravity="right"
+                        android:gravity="center"
+                        android:paddingBottom="@dimen/_3sdp"
+                        android:paddingTop="@dimen/_3sdp"
+                        android:paddingEnd="@dimen/_10sdp"
+                        android:paddingStart="@dimen/_10sdp"
+                        android:background="@drawable/ripple_button_change_effect_grey"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_7ssp"
+                        android:text="@string/change"
+                        tools:ignore="RtlHardcoded" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center|top"
+                android:visibility="gone"
+                android:orientation="horizontal">
+
+                <food.user.demand.FCViews.AC_Textview
+                    android:layout_margin="@dimen/_3sdp"
+                    android:id="@+id/txt_changeBtnOld"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/_3sdp"
+                    android:paddingTop="@dimen/_3sdp"
+                    android:paddingEnd="@dimen/_15sdp"
+                    android:paddingStart="@dimen/_15sdp"
+                    android:background="@drawable/ripple_button_change_effect_grey"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_7ssp"
+                    android:text="@string/change"
+                    tools:ignore="RtlHardcoded" />
+
+                <food.user.demand.FCViews.AC_Textview
+                    android:layout_margin="@dimen/_3sdp"
+                    android:id="@+id/txt_usecurrentlocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/_3sdp"
+                    android:paddingTop="@dimen/_3sdp"
+                    android:paddingEnd="@dimen/_15sdp"
+                    android:paddingStart="@dimen/_15sdp"
+                    android:background="@drawable/ripple_button_change_effect_green"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_7ssp"
+                    android:visibility="gone"
+                    android:drawableLeft="@drawable/message"
+                    android:text="@string/current"
+                    tools:ignore="RtlHardcoded" />
+
+            </LinearLayout>
+
+            <food.user.demand.FCViews.AC_Textview
+                style="@style/FC_RegularLiteTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="@string/house_flat" />
+
+            <food.user.demand.FCViews.AC_Edittext
+                android:id="@+id/edt_home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@null" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:background="@color/txt_lite_gray_color" />
+
+            <food.user.demand.FCViews.AC_Textview
+                style="@style/FC_RegularLiteTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="@string/landmark" />
+
+            <food.user.demand.FCViews.AC_Edittext
+                android:id="@+id/edt_landmark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@null" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:background="@color/txt_lite_gray_color" />
+
+
+            <food.user.demand.FCViews.AC_Textview
+                style="@style/FC_RegularLiteTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="@string/save_as" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/_10sdp"
+                tools:ignore="DisableBaselineAlignment">
+
+                <LinearLayout
+                    android:background="@drawable/ripple_button_effect_red"
+                    android:id="@+id/lin_home"
+                    android:padding="@dimen/_3sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <food.user.demand.FCViews.AC_Textview
+                        android:id="@+id/txt_home"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/home"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        tools:ignore="RtlHardcoded" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="@dimen/_1sdp"
+                    android:layout_height="match_parent"
+                    android:background="@color/txt_lite_gray_color" />
+
+                <LinearLayout
+                    android:background="@drawable/ripple_button_change_effect_grey"
+                    android:id="@+id/lin_work"
+                    android:padding="@dimen/_3sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <food.user.demand.FCViews.AC_Textview
+                        android:id="@+id/txt_work"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/work"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        tools:ignore="RtlHardcoded" />
+
+                </LinearLayout>
+                <View
+                    android:layout_width="@dimen/_1sdp"
+                    android:layout_height="match_parent"
+                    android:background="@color/txt_lite_gray_color" />
+
+                <LinearLayout
+                    android:padding="@dimen/_3sdp"
+                    android:id="@+id/lin_other"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_weight="1"
+                    android:background="@drawable/ripple_button_change_effect_grey"
+                    android:orientation="vertical">
+
+                    <food.user.demand.FCViews.AC_Textview
+                        android:id="@+id/txt_other"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/other"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        tools:ignore="RtlHardcoded" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:background="@color/txt_lite_gray_color" />
+
+
+            <food.user.demand.FCViews.AC_Textview
+                android:id="@+id/txt_saveAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:background="@drawable/ripple_button_change_effect_grey"
+                android:paddingStart="@dimen/_60sdp"
+                android:paddingTop="@dimen/_8sdp"
+                android:paddingEnd="@dimen/_60sdp"
+                android:paddingBottom="@dimen/_8sdp"
+                android:text="@string/save_address"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_10ssp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

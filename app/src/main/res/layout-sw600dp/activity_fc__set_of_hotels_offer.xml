@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/ll_mainLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:descendantFocusability="blocksDescendants"
+    tools:context=".FCFragment.FCDashboardFragment.FCHomeFragmentGreatOffersActivity.FCGreatOfferForSetOFHotelsActivity.FC_SetOfHotelsOfferActivity">
+
+    <LinearLayout
+        android:id="@+id/ll_toolbarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            tools:ignore="UselessParent">
+
+            <ImageView
+                android:id="@+id/img_backBtn"
+                android:layout_width="@dimen/_12sdp"
+                android:layout_height="@dimen/_12sdp"
+                android:layout_gravity="center|left"
+                android:layout_marginStart="@dimen/_20ssp"
+                android:src="@drawable/back"
+                tools:ignore="ContentDescription,RtlHardcoded" />
+
+
+            <food.user.demand.FCViews.AC_Textview
+                style="@style/FC_BoldTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/restaurants" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <food.user.demand.FCViews.AC_Textview
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="10 Restaurant"
+                    style="@style/FC_SmallThickTextView"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/ll_toolBarFilterBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:visibility="gone"
+                        android:layout_gravity="end">
+
+                        <food.user.demand.FCViews.AC_Textview
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/filter_and_sort"
+                            style="@style/FC_SmallThickTextView"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:src="@drawable/filter"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nsv_hotels"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="UselessLeaf">
+
+        <ImageView
+            android:id="@+id/img_banner"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_250sdp" />
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="@dimen/_12sdp"
+            android:layout_height="@dimen/_12sdp"
+            android:src="@drawable/back_white"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginStart="@dimen/_20sdp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_260sdp"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/_5sdp"
+                android:paddingBottom="@dimen/_5sdp">
+
+                <food.user.demand.FCViews.AC_Textview
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="10 Restaurant"
+                    style="@style/FC_SmallThickTextView"/>
+
+                <LinearLayout
+                    android:id="@+id/ll_filter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/ll_filterBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:layout_gravity="end">
+
+                        <food.user.demand.FCViews.AC_Textview
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/filter_and_sort"
+                            android:visibility="invisible"
+                            style="@style/FC_SmallThickTextView"/>
+
+                        <ImageView
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:src="@drawable/filter"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+
+            <food.user.demand.FCUtils.StatefulRecyclerView.StatefulRecyclerView
+                android:id="@+id/rv_setOfHotels"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"/>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:id="@+id/ll_main"
+android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_18sdp"
+            android:layout_marginRight="@dimen/_8sdp"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:layout_weight="1"
+            android:background="@color/colorwhite"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.core.widget.NestedScrollView
+                    android:id="@+id/nsv_cart"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/_3sdp"
+                        android:orientation="vertical">
+
+                        <food.user.demand.FCViews.AC_BoldTextview
+                            android:id="@+id/txt_pricing"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_3sdp"
+                            android:text="@string/pricing"
+                            android:textColor="@color/appcolour"
+                            android:textSize="@dimen/_12ssp"
+                            android:textStyle="bold"
+                            android:typeface="serif"
+                            android:visibility="gone" />
+
+                        <food.user.demand.FCUtils.StatefulRecyclerView.StatefulRecyclerView
+                            android:id="@+id/rv_pricing"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_3sdp" />
+                        <food.user.demand.FCViews.AC_BoldTextview
+                            android:id="@+id/txt_addon"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_3sdp"
+                            android:text="@string/addon"
+                            android:textColor="@color/appcolour"
+                            android:textSize="@dimen/_12ssp"
+                            android:textStyle="bold"
+                            android:typeface="serif"
+                            android:visibility="gone" />
+
+                        <food.user.demand.FCUtils.StatefulRecyclerView.StatefulRecyclerView
+                            android:id="@+id/rv_addon"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_3sdp" />
+
+                        <food.user.demand.FCViews.AC_BoldTextview
+                            android:id="@+id/txt_preparation"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_3sdp"
+                            android:text="@string/preparation"
+                            android:textColor="@color/appcolour"
+                            android:textSize="@dimen/_12ssp"
+                            android:textStyle="bold"
+                            android:typeface="serif"
+                            android:visibility="gone" />
+
+                        <food.user.demand.FCUtils.StatefulRecyclerView.StatefulRecyclerView
+                            android:id="@+id/rv_preparation"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_3sdp" />
+
+                        <food.user.demand.FCViews.AC_BoldTextview
+                            android:id="@+id/txt_ingredients"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/ingredients"
+                            android:textColor="@color/appcolour"
+                            android:textSize="@dimen/_12ssp"
+                            android:textStyle="bold"
+                            android:typeface="serif"
+                            android:visibility="gone" />
+
+                        <food.user.demand.FCUtils.StatefulRecyclerView.StatefulRecyclerView
+                            android:id="@+id/rv_ingredients"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_3sdp" />
+
+
+
+
+
+                    </LinearLayout>
+
+                </androidx.core.widget.NestedScrollView>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <food.user.demand.FCViews.AC_Textview
+        android:id="@+id/txt_submitAddon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/txt_site_green_color"
+        android:gravity="center"
+        android:padding="@dimen/_10sdp"
+        android:text="@string/submit"
+        android:textSize="@dimen/_12ssp" />
+        <food.user.demand.FCViews.AC_Textview
+            android:visibility="gone"
+            android:id="@+id/txt_submitAddondummy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/txt_site_green_color"
+            android:gravity="center"
+            android:padding="@dimen/_10sdp"
+            android:text="@string/submit"
+            android:textSize="@dimen/_12ssp" />
+
+        <food.user.demand.FCViews.AC_Textview
+            android:visibility="gone"
+            android:id="@+id/txt_submitAddondummy2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/txt_site_green_color"
+            android:gravity="center"
+            android:padding="@dimen/_10sdp"
+            android:text="@string/submit"
+            android:textSize="@dimen/_12ssp" />
+
+    </LinearLayout>
+</LinearLayout>

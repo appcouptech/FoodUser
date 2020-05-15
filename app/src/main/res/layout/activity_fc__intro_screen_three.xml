@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/intro_bg"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:src="@drawable/intro_s_3"
+            tools:ignore="ContentDescription" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <food.user.demand.FCViews.AC_Textview
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/txt_site_red_color"
+                android:textSize="@dimen/_12ssp"
+                android:text="@string/s3_title"
+                android:gravity="center"
+                android:textStyle="bold"/>
+
+            <food.user.demand.FCViews.AC_Textview
+                android:layout_width="@dimen/_200sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                style="@style/FC_SmallTextView"
+                android:text="@string/s3_desc"
+                android:gravity="center" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

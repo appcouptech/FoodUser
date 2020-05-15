@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/ll_main"
+    tools:context=".FCFragment.FCDashboardFragment.FC_ExploreFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/ll_searchLayoutExplore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:background="@drawable/search_restaurant_outline"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="@dimen/_10sdp">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/search"
+            tools:ignore="ContentDescription" />
+
+        <View
+            android:layout_width="@dimen/_1sdp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:background="@color/txt_gray_color" />
+
+        <food.user.demand.FCViews.AC_Edittext
+            android:id="@+id/edt_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:background="@null"
+            android:hint="@string/search_restaurant"
+            android:textColorHint="@color/txt_gray_color"
+            android:textSize="@dimen/_11ssp"
+            android:textStyle="bold" />
+
+
+        <requestFocus/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_searchRestaurant"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:orientation="horizontal">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/search"
+            tools:ignore="ContentDescription"
+            android:visibility="invisible"/>
+
+        <View
+            android:layout_width="@dimen/_1sdp"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:background="@color/txt_gray_color"
+            android:visibility="invisible"/>
+
+
+
+
+    </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_searchRestaurant"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20sdp" />
+
+        <food.user.demand.FCViews.AC_Textview
+            android:id="@+id/txt_emptyview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:gravity="center"
+            android:visibility="gone"
+            android:text="@string/noitem"
+            android:layout_margin="@dimen/_5ssp"
+            android:padding="@dimen/_5sdp"
+            tools:ignore="RtlHardcoded" />
+
+    </LinearLayout>
+    <food.user.demand.FCViews.AC_Textview
+        android:id="@+id/txt_recent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:visibility="gone"
+        android:text="@string/recent"
+        android:layout_margin="@dimen/_5ssp"
+        android:padding="@dimen/_5sdp"
+        tools:ignore="RtlHardcoded" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_listRestaurant"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:visibility="gone"/>
+
+</LinearLayout>

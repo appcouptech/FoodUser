@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_margin="@dimen/_3sdp"
+    android:background="@drawable/rectangle_hot_sellers_outline"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        tools:ignore="UselessParent">
+        <LinearLayout
+            android:visibility="visible"
+            android:id="@+id/ll_loaderingredients"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <food.user.demand.FCUtils.Loader.LoaderImageView
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp" />
+
+            <food.user.demand.FCUtils.Loader.LoaderTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:gravity="center"
+                tools:ignore="RtlHardcoded" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:orientation="vertical">
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/ll_checkBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/chk_dishName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <food.user.demand.FCViews.AC_Textview
+                    android:id="@+id/txt_dishName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="@dimen/_5ssp"
+                    android:layout_marginRight="@dimen/_5ssp"
+                    android:gravity="end"
+                    android:layout_gravity="center">
+                    <food.user.demand.FCViews.AC_Textview
+                        android:id="@+id/txt_dishcurrency"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:gravity="end"
+                         />
+                    <food.user.demand.FCViews.AC_Textview
+                        android:id="@+id/txt_dishprice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:gravity="end" />
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_radioButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+                <!--<RadioGroup
+                    android:id="@+id/radioGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="@dimen/_3sdp"
+                    android:gravity="center"
+                    android:layout_gravity="center">-->
+                <RadioButton
+                    android:textColor="@color/black_overlay"
+                    android:id="@+id/rb_dishname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    tools:ignore="RtlSymmetry" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_5ssp"
+                    android:layout_marginRight="@dimen/_5ssp"
+                    android:gravity="end"
+                    android:layout_gravity="center">
+                    <food.user.demand.FCViews.AC_Textview
+                        android:id="@+id/txt_radiocurrency"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:gravity="end"
+                        />
+                    <food.user.demand.FCViews.AC_Textview
+                        android:id="@+id/txt_radioprice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:gravity="end"
+                        />
+                </LinearLayout>
+                <!--  </RadioGroup>-->
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+
+
+
+
+
+
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>
