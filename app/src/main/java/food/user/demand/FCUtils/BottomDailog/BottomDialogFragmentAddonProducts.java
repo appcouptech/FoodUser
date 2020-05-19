@@ -96,7 +96,7 @@ public class BottomDialogFragmentAddonProducts extends BottomSheetDialogFragment
             FC_Common.restaurantid = object.getString("hotelid");
             FC_Common.productID = object.getString("productID");
             FC_Common.quantity = object.getString("quantity");
-            Log.d("fdhgdfgfd","fghggdfgfd"+FC_Common.quantity);
+            Log.d("fdhgdfgfd","total_price"+FC_Common.total_price);
             Utils.log(getActivity(), "productID : " + FC_Common.hotelpricing + " jvdjfd" +  FC_Common.quantity  + FC_Common.addonpricing);
         }
         FC_Common.quantity="1";
@@ -212,11 +212,20 @@ public class BottomDialogFragmentAddonProducts extends BottomSheetDialogFragment
 
                 }
 
-               // FC_Common.ingrdientTotal = finalnumber3;
-                //FC_Common.addonTotal = txt_submitAddondummy2.getText().toString();
-                //Utils.toast(getContext(), txt_submitAddondummy.getText().toString());
-                UpdateMenu(FC_Common.ingrdientTotal, FC_Common.PreparationID, FC_Common.pricingID, FC_Common.addonTotal,FC_Common.quantity);
+                FC_Common.priceTotal=FC_Common.price+Integer.parseInt(FC_Common.total_price);
+                Log.d("csdgvhgcv","priceTotal"+FC_Common.priceTotal);
+                Log.d("csdgvhgcv","price"+FC_Common.price);
+                Log.d("csdgvhgcv","total_price"+FC_Common.total_price);
+                if(FC_Common.maximum_order>FC_Common.priceTotal)
+                {
+                    UpdateMenu(FC_Common.ingrdientTotal, FC_Common.PreparationID, FC_Common.pricingID, FC_Common.addonTotal,FC_Common.quantity);
 
+                }
+                else {
+                    dismiss();
+                    Utils.toast(getContext(),getResources().getString(R.string.max_ord)+"  "+FC_Common.currency+" "+FC_Common.maximum_order);
+                    //snackBar(getResources().getString(R.string.max_ord)+"  "+FC_Common.currency+" "+FC_Common.maximum_order);
+                }
 
 //                ArrayList<IngredientObject> actorList = ((IngredientAdapter)rv_ingredients.getAdapter()).getSelectActorList();
 //                Toast.makeText(getContext(),""+actorList.toArray(),Toast.LENGTH_LONG).show();
@@ -478,14 +487,17 @@ public class BottomDialogFragmentAddonProducts extends BottomSheetDialogFragment
                 notifyDataSetChanged();
                 FC_Common.pricingID = pricingObjects.get(position).getId();*/
                 holder.rb_dishname.setText(FC_Common.pricingName);
-                holder.txt_dishcurrency.setText(pricingObjects.get(position).getCurrency());
-                holder.txt_dishprice.setText(pricingObjects.get(position).getPrice());
+                holder.txt_radiocurrency.setText(pricingObjects.get(position).getCurrency());
+                holder.txt_radioprice.setText(pricingObjects.get(position).getPrice());
+
                 holder.rb_dishname.setChecked(position == mSelectedItem);
                 holder.rb_dishname.setOnClickListener(v -> {
                     final int position1 = holder.getAdapterPosition();
                     mSelectedItem = position1;
                     notifyDataSetChanged();
                     FC_Common.pricingID = pricingObjects.get(position1).getId();
+                    FC_Common.price=Integer.parseInt(pricingObjects.get(position1).getPrice());
+                    Log.d("csdgvhgcv","price"+FC_Common.price);
                     Log.d("Dfgdfgdfgfd","pricingID : "+FC_Common.pricingID);
                 });
             }
@@ -516,12 +528,12 @@ public class BottomDialogFragmentAddonProducts extends BottomSheetDialogFragment
             LinearLayout ll_loaderingredients,ll_content,ll_radioButton,ll_checkBox;
             // RadioGroup radioGroup;
             CheckBox chk_dishName;
-            AC_Textview txt_dishName,txt_dishcurrency,txt_dishprice;
+            AC_Textview txt_dishName,txt_radiocurrency,txt_radioprice;
             RadioButton rb_dishname;
             ViewHolder(@NonNull View itemView) {
                 super(itemView);
-                txt_dishprice = itemView.findViewById(R.id.txt_dishprice);
-                txt_dishcurrency = itemView.findViewById(R.id.txt_dishcurrency);
+                txt_radioprice = itemView.findViewById(R.id.txt_radioprice);
+                txt_radiocurrency = itemView.findViewById(R.id.txt_radiocurrency);
                 rb_dishname = itemView.findViewById(R.id.rb_dishname);
                 txt_dishName = itemView.findViewById(R.id.txt_dishName);
                 chk_dishName = itemView.findViewById(R.id.chk_dishName);

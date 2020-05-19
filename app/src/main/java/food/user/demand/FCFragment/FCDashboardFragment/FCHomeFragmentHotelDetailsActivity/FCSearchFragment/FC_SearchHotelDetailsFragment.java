@@ -76,7 +76,7 @@ Snackbar bar;
     private AC_BoldTextview txt_ingredients,txt_preparation,txt_pricing,txt_addon;
     private StatefulRecyclerView rv_ingredients,rv_preparation,rv_pricing,rv_addon;
     private LinearLayout ll_dishDetails,ll_header;
-    private LinearLayout ll_viewCart;
+    private LinearLayout ll_viewCart,ll_clearcart,ll_payment;
     private AC_Edittext edt_dishName;
    // private ItemDetailsAdapter itemDetailsAdapter;
     private RecyclerView rv_itemDetails;
@@ -87,12 +87,13 @@ Snackbar bar;
     private ArrayList<PreparationObject> preparationObjects = new ArrayList<>();
     private PricingAdapter pricingAdapters;
     private AddonAdapter addonAdapters;
+    BottomSheetDialog paymentdialog;
     private IngredientAdapter ingredientAdapters;
     private PreparationAdapter preparationAdapters;
     private AC_Textview txt_totalQty,txt_emptyview;
     private AC_Textview txt_submitAddon;
     private AC_Textview txt_submitAddondummy;
-    private AC_Textview txt_submitAddondummy2;
+    private AC_Textview txt_submitAddondummy2,txt_ok,txt_cancel,txt_header;
     private BottomSheetDialog dialog;
     private int addproducts = 0;
     private MultiViewTypeAdapter multiViewTypeAdapter;
@@ -260,14 +261,18 @@ Snackbar bar;
                     try {
                         JSONObject jsonObject = new JSONObject(response);
 
-                        Log.d("fghfghfgh","fghfg"+FC_URL.URL_PRODUCTLIST);
+                        Log.d("fghfghfgh","fghfg"+jsonObject);
                         FC_Common.success = jsonObject.getString("success");
+
                         if(FC_Common.success.equalsIgnoreCase("1"))
                         {
+
                             txt_emptyview.setVisibility(View.GONE);
                             rv_itemDetails.setVisibility(View.VISIBLE);
                         FC_Common.total_quantity = jsonObject.getString("total_quantity");
                         FC_Common.total_price = jsonObject.getString("total_price");
+                            FC_Common.minimum_order = jsonObject.getInt("minimum_order");
+                            FC_Common.maximum_order = jsonObject.getInt("maximum_order");
                         txt_totalQty.setText(FC_Common.total_quantity + " Items");
                         lt_totalPrice.setText(FC_Common.total_price);
                         JSONArray jsonArray = jsonObject.getJSONArray("category");
@@ -613,6 +618,8 @@ Snackbar bar;
                         FC_Common.addonpricing=Description.getAddon_status();
                         FC_Common.productID=Description.getid();
                         FC_Common.quantity=Description.getquantity();
+                        FC_Common.price = Integer.parseInt(Description.getPrice());
+                        FC_Common.priceTotal=FC_Common.price+Integer.parseInt(FC_Common.total_price);
                         Log.d("dfhdfghdfgd","dfgdfgdfg"+FC_Common.productID);
                         Log.d("dfhdfghdfgd","dfgdfgdfg"+FC_Common.productID);
                         if (FC_Common.hotelpricing.equalsIgnoreCase("1")||
@@ -750,10 +757,21 @@ Snackbar bar;
 
                                     }
 
-                                    // FC_Common.ingrdientTotal = finalnumber3;
-                                    //FC_Common.addonTotal = txt_submitAddondummy2.getText().toString();
-                                    //Utils.toast(getContext(), txt_submitAddondummy.getText().toString());
-                                    UpdateMenuAddon(FC_Common.ingrdientTotal, FC_Common.PreparationID, FC_Common.pricingID, FC_Common.addonTotal,FC_Common.quantity);
+                                    FC_Common.priceTotal=FC_Common.price+Integer.parseInt(FC_Common.total_price);
+                                    Log.d("csdgvhgcv","priceTotal"+FC_Common.priceTotal);
+                                    Log.d("csdgvhgcv","price"+FC_Common.price);
+                                    Log.d("csdgvhgcv","total_price"+FC_Common.total_price);
+                                    if(FC_Common.maximum_order>FC_Common.priceTotal)
+                                    {
+                                        UpdateMenuAddon(FC_Common.ingrdientTotal, FC_Common.PreparationID, FC_Common.pricingID, FC_Common.addonTotal,FC_Common.quantity);
+
+                                    }
+                                    else {
+                                        dialog.dismiss();
+                                        Utils.toast(getContext(),getResources().getString(R.string.max_ord)+"  "+FC_Common.currency+" "+FC_Common.maximum_order);
+                                        //snackBar(getResources().getString(R.string.max_ord)+"  "+FC_Common.currency+" "+FC_Common.maximum_order);
+                                    }
+
 
 
 //                ArrayList<IngredientObject> actorList = ((IngredientAdapter)rv_ingredients.getAdapter()).getSelectActorList();
@@ -773,7 +791,19 @@ Snackbar bar;
                             FC_Common.addonpricing=Description.getAddon_status();
                             FC_Common.productID=Description.getid();
                             FC_Common.quantity=String.valueOf(count);
-                            UpdateMenu();
+                            /* if(FC_Common.minimum_order<FC_Common.priceTotal)
+                            {*/
+                            Log.d("fhdfgdfg","max");
+                            if(FC_Common.maximum_order>FC_Common.priceTotal)
+                            {
+                                Log.d("fhdfgdfg","fdgdgdmin");
+                                snackBar("item to be adding please wait");
+                                UpdateMenu();
+                            }
+                            else {
+                                snackBar(getResources().getString(R.string.max_ord)+"  "+FC_Common.currency+" "+FC_Common.maximum_order);
+                            }
+                            // }
                             Utils.log(context,"sdfsdfsdfs"+" hotelpricing : "+"fail");
                             Utils.log(context,"sdfsdfsdfs"+" addonpricing : "+"fail");
                         }
@@ -799,9 +829,22 @@ Snackbar bar;
                     FC_Common.addonpricing=Description.getAddon_status();
                     FC_Common.productID=Description.getid();
                     FC_Common.quantity=String.valueOf(count);
+                    FC_Common.price = Integer.parseInt(Description.getPrice());
+                    FC_Common.priceTotal=FC_Common.price+Integer.parseInt(FC_Common.total_price);
                     Utils.log(context,"sdfsdfsdfsdfs"+"count : "+count);
                     Utils.log(context,"sdfsdfsdfsdfs"+"quantity : "+FC_Common.quantity);
-                    UpdateMenu();
+                   /* if(FC_Common.minimum_order<FC_Common.priceTotal)
+                            {*/
+                    Log.d("fhdfgdfg","max");
+                    if(FC_Common.maximum_order>FC_Common.priceTotal)
+                    {
+                        Log.d("fhdfgdfg","fdgdgdmin");
+                        UpdateMenu();
+                    }
+                    else {
+                        snackBar(getResources().getString(R.string.max_ord)+"  "+FC_Common.currency+" "+FC_Common.maximum_order);
+                    }
+                    // }
 
                 });
                 img_minus.setOnClickListener(v -> {
@@ -852,6 +895,14 @@ Snackbar bar;
                         else
                         {
                             snackBar(FC_Common.message);
+                            @SuppressLint("InflateParams")
+                            View view1 = getLayoutInflater().inflate(R.layout.bottom_payment_gateway, null);
+                            FindViewByIdBottomDialog_bottom(view1);
+                            paymentdialog = new BottomSheetDialog(context);
+                            paymentdialog.setContentView(view1);
+                            paymentdialog.show();
+                            txt_cancel.setOnClickListener(v -> paymentdialog.dismiss());
+                            txt_ok.setOnClickListener(v -> ClearCart());
                         }
 
                     } catch (JSONException e) {
@@ -1199,14 +1250,15 @@ Snackbar bar;
                 notifyDataSetChanged();
                 FC_Common.pricingID = pricingObjects.get(position).getId();*/
                 holder.rb_dishname.setText(FC_Common.pricingName);
-                holder.txt_dishcurrency.setText(pricingObjects.get(position).getCurrency());
-                holder.txt_dishprice.setText(pricingObjects.get(position).getPrice());
+                holder.txt_radiocurrency.setText(pricingObjects.get(position).getCurrency());
+                holder.txt_radioprice.setText(pricingObjects.get(position).getPrice());
                 holder.rb_dishname.setChecked(position == mSelectedItem);
                 holder.rb_dishname.setOnClickListener(v -> {
                     final int position1 = holder.getAdapterPosition();
                     mSelectedItem = position1;
                     notifyDataSetChanged();
                     FC_Common.pricingID = pricingObjects.get(position1).getId();
+                    FC_Common.price=Integer.parseInt(pricingObjects.get(position1).getPrice());
                     Log.d("Dfgdfgdfgfd","pricingID : "+FC_Common.pricingID);
                 });
             }
@@ -1237,12 +1289,12 @@ Snackbar bar;
             LinearLayout ll_loaderingredients,ll_content,ll_radioButton,ll_checkBox;
             // RadioGroup radioGroup;
             CheckBox chk_dishName;
-            AC_Textview txt_dishName,txt_dishcurrency,txt_dishprice;
+            AC_Textview txt_dishName,txt_radiocurrency,txt_radioprice;
             RadioButton rb_dishname;
             ViewHolder(@NonNull View itemView) {
                 super(itemView);
-                txt_dishprice = itemView.findViewById(R.id.txt_dishprice);
-                txt_dishcurrency = itemView.findViewById(R.id.txt_dishcurrency);
+                txt_radioprice = itemView.findViewById(R.id.txt_radioprice);
+                txt_radiocurrency = itemView.findViewById(R.id.txt_radiocurrency);
                 rb_dishname = itemView.findViewById(R.id.rb_dishname);
                 txt_dishName = itemView.findViewById(R.id.txt_dishName);
                 chk_dishName = itemView.findViewById(R.id.chk_dishName);
@@ -1634,5 +1686,63 @@ Snackbar bar;
     }
     public interface AddonProducts {
         void addProducts(int products);
+    }
+
+    private void FindViewByIdBottomDialog_bottom(View view) {
+
+        txt_ok = view.findViewById(R.id.txt_ok);
+        txt_cancel = view.findViewById(R.id.txt_cancel);
+        txt_header = view.findViewById(R.id.txt_header);
+        ll_payment = view.findViewById(R.id.ll_payment);
+        ll_clearcart = view.findViewById(R.id.ll_clearcart);
+        txt_header.setText(R.string.f_clearcart);
+        ll_payment.setVisibility(View.GONE);
+        ll_clearcart.setVisibility(View.VISIBLE);
+
+    }
+    private void ClearCart() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, FC_URL.URL_PRODUCTCARTCLEAR,
+                response -> {
+                    Log.d("", ">>" + response);
+                    try {
+                        JSONObject obj = new JSONObject(response);
+                        FC_Common.success = obj.getString("success");
+                        FC_Common.message = obj.getString("message");
+                        Log.d("ghfghfghf", "fhfgdhfd" + obj);
+                        if (FC_Common.success.equalsIgnoreCase("1")) {
+                            paymentdialog.dismiss();
+                            AllRestaurantList(FC_Common.searchlist);
+                        }
+                        else {
+                            paymentdialog.dismiss();
+                            snackBar(FC_Common.message);
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        snackBar(String.valueOf(e));
+                        Log.d("dfghdghfgfdb", "fdhfdh" + e);
+                        // Intent setOfHotels = new Intent(getActivity(), FC_SetOfHotelsOfferActivity.class);
+
+                    }
+                },
+                error -> {
+                    //displaying the error in toast if occurrs
+                    snackBar(String.valueOf(error));
+                    Log.d("dfhfdghfgh", "hfdhdf" + error);
+                }) {
+            @Override
+            public Map<String, String> getHeaders()  {
+                Map<String, String> params = new HashMap<>();
+                Log.d("getParams: ", "" + params);
+                params.put("Authorization", FC_Common.token_type+" "+FC_Common.access_token);
+                return params;
+            }
+        };
+
+        // request queue
+        RequestQueue requestQueue = Volley.newRequestQueue(Objects.requireNonNull(context).getApplicationContext());
+        requestQueue.add(stringRequest);
+
     }
 }

@@ -57,7 +57,7 @@ import java.util.Map;
 import java.util.Objects;
 
 import food.user.demand.FCActivity.FCCartActivity.FC_CartActivity;
-import food.user.demand.FCFragment.FCDashboardFragment.FCHomeFragmentHotelDetailsActivity.FCSearchFragment.FC_SearchHotelDetailsFragment;
+import food.user.demand.FCFragment.FCDashboardFragment.FCHomeFragmentHotelDetailsActivity.FCSearchFragment.FC_SearchHotelDetailsActivity;
 import food.user.demand.FCPojo.FCHotelDetailsActivityObject.MenuListObject;
 import food.user.demand.FCUtils.BottomDailog.BottomDialogFragmentAddonProducts;
 import food.user.demand.FCUtils.LikeButton.LikeButton;
@@ -342,6 +342,7 @@ public class FC_HotelDetailsActivity extends AppCompatActivity implements View.O
                 response -> {
             try {
                         JSONObject jsonObject = new JSONObject(response);
+                Log.d("dfgfdgdfg","dfgdfgd"+jsonObject);
                         FC_Common.hotelid = jsonObject.getString("id");
                         FC_Common.restaurant_name = jsonObject.getString("restaurant_name");
                         FC_Common.restaurant_cuisine = jsonObject.getString("cuisines");
@@ -361,11 +362,15 @@ public class FC_HotelDetailsActivity extends AppCompatActivity implements View.O
                         FC_Common.total_price = jsonObject.getString("total_price");
                         FC_Common.favourite = jsonObject.getString("favourite");
                         FC_Common.discount_text = jsonObject.getString("discount_text");
+                        FC_Common.minimum_order = jsonObject.getInt("minimum_order");
+                        FC_Common.maximum_order = jsonObject.getInt("maximum_order");
                         txt_totalQty.setText(FC_Common.total_quantity + " Items");
                         lt_cartCurrency.setText(FC_Common.currency);
                         lt_totalPrice.setText(FC_Common.total_price);
                         txt_couponcode.setText(FC_Common.discount_text);
-                        Log.d("dfgfdgdfg","dfgdfgd"+FC_Common.dish_id);
+                        Log.d("dfgfdgdfg","dfgdfgd"+FC_Common.minimum_order);
+                        Log.d("dfgfdgdfg","dfgdfgd"+FC_Common.maximum_order);
+                        Log.d("dfgfdgdfg","dfgdfgd"+jsonObject);
                         if (FC_Common.favourite.equalsIgnoreCase("1"))
                         {
                             vector_android_button.setVisibility(View.VISIBLE);
@@ -850,6 +855,8 @@ public class FC_HotelDetailsActivity extends AppCompatActivity implements View.O
                         FC_Common.addonpricing = Description.getAddon_status();
                         FC_Common.productID = Description.getid();
                         FC_Common.quantity = Description.getquantity();
+                        FC_Common.price = Integer.parseInt(Description.getPrice());
+                        FC_Common.priceTotal=FC_Common.price+Integer.parseInt(FC_Common.total_price);
                         Log.d("dfhdfghdfgd", "dfgdfgdfg" + FC_Common.productID);
                         Log.d("dfhdfghdfgd", "dfgdfgdfg" + FC_Common.productID);
                         if (FC_Common.hotelpricing.equalsIgnoreCase("1") ||
@@ -878,8 +885,19 @@ public class FC_HotelDetailsActivity extends AppCompatActivity implements View.O
                             FC_Common.addonpricing = Description.getAddon_status();
                             FC_Common.productID = Description.getid();
                             FC_Common.quantity = String.valueOf(count);
-                            snackBar("item to be adding please wait");
-                            UpdateMenu();
+                              /* if(FC_Common.minimum_order<FC_Common.priceTotal)
+                            {*/
+                            Log.d("fhdfgdfg","max");
+                            if(FC_Common.maximum_order>FC_Common.priceTotal)
+                            {
+                                Log.d("fhdfgdfg","fdgdgdmin");
+                                snackBar("item to be adding please wait");
+                                UpdateMenu();
+                            }
+                            else {
+                                snackBar(getResources().getString(R.string.max_ord)+"  "+FC_Common.currency+" "+FC_Common.maximum_order);
+                            }
+                            // }
                             Utils.log(context, "sdfsdfsdfs" + " hotelpricing : " + "fail");
                             Utils.log(context, "sdfsdfsdfs" + " addonpricing : " + "fail");
                         }
@@ -902,9 +920,23 @@ public class FC_HotelDetailsActivity extends AppCompatActivity implements View.O
                     FC_Common.addonpricing = Description.getAddon_status();
                     FC_Common.productID = Description.getid();
                     FC_Common.quantity = String.valueOf(count);
+                    FC_Common.price = Integer.parseInt(Description.getPrice());
+                    FC_Common.priceTotal=FC_Common.price+Integer.parseInt(FC_Common.total_price);
                     Utils.log(context, "sdfsdfsdfsdfs" + "count : " + count);
                     Utils.log(context, "sdfsdfsdfsdfs" + "quantity : " + FC_Common.quantity);
-                    UpdateMenu();
+                    /* if(FC_Common.minimum_order<FC_Common.priceTotal)
+                            {*/
+                    Log.d("fhdfgdfg","max");
+                    if(FC_Common.maximum_order>FC_Common.priceTotal)
+                    {
+                        Log.d("fhdfgdfg","fdgdgdmin");
+                        UpdateMenu();
+                    }
+                    else {
+                        snackBar(getResources().getString(R.string.max_ord)+"  "+FC_Common.currency+" "+FC_Common.maximum_order);
+                    }
+                    // }
+
 
                 });
                 img_minus.setOnClickListener(v -> {
@@ -1054,8 +1086,14 @@ public class FC_HotelDetailsActivity extends AppCompatActivity implements View.O
                         FC_Common.addonpricing = recommened.getAddon_status();
                         FC_Common.productID = recommened.getid();
                         FC_Common.quantity = recommened.getquantity();
+                        FC_Common.price = Integer.parseInt(recommened.getPrice());
+                        FC_Common.priceTotal=FC_Common.price+Integer.parseInt(FC_Common.total_price);
                         Log.d("dfhdfghdfgd", "dfgdfgdfg" + FC_Common.productID);
                         Log.d("dfhdfghdfgd", "dfgdfgdfg" + FC_Common.productID);
+                        Log.d("dfhdfghdfgd", "dfgdfgdfg" + FC_Common.total_price);
+                        Log.d("dfhdfghdfgd", "dfgdfgdfg" + FC_Common.price);
+                        Log.d("fhdfgdfg", "priceTotal" + FC_Common.priceTotal);
+
                         if (FC_Common.hotelpricing.equalsIgnoreCase("1") ||
                                 FC_Common.addonpricing.equalsIgnoreCase("1")) {
                             Utils.log(context, "sdfsdfsdfs" + " hotelpricing : " + FC_Common.hotelpricing);
@@ -1084,8 +1122,21 @@ public class FC_HotelDetailsActivity extends AppCompatActivity implements View.O
                             FC_Common.addonpricing = recommened.getAddon_status();
                             FC_Common.productID = recommened.getid();
                             FC_Common.quantity = String.valueOf(count);
-                            snackBar("item to be adding please wait");
-                            UpdateMenu();
+                           /* if(FC_Common.minimum_order<FC_Common.priceTotal)
+                            {*/
+                                Log.d("fhdfgdfg","max");
+                                if(FC_Common.maximum_order>FC_Common.priceTotal)
+                                {
+                                    Log.d("fhdfgdfg","fdgdgdmin");
+                                    snackBar("item to be adding please wait");
+                                    UpdateMenu();
+                                }
+                                else {
+                                    snackBar(getResources().getString(R.string.max_ord)+"  "+FC_Common.currency+" "+FC_Common.maximum_order);
+                                }
+                           // }
+
+
                             Utils.log(context, "sdfsdfsdfs" + " hotelpricing : " + "fail");
                             Utils.log(context, "sdfsdfsdfs" + " addonpricing : " + "fail");
                         }
@@ -1108,22 +1159,24 @@ public class FC_HotelDetailsActivity extends AppCompatActivity implements View.O
                     FC_Common.addonpricing = recommened.getAddon_status();
                     FC_Common.productID = recommened.getid();
                     FC_Common.quantity = String.valueOf(count);
+                    FC_Common.price = Integer.parseInt(recommened.getPrice());
+                    FC_Common.priceTotal=FC_Common.price+Integer.parseInt(FC_Common.total_price);
                     Utils.log(context, "sdfsdfsdfsdfs" + "count : " + count);
-                    Utils.log(context, "sdfsdfsdfsdfs" + "quantity : " + FC_Common.quantity);
-                    UpdateMenu();
-                   /* ll_viewCart.setVisibility(View.VISIBLE);
-                    pb_cart.setVisibility(View.VISIBLE);
+                    Utils.log(context, "fhdfgdfg" + "priceTotal : " + FC_Common.priceTotal);
+                    Utils.log(context, "fhdfgdfg" + "maximum_order : " + FC_Common.maximum_order);
+                    /* if(FC_Common.minimum_order<FC_Common.priceTotal)
+                            {*/
+                    Log.d("fhdfgdfg","max");
+                    if(FC_Common.maximum_order>FC_Common.priceTotal)
+                    {
+                        Log.d("fhdfgdfg","fdgdgdmin");
+                        UpdateMenu();
+                    }
+                    else {
+                        snackBar(getResources().getString(R.string.max_ord)+"  "+FC_Common.currency+" "+FC_Common.maximum_order);
+                    }
+                    // }
 
-                    if (ll_viewCart.getVisibility() != View.VISIBLE) {
-
-                        ll_viewCart.setVisibility(View.VISIBLE);
-                        pb_cart.setVisibility(View.VISIBLE);
-
-                        Animation animSlideUp1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_up);
-                        ll_viewCart.startAnimation(animSlideUp1);
-
-
-                    }*/
                 });
                 img_minus.setOnClickListener(v -> {
                     pb_cart.setVisibility(View.VISIBLE);
@@ -1144,8 +1197,22 @@ public class FC_HotelDetailsActivity extends AppCompatActivity implements View.O
                     FC_Common.addonpricing = recommened.getAddon_status();
                     FC_Common.productID = recommened.getid();
                     FC_Common.quantity = String.valueOf(count);
-                    snackBar("item to be adding please wait");
-                    UpdateMenu();
+                    FC_Common.price = Integer.parseInt(recommened.getPrice());
+                    FC_Common.priceTotal=FC_Common.price+Integer.parseInt(FC_Common.total_price);
+
+                    /* if(FC_Common.minimum_order<FC_Common.priceTotal)
+                            {*/
+                    Log.d("fhdfgdfg","max");
+                    if(FC_Common.maximum_order>FC_Common.priceTotal)
+                    {
+                        snackBar("item to be adding please wait");
+                        Log.d("fhdfgdfg","fdgdgdmin");
+                        UpdateMenu();
+                    }
+                    else {
+                        snackBar(getResources().getString(R.string.max_ord)+"  "+FC_Common.currency+" "+FC_Common.maximum_order);
+                    }
+                    // }
                     Utils.log(context, "sdfsdfsdfg" + "count : " + count);
                 });
                 img_close.setOnClickListener(v -> {
@@ -1194,6 +1261,7 @@ public class FC_HotelDetailsActivity extends AppCompatActivity implements View.O
 
                             AllRestaurantList();
                         } else {
+
 
                             snackBar(FC_Common.message);
                             @SuppressLint("InflateParams")
@@ -1560,20 +1628,23 @@ public class FC_HotelDetailsActivity extends AppCompatActivity implements View.O
                 break;
 
             case R.id.ll_viewCartLayoutBtn:
+                FC_Common.priceTotal=Integer.parseInt(FC_Common.total_price);
+                if(FC_Common.maximum_order>FC_Common.priceTotal)
+                {
+                    Intent cartIntent = new Intent(context, FC_CartActivity.class);
+                    startActivity(cartIntent);
+                }
+                else {
+                    snackBar(getResources().getString(R.string.max_ord)+"  "+FC_Common.currency+" "+FC_Common.maximum_order);
+                }
 
-                Intent cartIntent = new Intent(context, FC_CartActivity.class);
-                startActivity(cartIntent);
 
                 break;
 
             case R.id.img_search:
 
-           /*     BottomDialougFragmentSearch searchDishBottomDialogFragment =
-                        BottomDialougFragmentSearch.newInstance();
-                searchDishBottomDialogFragment.show(getSupportFragmentManager(),
-                        "search_dialog_fragment");*/
 
-                Bundle bundle = new Bundle();
+               /* Bundle bundle = new Bundle();
                 bundle.putString("restaurant_name",FC_Common.restaurant_name);
                 bundle.putString("delivery_estimation",FC_Common.delivery_estimation);
                 Fragment SearchFragment = new FC_SearchHotelDetailsFragment();
@@ -1581,7 +1652,12 @@ public class FC_HotelDetailsActivity extends AppCompatActivity implements View.O
                 fragmentTransactionSearch.replace(R.id.fl_searchLayout, SearchFragment);
                 SearchFragment.setArguments(bundle);
                 fragmentTransactionSearch.addToBackStack(null);
-                fragmentTransactionSearch.commit();
+                fragmentTransactionSearch.commit();*/
+                Intent restaurant = new Intent(context, FC_SearchHotelDetailsActivity.class);
+                restaurant.putExtra("restaurant_name",FC_Common.restaurant_name);
+                restaurant.putExtra("delivery_estimation",FC_Common.delivery_estimation);
+                FC_Common.searchlist="";
+                startActivity(restaurant);
 
                 break;
            /* case R.id.vector_android_button:

@@ -104,6 +104,7 @@ public class FC_Common extends Activity {
     public static String restaurant_name = "";
     public static String favourite = "";
     public static String discount_text = "";
+
     public static String restaurant_cuisine = "";
     public static String restaurant_logo = "";
     public static String dish_id = "";
@@ -129,6 +130,8 @@ public class FC_Common extends Activity {
     public static String productID = "";
     public static String partnerId = "";
     public static String quantity = "";
+    public static int price = 0;
+    public static int priceTotal = 0;
 
     /* Addon */
     public static String ingredientID = "";
@@ -217,6 +220,8 @@ public static String ordercurrency= "";
 public static String restaurant_rating= "";
 public static String restaurant_comments= "";
 public static String driver_comments= "";
+    public static int minimum_order = 0;
+    public static int maximum_order  =0;
 public static int restaurant_rating_int=0;
 public static int driver_rating_int=0;
 public static String driver_rating= "";

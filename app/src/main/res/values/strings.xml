@@ -246,6 +246,7 @@
     <string name="s3_desc">We deliver your items on time were u need and free delivery for you</string>
 
     <string name="next">NEXT</string>
+    <string name="max_ord">Maximum order Value</string>
     <string name="reach">Couldnt reach Server Please try Again</string>
     <string name="skip">SKIP</string>
 
