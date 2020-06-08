@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/container_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                tools:ignore="UselessParent">
+
+                <ImageView
+                    android:id="@+id/img_backBtn"
+                    android:layout_width="@dimen/_12sdp"
+                    android:layout_height="@dimen/_12sdp"
+                    android:layout_gravity="center|left"
+                    android:layout_marginStart="@dimen/_20ssp"
+                    android:src="@drawable/back"
+                    tools:ignore="ContentDescription,RtlHardcoded" />
+
+
+                <food.user.demand.FCViews.AC_Textview
+                    android:id="@+id/txt_toolbarName"
+                    style="@style/FC_BoldTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/order_h" />
+
+            </FrameLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:background="@color/txt_lite_gray_color" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_noInternetConnection"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorwhite"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/content_frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent">
+
+        <LinearLayout
+            android:id="@+id/ll_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:orientation="vertical">
+
+            <food.user.demand.FCViews.AC_BoldTextview
+                android:id="@+id/txt_balance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/balance"
+                android:layout_gravity="center"
+                android:textSize="@dimen/_25sdp"
+                android:gravity="center"
+                android:textColor="@color/black">
+
+            </food.user.demand.FCViews.AC_BoldTextview>
+            <food.user.demand.FCUtils.Loader.LoaderTextView
+                android:id="@+id/lt_wallet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_20ssp"
+                android:textSize="@dimen/_25sdp"
+                android:gravity="center"
+                android:textColor="@color/black">
+
+            </food.user.demand.FCUtils.Loader.LoaderTextView>
+            <LinearLayout
+                android:layout_marginTop="@dimen/_20ssp"
+                android:layout_marginStart="@dimen/_40ssp"
+                android:layout_marginEnd="@dimen/_20ssp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+
+            <food.user.demand.FCViews.AC_Textview
+                android:id="@+id/txt_withdraw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:text="@string/withdraw"
+                android:textSize="@dimen/_12sdp"
+
+                android:paddingLeft="@dimen/_30sdp"
+                android:paddingRight="@dimen/_30sdp"
+                android:background="@drawable/rec_apply_btn_bg_blue"
+                android:textColor="@color/white"/>
+                <food.user.demand.FCViews.AC_Textview
+                    android:id="@+id/txt_recharge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:text="@string/recharge"
+                    android:textSize="@dimen/_12sdp"
+                    android:paddingLeft="@dimen/_30sdp"
+                    android:paddingRight="@dimen/_30sdp"
+                    android:background="@drawable/rec_bg_stroke_add_gray_layout"
+                    android:textColor="@color/mb_green_dark"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/_30sdp">
+
+
+                <food.user.demand.FCViews.AC_Textview
+                    android:id="@+id/txt_earnings"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:text="@string/recent"
+                    android:padding="@dimen/_5sdp"
+                    android:textSize="@dimen/_12ssp"
+                    android:textColor="@color/black"/>
+
+
+            </LinearLayout>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_earningList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:visibility="visible"
+                android:background="@drawable/rec_bg_stroke_add_gray_layout"/>
+
+            <food.user.demand.FCViews.AC_Textview
+                android:id="@+id/txt_emptyview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:gravity="center"
+                android:background="@drawable/rec_bg_stroke_add_gray_layout"
+                android:visibility="gone"
+                android:text="@string/noorders"
+                android:layout_margin="@dimen/_15ssp"
+                android:padding="@dimen/_5sdp"
+                tools:ignore="RtlHardcoded" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

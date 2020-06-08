@@ -106,6 +106,7 @@ import food.user.demand.FCViews.FC_SharedPrefManager;
 import food.user.demand.FCViews.FC_URL;
 import food.user.demand.FCViews.FC_User;
 import food.user.demand.FCViews.Utils;
+import food.user.demand.FC_Wallet.FC_Wallet;
 import food.user.demand.R;
 
 import static android.app.Activity.RESULT_OK;
@@ -222,6 +223,7 @@ public class FC_AccountFragment extends Fragment implements View.OnClickListener
         LinearLayout ll_offers = view.findViewById(R.id.ll_offers);
         ll_myAccount = view.findViewById(R.id.ll_myAccount);
         LinearLayout ll_payment = view.findViewById(R.id.ll_payment);
+        LinearLayout ll_wallet = view.findViewById(R.id.ll_wallet);
         LinearLayout ll_manageAddress = view.findViewById(R.id.ll_manageAddress);
         LinearLayout ll_orderHistory = view.findViewById(R.id.ll_orderHistory);
         LinearLayout ll_pendingOrders = view.findViewById(R.id.ll_pendingOrders);
@@ -239,6 +241,7 @@ public class FC_AccountFragment extends Fragment implements View.OnClickListener
         ImageView img_offers = view.findViewById(R.id.img_offers);
         ll_myAccountExpandable = view.findViewById(R.id.ll_myAccountExpandable);
 
+        ll_wallet.setOnClickListener(this);
         ll_pendingOrders.setOnClickListener(this);
         ll_orderHistory.setOnClickListener(this);
         ll_manageAddress.setOnClickListener(this);
@@ -382,6 +385,11 @@ public class FC_AccountFragment extends Fragment implements View.OnClickListener
                 startActivity(ll_pendingOrders);
                 break;
 
+            case R.id.ll_wallet:
+
+                Intent ll_wallet = new Intent(getActivity(), FC_Wallet.class);
+                startActivity(ll_wallet);
+                break;
 
 
             case R.id.img_orderHistory:
@@ -639,6 +647,7 @@ public class FC_AccountFragment extends Fragment implements View.OnClickListener
                                     playerModel.setCurrency(product.getString("currency"));
                                     playerModel.setCuisine_id(product.getString("cuisine_id"));
                                     playerModel.setCreated_at(product.getString("created_at"));
+                                    playerModel.setStatus(product.getString("status"));
 
                                     pastOrderObjects.add(playerModel);
                                     if (pastOrderObjects != null) {
@@ -725,6 +734,7 @@ public class FC_AccountFragment extends Fragment implements View.OnClickListener
                 Picasso.get().load(pastOrderObjects.get(position).getRestaurant_logo())
                         .memoryPolicy(MemoryPolicy.NO_CACHE).networkPolicy(NetworkPolicy.NO_CACHE)
                         .into(holder.lc_img);
+                holder.lt_status.setText(pastOrderObjects.get(position).getStatus());
                 holder.lt_restaurantName.setText(pastOrderObjects.get(position).getRestaurant_name());
                 holder.lt_cuisine.setText(pastOrderObjects.get(position).getCuisine_id());
                 holder.lt_itemName.setText(pastOrderObjects.get(position).getItem());
@@ -794,7 +804,7 @@ public class FC_AccountFragment extends Fragment implements View.OnClickListener
             LoaderCircluarImageView lc_img;
             AC_Textview txt_reOrder,txt_rating;
             ImageView img_detailItem;
-            LoaderTextView lt_restaurantName,lt_cuisine,lt_itemName,lt_currency,lt_itemTotal,lt_datetime;
+            LoaderTextView lt_status,lt_restaurantName,lt_cuisine,lt_itemName,lt_currency,lt_itemTotal,lt_datetime;
 
             ViewHolder(@NonNull View itemView) {
                 super(itemView);
@@ -802,6 +812,7 @@ public class FC_AccountFragment extends Fragment implements View.OnClickListener
                 img_detailItem = itemView.findViewById(R.id.img_detailItem);
                 lc_img = itemView.findViewById(R.id.lc_img);
                 lt_restaurantName = itemView.findViewById(R.id.lt_restaurantName);
+                lt_status = itemView.findViewById(R.id.lt_status);
                 lt_cuisine = itemView.findViewById(R.id.lt_cuisine);
                 lt_itemName = itemView.findViewById(R.id.lt_itemName);
                 lt_currency = itemView.findViewById(R.id.lt_currency);

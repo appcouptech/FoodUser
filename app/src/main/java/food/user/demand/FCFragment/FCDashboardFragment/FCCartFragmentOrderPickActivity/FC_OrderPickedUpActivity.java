@@ -1,10 +1,5 @@
 package food.user.demand.FCFragment.FCDashboardFragment.FCCartFragmentOrderPickActivity;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -44,6 +39,12 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
@@ -78,17 +79,13 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.FirebaseError;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.orhanobut.dialogplus.DialogPlus;
 import com.orhanobut.dialogplus.ViewHolder;
-import com.pubnub.api.models.consumer.access_manager.v3.User;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
@@ -103,15 +100,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import androidx.core.content.ContextCompat;
-import food.user.demand.Activity.AutoAlertWithMapTravel;
 import food.user.demand.Activity.HttpConnection;
 import food.user.demand.Activity.PathJSONParser;
 import food.user.demand.FCActivity.FCDashboard.FC_DashboardActivity;
 import food.user.demand.FCPojo.FCHotelDetailsActivityObject.ItemViewOrderObject;
-import food.user.demand.FCPojo.ReadDatabase_User;
-import food.user.demand.FCPojo.WriteDatabase_Driver;
-import food.user.demand.FCSplash.FC_Splash;
 import food.user.demand.FCUtils.Loader.LoaderCircluarImageView;
 import food.user.demand.FCUtils.Loader.LoaderTextView;
 import food.user.demand.FCViews.AC_Edittext;
@@ -130,13 +122,14 @@ Context context;
     String userId;
     private BottomSheetDialog ratingdialog;
     AC_Textview txt_rating,txt_driver,txt_status;
-    AC_Edittext edt_commentres,edt_commentdriver;
+    AC_Edittext edt_commentres,edt_commentdriver,edt_cancelcomment;
     private RatingBar ratingBar_restaurant,ratingBar_driver;
-    LoaderCircluarImageView lc_img,lc_imgdriver ;
-    LoaderTextView lt_drivername,lt_restaurantName,lt_payment,lt_restaurantname,lt_cuisine,lt_item,lt_currency,lt_totalprice;
+    LoaderCircluarImageView lc_imgRestaurant,lc_img,lc_imgdriver,lc_imgcancelRestaurant;
+    LoaderTextView lt_cancelrestaurantname,lt_ordercancel,lt_drivername,lt_restaurantName,lt_payment,lt_restaurantname,lt_cuisine,lt_item,lt_currency,lt_totalprice;
     ImageView img_backBtn,img_driver,img_driver_call;
     Marker mCurrLocationMarker , driverMarker ;
     ImageView img_detailItem;
+     private int dialogcounter = 0;
     private ListView lst_itemview;
     private List<ItemViewOrderObject> Listvalues = new ArrayList<>();
     private ItemViewOrderObject ListDatas;
@@ -162,8 +155,8 @@ Context context;
     DatabaseReference dbRef;
     private ItemOrderAdapter itemOrderAdapters;
     private View vw_ordered,vw_orderPickedUP ,vw_preparing ,vw_outForDelivery ,vw_Delivered ;
-    private LinearLayout ll_loader,ll_main,ll_restaurantInfo,ll_driver_layout,ll_del,ll_delLine ;
-    private  AC_Textview txt_submit,txt_ratedriver,txt_ordered,txt_orderPickedUP ,txt_preparing ,txt_outForDelivery ,txt_Delivered ;
+    private LinearLayout ll_cancel,ll_loader,ll_main,ll_restaurantInfo,ll_driver_layout,ll_del,ll_delLine ;
+    private  AC_Textview txt_submitcancel,txt_cancel,txt_cancelsubmit,txt_submit,txt_ratedriver,txt_ordered,txt_orderPickedUP ,txt_preparing ,txt_outForDelivery ,txt_Delivered ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -247,30 +240,20 @@ Context context;
             Log.e("TAG", "Gps already enabled");
            // Toast.makeText(FC_OrderPickedUpActivity.this, "Gps already enabled", Toast.LENGTH_SHORT).show();
         }
+       /* if (FC_Common.endU_status.equalsIgnoreCase("CANCELLED"))
+        {
+            Log.e("TAG", "Gps already enabled");
+        }
+        else
+        {
+            OrderConfirm();
 
-
+        }*/
         OrderConfirm();
-
-/*        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("/foodcoup/dev/drivers"+FC_Common.orderdriver_id);
-
-        reference.orderByChild("firstName").equalTo(FC_Common.orderdriver_id).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot datas: dataSnapshot.getChildren()){
-                    String familyname=datas.child("familyName").getValue().toString();
-                    Log.d("fhdfhgfdg","dfgdfg");
-                }
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });*/
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
        // dbRef = database.getReference("/dev/drivers");
         dbRef = database.getReference("/foodcoup/dev/drivers"+FC_Common.orderdriver_id);
-
-
         ValueEventListener changeListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -297,6 +280,21 @@ Context context;
             }
         };
         dbRef.addValueEventListener(changeListener);
+
+        lt_ordercancel.setOnClickListener(v -> {
+            View view1 = getLayoutInflater().inflate(R.layout.layout_cancel_order, null);
+            FindViewByIdBottomDialogRating1(view1);
+            ratingdialog = new BottomSheetDialog(context);
+            ratingdialog.setContentView(view1);
+            ratingdialog.show();
+        });
+
+        txt_submitcancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
 
     private void FindViewById() {
@@ -316,6 +314,7 @@ Context context;
         ll_driver_layout.setVisibility(View.GONE);
 
         lt_orderProcessing = findViewById(R.id.lt_orderProcessing);
+        lt_ordercancel = findViewById(R.id.lt_ordercancel);
         Animation anim = new AlphaAnimation(0.0f, 1.0f);
         anim.setDuration(500); //You can manage the blinking time with this parameter
         anim.setStartOffset(20);
@@ -323,6 +322,9 @@ Context context;
         anim.setRepeatCount(Animation.INFINITE);
         lt_orderProcessing.startAnimation(anim);
 
+        txt_submitcancel = findViewById(R.id.txt_submitcancel);
+        txt_cancel = findViewById(R.id.txt_cancel);
+        ll_cancel = findViewById(R.id.ll_cancel);
         lt_duration = findViewById(R.id.lt_duration);
         lt_currency = findViewById(R.id.lt_currency);
         lt_item = findViewById(R.id.lt_item);
@@ -395,6 +397,7 @@ Context context;
 
                         FC_Common.success = obj.getString("success");
                         FC_Common.message = obj.getString("message");
+
                         Log.d("ghfghfghf", "fhfgdhfd" + obj);
                         if (FC_Common.success.equalsIgnoreCase("1"))
                         {
@@ -431,14 +434,38 @@ Context context;
                             FC_Common.d_location_lng = Double.parseDouble(obj.getString("location_lng"));
                             FC_Common.endU_location_lat = Double.parseDouble(obj.getString("latitude"));
                             FC_Common.endU_location_lng = Double.parseDouble(obj.getString("longitude"));*/
-
-                            Log.d("dfgdgsdf","preparing"+FC_Common.preparing);
+                            Log.d("dfgsdfsdf","sdfsdf"+dialogcounter);
+                            Log.d("dfgdgsdf","preparing"+FC_Common.endU_status);
                             Log.d("dfgdgsdf","outfordelivery"+FC_Common.outfordelivery);
                             Log.d("dfgdgsdf","ordered_picked"+FC_Common.ordered_picked);
+                            if (FC_Common.endU_status.equalsIgnoreCase("CANCELLED"))
+                            {
+
+                                FC_Common.cancel_reason = obj.getString("cancel_reason");
+                                txt_cancel.setText(FC_Common.cancel_reason);
+                                ll_cancel.setVisibility(View.VISIBLE);
+                                ll_main.setVisibility(View.GONE);
+                               /* Utils.toast(context,"Your order is cancelled");
+                                Intent intent = new Intent(FC_OrderPickedUpActivity.this, FC_DashboardActivity.class);
+                                intent.putExtra("location_name", FC_Common.location_name);
+                                intent.putExtra("location_type", FC_Common.location_type);
+                                intent.putExtra("latitude", FC_Common.latitude);
+                                intent.putExtra("longitude", FC_Common.longitude);
+                                intent.putExtra("gpsenabled", FC_Common.gpsenabled);
+                                startActivity(intent);
+                                finish();*/
+                                FC_Common.order_id="";
+                                Log.d("dfgdfgdf","dgfgd"+FC_Common.order_id);
+                            }
                             if (FC_Common.endU_status.equalsIgnoreCase("ORDERED")){
+
+                                ll_cancel.setVisibility(View.GONE);
+                                ll_main.setVisibility(View.VISIBLE);
+
                                 ll_delLine.setVisibility(View.VISIBLE);
                                 ll_del.setVisibility(View.VISIBLE);
                                 lt_orderProcessing.setVisibility(View.GONE);
+                                lt_ordercancel.setVisibility(View.VISIBLE);
                                 ll_driver_layout.setVisibility(View.GONE);
 
                                 txt_ordered.setTextColor(getResources().getColor(R.color.txt_site_green_color));
@@ -452,15 +479,37 @@ Context context;
                                 vw_preparing.setBackgroundColor(getResources().getColor(R.color.txt_gray_color));
                                 vw_outForDelivery.setBackgroundColor(getResources().getColor(R.color.txt_gray_color));
                                 vw_Delivered.setBackgroundColor(getResources().getColor(R.color.txt_gray_color));
+
+                                Picasso.get().load(FC_Common.orderrestaurant)
+                                        .memoryPolicy(MemoryPolicy.NO_CACHE).networkPolicy(NetworkPolicy.NO_CACHE)
+                                        .into(lc_img);
+
+                                lt_restaurantname.setText(FC_Common.orderrestaurant_name);
+                                lt_payment.setText(getResources().getString(R.string.payment)+" : "+FC_Common.paymentmode);
+                                lt_cuisine.setText(FC_Common.ordercuisine_id);
+                                lt_item.setText(FC_Common.orderitem);
+                                lt_currency.setText(FC_Common.ordercurrency);
+                                lt_totalprice.setText(FC_Common.ordertotal);
+                                //txt_rating.setText(getResources().getString(R.string.rating)+" : "+FC_Common.orderdriverrating);
+                                txt_rating.setText(FC_Common.orderdriverrating);
+                                Double doublestax = Double.parseDouble(txt_rating.getText().toString());
+                                txt_rating.setText(String.format("%.1f", doublestax));
+                                img_detailItem.setVisibility(View.VISIBLE);
+                                img_detailItem.setOnClickListener(v -> {
+                                    ItemDialog();
+                                });
                             }
                             //if (FC_Common.ordered_picked == 1){
                            else if (FC_Common.endU_status.equalsIgnoreCase("RECEIVED")||
                                     FC_Common.endU_status.equalsIgnoreCase("ACCEPTED")){
 
+                                ll_cancel.setVisibility(View.GONE);
+                                ll_main.setVisibility(View.VISIBLE);
                                 Log.d("dfghdfgdfgfd","dfgdfgdfg");
                                 ll_delLine.setVisibility(View.VISIBLE);
                                 ll_del.setVisibility(View.VISIBLE);
-                                lt_orderProcessing.setVisibility(View.GONE);
+                                lt_orderProcessing.setVisibility(View.VISIBLE);
+                                lt_ordercancel.setVisibility(View.GONE);
                                 ll_driver_layout.setVisibility(View.GONE);
 
                                 txt_ordered.setTextColor(getResources().getColor(R.color.txt_site_green_color));
@@ -474,12 +523,36 @@ Context context;
                                 vw_preparing.setBackgroundColor(getResources().getColor(R.color.txt_gray_color));
                                 vw_outForDelivery.setBackgroundColor(getResources().getColor(R.color.txt_gray_color));
                                 vw_Delivered.setBackgroundColor(getResources().getColor(R.color.txt_gray_color));
+
+                                Picasso.get().load(FC_Common.orderrestaurant)
+                                        .memoryPolicy(MemoryPolicy.NO_CACHE).networkPolicy(NetworkPolicy.NO_CACHE)
+                                        .into(lc_img);
+
+                                lt_restaurantname.setText(FC_Common.orderrestaurant_name);
+                                lt_payment.setText(getResources().getString(R.string.payment)+" : "+FC_Common.paymentmode);
+                                lt_cuisine.setText(FC_Common.ordercuisine_id);
+                                lt_item.setText(FC_Common.orderitem);
+                                lt_currency.setText(FC_Common.ordercurrency);
+                                lt_totalprice.setText(FC_Common.ordertotal);
+                                //txt_rating.setText(getResources().getString(R.string.rating)+" : "+FC_Common.orderdriverrating);
+                                txt_rating.setText(FC_Common.orderdriverrating);
+                                Double doublestax = Double.parseDouble(txt_rating.getText().toString());
+                                txt_rating.setText(String.format("%.1f", doublestax));
+                                img_detailItem.setVisibility(View.VISIBLE);
+                                img_detailItem.setOnClickListener(v -> {
+                                    ItemDialog();
+                                });
                             }
 
                            // if (FC_Common.preparing == 1){
                            else if (FC_Common.endU_status.equalsIgnoreCase("ARRIVED")){
 
+                                ll_cancel.setVisibility(View.GONE);
+                                ll_main.setVisibility(View.VISIBLE);
+
                                 Log.d("dfghdfgdfgfd","xgdsdxfvdzf");
+                                lt_orderProcessing.setVisibility(View.VISIBLE);
+                                lt_ordercancel.setVisibility(View.GONE);
                                 txt_ordered.setTextColor(getResources().getColor(R.color.txt_site_green_color));
                                 txt_orderPickedUP.setTextColor(getResources().getColor(R.color.txt_site_green_color));
                                 txt_preparing.setTextColor(getResources().getColor(R.color.txt_site_green_color));
@@ -491,6 +564,25 @@ Context context;
                                 vw_preparing.setBackgroundColor(getResources().getColor(R.color.txt_site_green_color));
                                 vw_outForDelivery.setBackgroundColor(getResources().getColor(R.color.txt_gray_color));
                                 vw_Delivered.setBackgroundColor(getResources().getColor(R.color.txt_gray_color));
+
+                                Picasso.get().load(FC_Common.orderrestaurant)
+                                        .memoryPolicy(MemoryPolicy.NO_CACHE).networkPolicy(NetworkPolicy.NO_CACHE)
+                                        .into(lc_img);
+
+                                lt_restaurantname.setText(FC_Common.orderrestaurant_name);
+                                lt_payment.setText(getResources().getString(R.string.payment)+" : "+FC_Common.paymentmode);
+                                lt_cuisine.setText(FC_Common.ordercuisine_id);
+                                lt_item.setText(FC_Common.orderitem);
+                                lt_currency.setText(FC_Common.ordercurrency);
+                                lt_totalprice.setText(FC_Common.ordertotal);
+                                //txt_rating.setText(getResources().getString(R.string.rating)+" : "+FC_Common.orderdriverrating);
+                                txt_rating.setText(FC_Common.orderdriverrating);
+                                Double doublestax = Double.parseDouble(txt_rating.getText().toString());
+                                txt_rating.setText(String.format("%.1f", doublestax));
+                                img_detailItem.setVisibility(View.VISIBLE);
+                                img_detailItem.setOnClickListener(v -> {
+                                    ItemDialog();
+                                });
 
                                 ll_driver_layout.setVisibility(View.VISIBLE);
 //                                if (counter_driver==0)
@@ -523,6 +615,11 @@ Context context;
                             //if (FC_Common.outfordelivery == 1){
                            else if (FC_Common.endU_status.equalsIgnoreCase("PICKEDUP")){
                                 Log.d("dfghdfgdfgfd","zsrew43re");
+                                ll_cancel.setVisibility(View.GONE);
+                                ll_main.setVisibility(View.VISIBLE);
+
+                                lt_orderProcessing.setVisibility(View.VISIBLE);
+                                lt_ordercancel.setVisibility(View.GONE);
                                 txt_ordered.setTextColor(getResources().getColor(R.color.txt_site_green_color));
                                 txt_orderPickedUP.setTextColor(getResources().getColor(R.color.txt_site_green_color));
                                 txt_preparing.setTextColor(getResources().getColor(R.color.txt_site_green_color));
@@ -534,6 +631,25 @@ Context context;
                                 vw_preparing.setBackgroundColor(getResources().getColor(R.color.txt_site_green_color));
                                 vw_outForDelivery.setBackgroundColor(getResources().getColor(R.color.txt_site_green_color));
                                 vw_Delivered.setBackgroundColor(getResources().getColor(R.color.txt_gray_color));
+
+                                Picasso.get().load(FC_Common.orderrestaurant)
+                                        .memoryPolicy(MemoryPolicy.NO_CACHE).networkPolicy(NetworkPolicy.NO_CACHE)
+                                        .into(lc_img);
+
+                                lt_restaurantname.setText(FC_Common.orderrestaurant_name);
+                                lt_payment.setText(getResources().getString(R.string.payment)+" : "+FC_Common.paymentmode);
+                                lt_cuisine.setText(FC_Common.ordercuisine_id);
+                                lt_item.setText(FC_Common.orderitem);
+                                lt_currency.setText(FC_Common.ordercurrency);
+                                lt_totalprice.setText(FC_Common.ordertotal);
+                                //txt_rating.setText(getResources().getString(R.string.rating)+" : "+FC_Common.orderdriverrating);
+                                txt_rating.setText(FC_Common.orderdriverrating);
+                                Double doublestax = Double.parseDouble(txt_rating.getText().toString());
+                                txt_rating.setText(String.format("%.1f", doublestax));
+                                img_detailItem.setVisibility(View.VISIBLE);
+                                img_detailItem.setOnClickListener(v -> {
+                                    ItemDialog();
+                                });
 
                                 ll_driver_layout.setVisibility(View.VISIBLE);
 //                                if (counter_driver==0)
@@ -565,8 +681,31 @@ Context context;
                             }
 
                            // if (  FC_Common.delivered == 1){
-                                else if (FC_Common.endU_status.equalsIgnoreCase("COMPLETED")||
-                                    FC_Common.endU_status.equalsIgnoreCase("REACHED")){
+//                                else if (FC_Common.endU_status.equalsIgnoreCase("COMPLETED")||
+//                                    FC_Common.endU_status.equalsIgnoreCase("REACHED")){
+                            else if (FC_Common.endU_status.equalsIgnoreCase("COMPLETED")){
+
+                                ll_cancel.setVisibility(View.GONE);
+                                ll_main.setVisibility(View.VISIBLE);
+
+                                dialogcounter = dialogcounter + 1;
+                                    Log.d("dfgsdfsdf","sdfsdf"+dialogcounter);
+                                if (dialogcounter > 1) {
+                                    Log.d("dfgsdfsdf","sfsdf"+dialogcounter);
+                                    dialogcounter=1;
+                                }
+                                else {
+                                    Log.d("dfgsdfsdf","sdfasds"+dialogcounter);
+                                    @SuppressLint("InflateParams")
+                                    View view1 = getLayoutInflater().inflate(R.layout.layout_rating, null);
+                                    FindViewByIdBottomDialogRating(view1);
+                                    ratingdialog = new BottomSheetDialog(context);
+                                    ratingdialog.setContentView(view1);
+                                    ratingdialog.show();
+                                }
+
+                                lt_orderProcessing.setVisibility(View.VISIBLE);
+                                lt_ordercancel.setVisibility(View.GONE);
                                 Log.d("dfghdfgdfgfd","fs454fvdfcsd");
                                 txt_ordered.setTextColor(getResources().getColor(R.color.txt_site_green_color));
                                 txt_orderPickedUP.setTextColor(getResources().getColor(R.color.txt_site_green_color));
@@ -579,33 +718,35 @@ Context context;
                                 vw_preparing.setBackgroundColor(getResources().getColor(R.color.txt_site_green_color));
                                 vw_outForDelivery.setBackgroundColor(getResources().getColor(R.color.txt_site_green_color));
                                 vw_Delivered.setBackgroundColor(getResources().getColor(R.color.txt_site_green_color));
-                            }
-                            vw_ordered.setBackgroundColor(getResources().getColor(R.color.txt_site_green_color));
-                            txt_ordered.setTextColor(getResources().getColor(R.color.txt_site_green_color));
 
 
-//                            if (counter_res==0)
-//                            {
                                 Picasso.get().load(FC_Common.orderrestaurant)
                                         .memoryPolicy(MemoryPolicy.NO_CACHE).networkPolicy(NetworkPolicy.NO_CACHE)
                                         .into(lc_img);
-//                                counter_res++;
-//                            }
 
-                            lt_restaurantname.setText(FC_Common.orderrestaurant_name);
-                            lt_payment.setText(getResources().getString(R.string.payment)+" : "+FC_Common.paymentmode);
-                            lt_cuisine.setText(FC_Common.ordercuisine_id);
-                            lt_item.setText(FC_Common.orderitem);
-                            lt_currency.setText(FC_Common.ordercurrency);
-                            lt_totalprice.setText(FC_Common.ordertotal);
-                            //txt_rating.setText(getResources().getString(R.string.rating)+" : "+FC_Common.orderdriverrating);
-                            txt_rating.setText(FC_Common.orderdriverrating);
-                            Double doublestax = Double.parseDouble(txt_rating.getText().toString());
-                            txt_rating.setText(String.format("%.1f", doublestax));
-                            img_detailItem.setVisibility(View.VISIBLE);
-                            img_detailItem.setOnClickListener(v -> {
-                                ItemDialog();
-                            });
+                                lt_restaurantname.setText(FC_Common.orderrestaurant_name);
+                                lt_payment.setText(getResources().getString(R.string.payment)+" : "+FC_Common.paymentmode);
+                                lt_cuisine.setText(FC_Common.ordercuisine_id);
+                                lt_item.setText(FC_Common.orderitem);
+                                lt_currency.setText(FC_Common.ordercurrency);
+                                lt_totalprice.setText(FC_Common.ordertotal);
+                                //txt_rating.setText(getResources().getString(R.string.rating)+" : "+FC_Common.orderdriverrating);
+                                txt_rating.setText(FC_Common.orderdriverrating);
+                                Double doublestax = Double.parseDouble(txt_rating.getText().toString());
+                                txt_rating.setText(String.format("%.1f", doublestax));
+                                img_detailItem.setVisibility(View.VISIBLE);
+                                img_detailItem.setOnClickListener(v -> {
+                                    ItemDialog();
+                                });
+                            }
+//                            vw_ordered.setBackgroundColor(getResources().getColor(R.color.txt_site_green_color));
+//                            txt_ordered.setTextColor(getResources().getColor(R.color.txt_site_green_color));
+
+
+
+
+
+
 
                         }
                         else
@@ -692,6 +833,7 @@ Context context;
     @Override
     public void onBackPressed() {
 
+        Log.d("fghfdhfdg","fdgfdgdf");
         Intent intent = new Intent(context, FC_DashboardActivity.class);
         intent.putExtra("location_name", FC_Common.location_name);
         intent.putExtra("location_type", FC_Common.location_type);
@@ -700,6 +842,7 @@ Context context;
         intent.putExtra("gpsenabled", FC_Common.gpsenabled);
         startActivity(intent);
         finish();
+        FC_Common.order_id="";
         //super.onBackPressed();
     }
 
@@ -820,7 +963,15 @@ Context context;
         mLocationRequest.setFastestInterval(24000);
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
         mLocationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
+        /*if (FC_Common.endU_status.equalsIgnoreCase("CANCELLED"))
+        {
+            Log.e("TAG", "Gps already enabled");
+        }
+        else
+        {
+            OrderConfirm();
 
+        }*/
         OrderConfirm();
 
     }
@@ -880,6 +1031,15 @@ Context context;
                 }
 
                 driverlocation();
+              /*  if (FC_Common.endU_status.equalsIgnoreCase("CANCELLED"))
+                {
+                    Log.e("TAG", "Gps already enabled");
+                }
+                else
+                {
+                    OrderConfirm();
+
+                }*/
                 OrderConfirm();
             }
         }
@@ -1281,20 +1441,27 @@ Context context;
     private void FindViewByIdBottomDialogRating(View view) {
 
         lt_restaurantName=view.findViewById(R.id.lt_restaurantName);
+        lc_imgRestaurant=view.findViewById(R.id.lc_imgRestaurant);
         ll_restaurantInfo=view.findViewById(R.id.ll_restaurantInfo);
         lc_imgdriver=view.findViewById(R.id.lc_imgdriver);
         lt_restaurantname=view.findViewById(R.id.lt_restaurantname);
         lt_drivername=view.findViewById(R.id.lt_drivername);
         lt_cuisine=view.findViewById(R.id.lt_cuisine);
+        ratingBar_restaurant=view.findViewById(R.id.ratingBar_restaurant);
         ratingBar_driver=view.findViewById(R.id.ratingBar_driver);
         txt_submit=view.findViewById(R.id.txt_submit);
         edt_commentres=view.findViewById(R.id.edt_commentres);
         edt_commentdriver = view.findViewById(R.id.edt_commentdriver);
-        lt_restaurantName.setVisibility(View.GONE);
-        ll_restaurantInfo.setVisibility(View.GONE);
-        edt_commentres.setVisibility(View.GONE);
+        lt_restaurantName.setVisibility(View.VISIBLE);
+        ll_restaurantInfo.setVisibility(View.VISIBLE);
+        edt_commentres.setVisibility(View.VISIBLE);
         lt_drivername.setText(FC_Common.ordername);
         txt_submit.setVisibility(View.VISIBLE);
+
+        Picasso.get().load(FC_Common.orderrestaurant)
+                .memoryPolicy(MemoryPolicy.NO_CACHE).networkPolicy(NetworkPolicy.NO_CACHE)
+                .into(lc_imgRestaurant);
+
         Picasso.get().load(FC_Common.orderdriver)
                 .memoryPolicy(MemoryPolicy.NO_CACHE).networkPolicy(NetworkPolicy.NO_CACHE)
                 .into(lc_imgdriver);
@@ -1302,28 +1469,56 @@ Context context;
 
             Log.d("hvcnbvcnbvc","cgcc"+FC_Common.driver_rating);
 
+            if (FC_Common.restaurant_rating.equalsIgnoreCase(""))
+            {
+                Log.d("hvcnbvcnbvc","dg4wcgcc"+FC_Common.restaurant_rating);
+                snackBar(getResources().getString(R.string.rate_res));
+            }
             if (FC_Common.driver_rating.equalsIgnoreCase(""))
             {
                 Log.d("hvcnbvcnbvc","xcghdfcgcc"+FC_Common.driver_rating);
                 snackBar(getResources().getString(R.string.rate_driver));
             }
-            if (FC_Common.driver_rating.equalsIgnoreCase(".0")||
+            if (FC_Common.restaurant_rating.equalsIgnoreCase(".0")||
+                    FC_Common.driver_rating.equalsIgnoreCase(".0")||
+                    FC_Common.restaurant_rating.equalsIgnoreCase("0.0")||
                     FC_Common.driver_rating.equalsIgnoreCase("0.0")){
                 Log.d("fghfghfghfg","fail");
                 snackBar(getResources().getString(R.string.rating_res_driver));
             }
             else {
                 txt_submit.setEnabled(false);
+                FC_Common.restaurant_comments=edt_commentres.getText().toString().trim();
                 FC_Common.driver_comments=edt_commentdriver.getText().toString().trim();
+                FC_Common.restaurant_rating=String.valueOf(ratingBar_restaurant.getRating());
                 FC_Common.driver_rating=String.valueOf(ratingBar_driver.getRating());
                 Log.d("fghfghfghfg","fghfghfgh"+FC_Common.driver_rating);
                 Updaterating();
             }
         });
     }
+     private void FindViewByIdBottomDialogRating1(View view) {
+
+         lt_cancelrestaurantname=view.findViewById(R.id.lt_cancelrestaurantname);
+         lc_imgcancelRestaurant=view.findViewById(R.id.lc_imgcancelRestaurant);
+         edt_cancelcomment=view.findViewById(R.id.edt_cancelcomment);
+         txt_cancelsubmit=view.findViewById(R.id.txt_cancelsubmit);
+
+         Picasso.get().load(FC_Common.orderrestaurant)
+                 .memoryPolicy(MemoryPolicy.NO_CACHE).networkPolicy(NetworkPolicy.NO_CACHE)
+                 .into(lc_imgcancelRestaurant);
+         lt_cancelrestaurantname.setText(FC_Common.orderrestaurant_name);
+         txt_cancelsubmit.setVisibility(View.VISIBLE);
+         txt_cancelsubmit.setOnClickListener(v -> {
+
+             FC_Common.cancel_order_note=edt_cancelcomment.getText().toString();
+                 Cancelorder();
+
+         });
+     }
     private void Updaterating() {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, FC_URL.URL_RATEDRIVER,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, FC_URL.URL_RATE,
                 response -> {
                     Log.d("cvnvncvb", ">>" + response);
                     try {
@@ -1334,11 +1529,13 @@ Context context;
                         if (FC_Common.success.equalsIgnoreCase("1")) {
                             txt_submit.setEnabled(true);
                             Utils.toast(context,FC_Common.message);
+                            onBackPressed();
                             //snackBar(FC_Common.message);
                             ratingdialog.dismiss();
                         } else {
                             txt_submit.setEnabled(true);
                             Utils.toast(context,FC_Common.message);
+                            onBackPressed();
                             //snackBar(FC_Common.message);
                             ratingdialog.dismiss();
                         }
@@ -1363,6 +1560,8 @@ Context context;
                 params.put("order_id", FC_Common.order_id);
                 params.put("driver_rating", FC_Common.driver_rating);
                 params.put("driver_comment", FC_Common.driver_comments);
+                params.put("restaurant_rating", FC_Common.restaurant_rating);
+                params.put("restaurant_comment", FC_Common.restaurant_comments);
                 //  params.put("order_id", "+");
 
                 Log.d("getParams: ", "" + params);
@@ -1383,5 +1582,65 @@ Context context;
         requestQueue.add(stringRequest);
 
     }
+     private void Cancelorder() {
 
+         StringRequest stringRequest = new StringRequest(Request.Method.POST, FC_URL.URL_CANCEL,
+                 response -> {
+                     Log.d("cvnvncvb", ">>" + response);
+                     try {
+                         JSONObject obj = new JSONObject(response);
+                         FC_Common.success = obj.getString("success");
+                         FC_Common.message = obj.getString("message");
+                         Log.d("ghfghfghf", "fhfgdhfd" + obj);
+                         if (FC_Common.success.equalsIgnoreCase("1")) {
+
+                             onBackPressed();
+                             Utils.toast(context,FC_Common.message);
+                             //snackBar(FC_Common.message);
+                             ratingdialog.dismiss();
+                         } else {
+                             Utils.toast(context,FC_Common.message);
+                             //snackBar(FC_Common.message);
+                             ratingdialog.dismiss();
+                         }
+
+                     } catch (JSONException e) {
+                         txt_submit.setEnabled(true);
+                         e.printStackTrace();
+                         snackBar(getResources().getString(R.string.reach));
+                         Log.d("dfghdghfgfdb", "fdhfdh" + e);
+                         // Intent setOfHotels = new Intent(getActivity(), FC_SetOfHotelsOfferActivity.class);
+                     }
+                 },
+                 error -> {
+                     txt_submit.setEnabled(true);
+
+                     snackBar(getResources().getString(R.string.reach));
+                     Log.d("dfhfdghfgh", "hfdhdf" + error);
+                 }) {
+             @Override
+             protected Map<String, String> getParams() {
+                 Map<String, String> params = new HashMap<>();
+                 params.put("order_id", FC_Common.order_id);
+                 params.put("cancel_reason", FC_Common.cancel_order_note);
+                 //  params.put("order_id", "+");
+
+                 Log.d("getParams: ", "" + params);
+                 return params;
+             }
+
+             @Override
+             public Map<String, String> getHeaders() {
+                 Map<String, String> params = new HashMap<>();
+                 Log.d("getParams: ", "" + params);
+                 params.put("Authorization", FC_Common.token_type + " " + FC_Common.access_token);
+                 return params;
+             }
+         };
+
+         // request queue
+         RequestQueue requestQueue = Volley.newRequestQueue(Objects.requireNonNull(context).getApplicationContext());
+         requestQueue.add(stringRequest);
+
+     }
 }

@@ -2,9 +2,7 @@ package food.user.demand.FCSplash;
 
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -30,6 +28,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.messaging.RemoteMessage;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -41,7 +40,7 @@ import java.util.Objects;
 import food.user.demand.FCActivity.FCDashboard.FC_DashboardActivity;
 import food.user.demand.FCActivity.FCIntroScreenActivity.FC_IntroScreen;
 import food.user.demand.FCActivity.FCProfile.FC_IntroAddressActivity;
-import food.user.demand.FCLogin.FC_Login;
+import food.user.demand.FCFragment.FCDashboardFragment.FCCartFragmentOrderPickActivity.FC_OrderPickedUpActivity;
 import food.user.demand.FCUtils.FC_Logout;
 import food.user.demand.FCViews.AC_BoldTextview;
 import food.user.demand.FCViews.FC_Common;
@@ -58,6 +57,7 @@ public class FC_Splash extends AppCompatActivity implements NetworkChangeReceive
     int versionCode;
     TextView nonet;
     ImageView imgnonet;
+    RemoteMessage remoteMessage;
     LinearLayout linnonet ,ll_noInternetConnection;
     NetworkChangeReceiver networkChangeReceiver ;
     IntentFilter intentFilter ;
@@ -77,7 +77,10 @@ public class FC_Splash extends AppCompatActivity implements NetworkChangeReceive
         frame_main = findViewById(R.id.frame_main);
         imgnonet = findViewById(R.id.imgnonet);
         txt_poweredBy = findViewById(R.id.txt_poweredBy);
-
+        /*Bundle b = getIntent().getExtras();
+        assert b != null;
+        String someData = b.getString("order_id");
+        Log.d("fghdfgfd","dfgfdg"+someData);*/
         networkChangeReceiver = new NetworkChangeReceiver();
         intentFilter = new IntentFilter();
         intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
@@ -102,8 +105,37 @@ public class FC_Splash extends AppCompatActivity implements NetworkChangeReceive
         boolean isConnected = NetworkChangeReceiver.isConnected(this);
         isOnline(isConnected);
 
+        try {
+            JSONObject json = new JSONObject(remoteMessage.getData().toString());
+            Log.d("dfgsdfg","fdgfd"+json);
+           // handleDataMessage(json);
+        } catch (Exception e) {
+            Log.e("dfgsdfg", "zxgbzxvczxc: " + e.getMessage());
+           // Log.d("dfgsdfg","fdgfd"+json);
+        }
 
 
+       /*  if (getIntent().getExtras() != null) {
+            String someData = getIntent().getExtras().getString("order_id");
+            Log.d("fghdfgdg","fdghdfgfd"+someData);
+            assert someData != null;
+
+            if (FC_Common.order_id.equalsIgnoreCase("null")){
+                Log.d("fghdfgdg","fdghdfgfd"+someData);
+            }
+            else
+            {
+                FC_Common.order_id=someData;
+                Intent intent = new Intent(FC_Splash.this, FC_OrderPickedUpActivity.class);
+                intent.putExtra("order_id",FC_Common.order_id);
+                startActivity(intent);
+            }
+
+           for (String key : getIntent().getExtras().keySet()) {
+                Object value = getIntent().getExtras().get(key);
+                Log.d("MainActivity: ", "Key: " + key + " Value: " + value);
+            }
+        }*/
 
         Log.d("dtgsdgsdgsdf","dfgfdg"+FC_Common.token_type);
         Log.d("dtgsdgsdgsdf","dsafsdffgfdg"+FC_Common.access_token);
@@ -132,6 +164,9 @@ public class FC_Splash extends AppCompatActivity implements NetworkChangeReceive
         }
         catch(Exception ex) {}
     }
+
+
+
 
 
 
@@ -172,7 +207,32 @@ public class FC_Splash extends AppCompatActivity implements NetworkChangeReceive
 
             frame_main.setVisibility(View.VISIBLE);
             ll_noInternetConnection.setVisibility(View.GONE);
-            AccessCheck();
+            try {
+                String someData = Objects.requireNonNull(getIntent().getExtras()).getString("order_id");
+                Log.d("fghdfgdg","fdghdfgfd"+someData.length());
+                assert someData != null;
+                if (someData.equalsIgnoreCase("")||someData.equalsIgnoreCase("null"))
+                {
+                    Log.d("fghdfgdg","dgxcv"+someData);
+                    AccessCheck();
+                }
+                else {
+                    Log.d("fghdfgdg","fdgxcbxcvczxhdfgfd"+someData);
+                    FC_Common.order_id=someData;
+                    Intent intent = new Intent(FC_Splash.this, FC_OrderPickedUpActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("order_id",FC_Common.order_id);
+                    startActivity(intent);
+                }
+            }
+            catch (RuntimeException ex)
+            {
+                ex.printStackTrace();
+                AccessCheck();
+                Log.d("fdgsdgsd","fdgdf"+ex);
+            }
+
 
         }
         else {

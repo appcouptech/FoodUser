@@ -9,6 +9,10 @@ public class FC_Common extends Activity {
 
     ////String Values//////
     public static String success = "";
+    public static String note = "";
+    public static String paymentid = "";
+    public static String todayDate = "";
+    public static String cancel_order_note = "";
     public static String CuisineItemId = "";
     public static String date_time = "";
     public static String cartView = "";
@@ -24,7 +28,12 @@ public class FC_Common extends Activity {
     public static String longitude_set = "";
     public static String change_address = "intro";
     public static String status = "";
+    public static String stripe_publickey = "";
     public static String id = "";
+    public static String recharge_amt = "";
+    public static String wallet_amt = "";
+    public static String WalletCurrency = "";
+    public static String Walletbalance = "";
     public static String name = "";
     public static String email = "";
     public static String mobile = "";
@@ -50,11 +59,12 @@ public class FC_Common extends Activity {
     public static String updated_at = "";
     public static String otp = "";
     public static String message = "";
+    public static String cancel_reason = "";
     public static String token_type = "";
     public static String XMLCODE = "XMLHttpRequest";
     public static String token_type_dup = "Bearer";
     public static String access_token = "";
-    public static String access_token_dup = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNGVjMTM3YTA4NmRkNjBiMGVmMzkwZjkyYjgwM2ZhZTUzNzE3NzdkYjJmNzM0NjVlZWU3NWIyMjMwZGMyYjE5MWM2NWUxNTAyMDEyNzc2NzAiLCJpYXQiOjE1ODA3OTQyMzUsIm5iZiI6MTU4MDc5NDIzNSwiZXhwIjoxNjEyNDE2NjM1LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.KR_Qce74G8u8EARIr6w7pn7GbIo2Tz7n3_zknRHFr20rZDyxgKYRojVGNwetteO9vyJ7jdDWJI2a-62xyr6-8XcCzKwVVoeozq9_E-_G6-6zXUjtAeHlMjyW-t-LNNXnaVtJAA7fs-0IkAhQu0vGbFDnhcHj6Vgr6EFSleTaPG-T3DylD1tU1aDi_J0QA6Q2m8sK9DRFHnuZz1BMtFMpPMg6YlU1Dktc5rX2a546l6Us3lbjEJ2cYCB-SHSi7CBWSF5K3H0-NUJgWkNRjUmnwpbiO6haTuOO1zsdVLRLF0zGNOOEn3IKI7l7VF9xjYVNApeXlUMw3VXN1eDB5pxnpnqgf86a2Pd7XozhrgZOB5VARt7wJDZ1MucqoO6EpEnbuyqaYJYgQKY4ng9C6e2USjVMgES5L3rU8K3qI8-62FyEPUZ5kHAtLxIqL4V4AyzH49K7E-eWn-F7l-ZKr9C2ntR_BAOCcS7hukJ_Rz9hzajtm7FiZ6szh2b-OzZLHZPEBKUAljmyAPtNltmk-dLEUpWSW2RfM7NrKoNXHAhF5Q0Wf5JXmHwodkK00j6M4lOEjhH3m3ZLeCQ1_XjEkN9WZJxm0nxKSkW93DAqbSg0M5YsmvsB96T0_zdKXQgEOnUp-xCmSJqvmBwk2JYlUX7v81Ubk4l5N3TzB0qfp7UjvOI";
+    public static String access_token_dup = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiOWMwMzc1YTIzYTI1MmJlNjNkYTNiMDI1YTY0MGQ0MmExMmJmNDgxOTVkMDljZGI4ZDY1NGJhMWRlOGY4MzdiNGFiMjZiYWEyMjEzM2M4MGQiLCJpYXQiOjE1OTExODg0MTgsIm5iZiI6MTU5MTE4ODQxOCwiZXhwIjoxNjIyNzI0NDE4LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.dTB1e_dkn6G7B2Grw2mN5aBhKxsf2EenGhJZsOpsPUHCpUWFAMOyXZQA-3JflOeI596iCzwa0hNiZQI3-eOxQf5rdrdHTrpq_-y8nWvV8rJUrdKYqhXBjfem_tVT2B4ZtTqzSeYg8D7ikEu8r-Sy_GKIaQ8fnbabh0bavUp1Bc4iosz_L3I2utn_qjsefrTPL87iItiqwwZhrjmsyvl1zsLweKDedzJK3lwF2Vi1ikB7OtLtH9cMTsO6SpVWxXeqEaE8dg-wXdkbg2I5XfUC6GtV-D1AVeD9W2vqhp664uPUF9BxGGyiZjhd9CWMptZ5ueObnwPYCPAZcPBA-79vxZ63Jmp610-JACeIIvfwGgZa1mSaTPskOlqUSNqEpYGo8Nm2w7YUbKNywri_gJN1vs9IWn2mwKvxdTbz6Vol40bKHX4wdOCRAoIQKFt_ITA2Hmt85H0UFE1CGcLqLacXFYkQ83derzQ40vgBNigVwt4H7jOQtx3g-shq-ymKj897EFWvoGBcUt8UHOmxqTlwTSjxY1umVO_zjdw590nIwe639kzxZjjj_JN_qQsaiHGa19LRxDXiEA_NHEWdLVZGE6d761mhkuA-7b5RjzraiBSA6nuPrP3xTvWFEoIf1zVk5bvSjdJcobltWJUXgSvx9IJngcRMnINhWyGuc_ab5sc";
     public static String user_type = "";
     public static String otpcheck = "";
     public static String img_profile = "";
@@ -163,6 +173,7 @@ public static String paymentID = "";
     /*Cart Items*/
     public static String Cartrestaurant_id = "";
     public static String CartProduct_id = "";
+    public static String Cartpromo_msg = "";
     public static String Cartcurrency = "";
 
     public static String Cartrestaurant_name= "";

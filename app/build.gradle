@@ -86,6 +86,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging:20.1.0'
     implementation 'com.google.android.gms:play-services-base:17.2.1'
     implementation 'com.google.firebase:firebase-database:19.3.0'
+    implementation 'com.google.firebase:firebase-messaging-directboot:20.2.0'
 
     // country code picker
     implementation('com.futuremind.recyclerfastscroll:fastscroll:0.2.5', {
@@ -104,6 +105,13 @@ dependencies {
     //  implementation(name: 'razorpay-amazonpay-debug', ext: 'aar')
     // implementation(name: 'PayWithAmazon', ext: 'aar')
     implementation 'com.razorpay:checkout:1.5.8'
+    implementation 'com.stripe:stripe-android:14.4.1'
+    implementation 'com.stripe:stripe-android:13.3.0'
+    /*implementation 'io.card:android-sdk:5.0.1'
+    implementation('com.stripe:stripe-android:1.0.4@aar') {
+        transitive = true
+    }*/
+
     /*Payment Gateway*/
 
 }

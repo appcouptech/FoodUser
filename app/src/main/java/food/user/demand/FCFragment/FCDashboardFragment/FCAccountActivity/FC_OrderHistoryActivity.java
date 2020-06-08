@@ -1,11 +1,5 @@
 package food.user.demand.FCFragment.FCDashboardFragment.FCAccountActivity;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
@@ -20,6 +14,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
@@ -154,7 +155,7 @@ public class FC_OrderHistoryActivity extends AppCompatActivity {
                 response -> {
                     try {
                         JSONObject obj = new JSONObject(response);
-                        Log.d("dfgdfgfdgdf","fdgdfgv"+FC_URL.URL_PASTORDER);
+                        Log.d("dfgdfgfdgdf","fdgdfgv"+obj);
                         if (obj.optString("success").equals("1")) {
                             txt_emptyview.setVisibility(View.GONE);
                             rv_orderHistory.setVisibility(View.VISIBLE);
@@ -172,6 +173,7 @@ public class FC_OrderHistoryActivity extends AppCompatActivity {
                                     playerModel.setCurrency(product.getString("currency"));
                                     playerModel.setCuisine_id(product.getString("cuisine_id"));
                                     playerModel.setCreated_at(product.getString("created_at"));
+                                    playerModel.setStatus(product.getString("status"));
 
                                     orderHistoryObjects.add(playerModel);
                                     if (orderHistoryObjects != null) {
@@ -255,11 +257,13 @@ public class FC_OrderHistoryActivity extends AppCompatActivity {
 
                 holder.txt_reOrder.setVisibility(View.GONE);
                 holder.txt_rating.setVisibility(View.GONE);
+                holder.lt_status.setVisibility(View.VISIBLE);
                 holder.img_detailItem.setVisibility(View.VISIBLE);
                 Log.d("gfdgdfg","dfgdfgdfg"+orderHistoryObjects.get(position).getRestaurant_name());
                 Picasso.get().load(orderHistoryObjects.get(position).getRestaurant_logo())
                         .memoryPolicy(MemoryPolicy.NO_CACHE).networkPolicy(NetworkPolicy.NO_CACHE)
                         .into(holder.lc_img);
+                holder.lt_status.setText(orderHistoryObjects.get(position).getStatus());
                 holder.lt_restaurantName.setText(orderHistoryObjects.get(position).getRestaurant_name());
                 holder.lt_cuisine.setText(orderHistoryObjects.get(position).getCuisine_id());
                 holder.lt_itemName.setText(orderHistoryObjects.get(position).getItem());
@@ -312,9 +316,10 @@ public class FC_OrderHistoryActivity extends AppCompatActivity {
             LoaderCircluarImageView lc_img;
             AC_Textview txt_reOrder,txt_rating;
             ImageView img_detailItem;
-            LoaderTextView lt_restaurantName,lt_cuisine,lt_itemName,lt_currency,lt_itemTotal,lt_datetime;
+            LoaderTextView lt_status,lt_restaurantName,lt_cuisine,lt_itemName,lt_currency,lt_itemTotal,lt_datetime;
             ViewHolder(@NonNull View itemView) {
                 super(itemView);
+                lt_status = itemView.findViewById(R.id.lt_status);
                 img_detailItem = itemView.findViewById(R.id.img_detailItem);
                 lc_img = itemView.findViewById(R.id.lc_img);
                 lt_restaurantName = itemView.findViewById(R.id.lt_restaurantName);

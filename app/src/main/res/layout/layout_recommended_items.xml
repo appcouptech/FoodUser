@@ -281,8 +281,8 @@
 
                 <LinearLayout
                     android:id="@+id/ll_nextAvailable"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_width="@dimen/_100ssp"
+                    android:layout_height="@dimen/_60ssp"
                     android:gravity="right|center"
                     android:orientation="vertical"
                     tools:ignore="RtlHardcoded"

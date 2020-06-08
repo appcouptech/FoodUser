@@ -4,8 +4,8 @@ public class FC_URL
 
     //URL//
     //private static final String ROOT_URL = "http://192.168.21.248/api/user";
-    private static final String ROOT_URL = "https://foodcoup.appcoup.com/api/user";
-    //private static final String ROOT_URL = "https://foodcoupdemo1.appcoup.com/api/user";
+   // private static final String ROOT_URL = "https://foodcoup.appcoup.com/api/user";
+    private static final String ROOT_URL = "https://foodcoupdemo3.appcoup.com/api/user";
     //Headers//
     private static final String ROOT_PHP = "";
     private static final String ROOT_ADDRESS = "/address";
@@ -31,9 +31,10 @@ public class FC_URL
     private static final String ROOTWALLET= "/wallet";
     private static final String ROOTITEM= "/item";
     private static final String ROOTRATE= "/rate";
+    private static final String ROOTCANCEL= "/cancel";
 
     //ROOT_URL //
-    public static final String URL_TEST= "http://192.168.21.129/api/user/product/list";
+    public static final String URL_TEST= "https://foodcoup.appcoup.com/api/driver/stripekey";
     public static final String URL_LOGIN= ROOT_URL+"/login"+ROOT_PHP;
     public static final String URL_LOGINOTP= ROOT_URL+"/otp"+ROOT_PHP;
     public static final String URL_REGISTER= ROOT_URL+"/register"+ROOT_PHP;
@@ -42,6 +43,7 @@ public class FC_URL
     public static final String URL_RATE= ROOT_URL+"/rate"+ROOT_PHP;
     public static final String URL_HISTORY= ROOT_URL+"/history"+ROOT_PHP;
     public static final String URL_LOGOUT= ROOT_URL+"/logout"+ROOT_PHP;
+    public static final String ROOTSTRIPE= ROOT_URL+"/stripekey"+ROOT_PHP;
 
 
     //ROOT_URL + ROOT_ADDRESS//
@@ -125,11 +127,19 @@ public class FC_URL
 
     /*ROOT_URL + ROOTWALLET*/
     public static final String URL_WALLETUPDATE= ROOT_URL+ROOTWALLET +"/update"+ROOT_PHP;
+    public static final String URL_WALLETPAYMENT= ROOT_URL+ROOTWALLET +"/payment"+ROOT_PHP;
+    public static final String URL_WALLETHISTORY= ROOT_URL+ROOTWALLET +"/history"+ROOT_PHP;
+    public static final String URL_WALLETINFO= ROOT_URL+ROOTWALLET +"/info"+ROOT_PHP;
 
     /*ROOT_URL + ROOTITEM*/
     public static final String URL_ITEMDETAIL= ROOT_URL+ROOTITEM +"/detail"+ROOT_PHP;
 
     /*ROOT_URL + ROOTRATE*/
     public static final String URL_RATEDRIVER= ROOT_URL+ROOTRATE +"/driver"+ROOT_PHP;
+
+    /*ROOT_URL + ROOTCANCEL*/
+    public static final String URL_CANCEL= ROOT_URL+ROOTCANCEL +"/order"+ROOT_PHP;
+
+
 
 }

@@ -1,11 +1,8 @@
 package food.user.demand.FCFragment.FCDashboardFragment.FC_Couponcode;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,18 +13,27 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.snackbar.Snackbar;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+
 import food.user.demand.FCPojo.Fc_CouponObject.CouponObject;
 import food.user.demand.FCUtils.Loader.LoaderTextView;
 import food.user.demand.FCViews.AC_Edittext;
@@ -58,6 +64,15 @@ public class Fc_Coupon extends AppCompatActivity {
 
         context = Fc_Coupon.this ;
         FindViewById();
+
+        Intent intent1 = getIntent();
+        Bundle bundle = intent1.getExtras();
+
+        if (bundle != null)
+        {
+            FC_Common.Cartrestaurant_id = (String) bundle.get("partner_id");
+        }
+
         inputMgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         FC_User user = FC_SharedPrefManager.getInstance(context).getUser();
         FC_Common.token_type = String.valueOf(user.gettoken_type());
@@ -82,6 +97,7 @@ public class Fc_Coupon extends AppCompatActivity {
         lt_cardOffers =  findViewById(R.id.lt_cardOffers);
         ll_cardOffers =  findViewById(R.id.ll_cardOffers);
 
+        edt_promoCode.setText(FC_Common.OfferCode);
 
         img_backBtn.setOnClickListener(v -> onBackPressed());
 
@@ -379,6 +395,7 @@ public class Fc_Coupon extends AppCompatActivity {
                         }
                         else
                         {
+                            FC_Common.OfferCode="";
                             onBackPressed();
                             snackBar(FC_Common.message);
                         }
@@ -400,6 +417,7 @@ public class Fc_Coupon extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("offer_code", FC_Common.OfferCode);
+                params.put("partner_id", FC_Common.Cartrestaurant_id);
                 Log.d("getParams: ", "" + params);
                 return params;
             }

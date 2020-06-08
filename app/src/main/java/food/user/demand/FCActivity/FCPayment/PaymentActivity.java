@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -62,6 +61,7 @@ public class PaymentActivity extends Activity implements PaymentResultListener {
             FC_Common.Carttotal = (String) bundle.get("Carttotal");
             FC_Common.mobile = (String) bundle.get("mobile");
             FC_Common.email = (String) bundle.get("email");
+            FC_Common.note = (String) bundle.get("NOTE");
 
         }
 
@@ -153,6 +153,7 @@ public class PaymentActivity extends Activity implements PaymentResultListener {
                         {
                             FC_Common.order_id = obj.getString("order_id");
                             //paymentdialog.dismiss();
+                            FC_Common.note="";
                             Intent intent = new Intent(PaymentActivity.this, FC_OrderPickedUpActivity.class);
                             intent.putExtra("order_id",FC_Common.order_id);
                             startActivity(intent);
@@ -182,7 +183,7 @@ public class PaymentActivity extends Activity implements PaymentResultListener {
                 Map<String, String> params = new HashMap<>();
                 params.put("delivery_date", FC_Common.preordertime);
                 params.put("payment_mode", FC_Common.paymenttype);
-                params.put("note", "");
+                params.put("note", FC_Common.note);
                 Log.d("getParams: ", "" + params);
                 return params;
             }

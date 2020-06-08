@@ -11,6 +11,7 @@ public class OrderHistoryObject {
     private String currency ;
     private String cuisine_id ;
     private String created_at ;
+    private String status ;
 
     public String getD_images() {
         return d_images;
@@ -90,5 +91,13 @@ public class OrderHistoryObject {
 
     public void setCreated_at(String created_at) {
         this.created_at = created_at;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

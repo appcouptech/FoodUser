@@ -70,10 +70,56 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/ll_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <food.user.demand.FCViews.AC_Textview
+            style="@style/FC_RegularTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_10ssp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/order_cancel" />
+
+        <food.user.demand.FCViews.AC_Textview
+            android:id="@+id/txt_cancel"
+            style="@style/FC_RegularTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10ssp"
+            android:background="@drawable/rec_bg_stroke_gray_layout"
+            android:padding="@dimen/_20ssp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/order_cancel" />
+
+
+        <food.user.demand.FCViews.AC_Textview
+            android:id="@+id/txt_submitcancel"
+            style="@style/FC_RegularTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10ssp"
+            android:background="@drawable/rec_apply_btn_bg_blue"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingLeft="@dimen/_20ssp"
+            android:paddingRight="@dimen/_20ssp"
+            android:textColor="@color/white"
+            android:text="@string/submit" />
+    </LinearLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_5sdp">
+
+
 
         <LinearLayout
             android:id="@+id/ll_main"
@@ -81,6 +127,7 @@
             android:layout_height="wrap_content"
             android:visibility="gone"
             android:orientation="vertical">
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -106,8 +153,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/_9sdp"
+                        android:visibility="gone"
                         android:layout_marginLeft="@dimen/_5sdp"
                         android:text="@string/order_processing" />
+
+                        <food.user.demand.FCUtils.Loader.LoaderTextView
+                            android:id="@+id/lt_ordercancel"
+                            style="@style/FC_RegularTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/cancel"
+                            android:layout_marginLeft="@dimen/_15ssp"
+                            android:background="@drawable/rec_bg_stroke_add_gray_layout"
+                            android:textColor="@color/txt_addcolour" />
+
                 </LinearLayout>
                 <food.user.demand.FCViews.AC_Textview
                     android:id="@+id/lt_duration"

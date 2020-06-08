@@ -30,6 +30,7 @@ public class NotificationReceiver extends WakefulBroadcastReceiver {
 
     public void playNotificationSound(Context context) {
         Log.d("dfgsdfgsd","354note");
+
         try {
             Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
             Ringtone r = RingtoneManager.getRingtone(context, notification);

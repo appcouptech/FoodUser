@@ -14,6 +14,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 
 import androidx.core.app.NotificationCompat;
 
@@ -111,6 +112,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         Config.content = data.get("content");
         Config.imageUrl = data.get("imageUrl");
         Config.gameUrl = data.get("gameUrl");
+        Log.d("dgdgdfg","dgsdf"+data);
         //Create thread to fetch image from notification
         if(remoteMessage.getData()!=null){
 

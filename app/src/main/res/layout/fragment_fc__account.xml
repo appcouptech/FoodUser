@@ -498,6 +498,38 @@
 
             </FrameLayout>
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_wallet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                tools:ignore="UselessParent">
+
+
+                <food.user.demand.FCViews.AC_Textview
+                    style="@style/FC_RegularThickTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/wallet" />
+
+                <ImageView
+                    android:id="@+id/img_wallet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:padding="@dimen/_5sdp"
+                    android:src="@drawable/ac_right_arrow"
+                    tools:ignore="ContentDescription,RtlHardcoded"/>
+
+            </FrameLayout>
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

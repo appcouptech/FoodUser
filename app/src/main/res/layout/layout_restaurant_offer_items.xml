@@ -8,7 +8,7 @@
     <LinearLayout
         android:id="@+id/ll_main"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_95sdp"
+        android:layout_height="@dimen/_105sdp"
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginBottom="@dimen/_5sdp"
         android:background="@drawable/ripple_effect_hot_seller_outline"
@@ -197,7 +197,7 @@
                     <food.user.demand.FCViews.AC_Textview
                         android:id="@+id/txt_couponcode"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_marginStart="@dimen/_2sdp"
                         android:layout_marginEnd="@dimen/_2sdp"
                         android:text="dsgsdgsdg"

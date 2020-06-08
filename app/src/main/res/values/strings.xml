@@ -75,6 +75,8 @@
     <string name="noitem">No Item Found Please try Again</string>
     <string name="placeorder">Once your Order Accepted By Restaurant Other details load here in DashBoard view order Button is placed in Top</string>
     <string name="promocode">Enter valid PromoCode</string>
+    <string name="promocodevalid">Promocode Is Valid</string>
+    <string name="promocodeexpired">Promocode Is Expired</string>
     <string name="conform_logout">Are You Sure Want To Logout</string>
     <string name="pastorders">No Past Orders</string>
     <string name="fav">No Favourites</string>
@@ -97,6 +99,7 @@
     <!--FC Cart Activity-->
 
     <string name="pendingorders">Pending Orders</string>
+
     <string name="item_carts">Item Carts</string>
     <string name="enter_coupon_code">Enter Coupon Code</string>
     <string name="apply">APPLY</string>
@@ -204,7 +207,17 @@
 
     <string name="ok_got_it">OK,GOT IT</string>
     <string name="ok">OK</string>
+    <string name="instruction">Other Instruction</string>
     <string name="cancel">Cancel</string>
+    <string name="wallet">Wallet</string>
+    <string name="cancel_order">Cancel Order</string>
+
+    <string name="balance">Balance</string>
+    <string name="withdraw">WithDraw</string>
+    <string name="recharge">Recharge</string>
+    <string name="noorders">No Transactions</string>
+    <string name="enter_amt">Enter Amount</string>
+    <string name="enter_recharge">Enter the Amount to Recharge</string>
 
     <!--location off home fragment-->
 
@@ -234,6 +247,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="estimated_arrival">Estimated Arrival</string>
+    <string name="order_cancel">Sorry your Order Cancel</string>
 
     <!--Intro Screen-->
 
@@ -269,6 +283,8 @@
     <string name="restaurant_rating">Restaurant Rating</string>
     <string name="driver_rating">Driver Rating</string>
     <string name="comments">Restaurant Comments</string>
+    <string name="comment">Cancel Reason</string>
+    <string name="comments_new">Comments</string>
     <string name="drivercomments">Driver Comments</string>
 
 

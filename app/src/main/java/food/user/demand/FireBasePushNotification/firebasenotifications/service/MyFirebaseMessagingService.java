@@ -1,16 +1,10 @@
 package food.user.demand.FireBasePushNotification.firebasenotifications.service;
 
 import android.annotation.SuppressLint;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.media.RingtoneManager;
-import android.net.Uri;
-import android.text.TextUtils;
 import android.util.Log;
 
-import androidx.core.app.NotificationCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
@@ -19,10 +13,10 @@ import com.google.firebase.messaging.RemoteMessage;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import food.user.demand.Activity.MainActivity;
+import food.user.demand.FCFragment.FCDashboardFragment.FCCartFragmentOrderPickActivity.FC_OrderPickedUpActivity;
+import food.user.demand.FCViews.FC_Common;
 import food.user.demand.FireBasePushNotification.firebasenotifications.app.Config;
 import food.user.demand.FireBasePushNotification.firebasenotifications.util.NotificationUtils;
-import food.user.demand.R;
 
 @SuppressLint("MissingFirebaseInstanceTokenRefresh")
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
@@ -33,8 +27,10 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
-        Log.e(TAG, "From: " + remoteMessage.getFrom());
+        Log.e(TAG, "gzvdzxvzxvxz " + remoteMessage.getFrom());
+        Log.e(TAG, "gzvdzxvzxvxz " + remoteMessage.getData());
         Log.d("dfgsdfgsd","9note"+remoteMessage.getFrom());
+
         if (remoteMessage == null)
             return;
 
@@ -42,43 +38,26 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         if (remoteMessage.getNotification() != null) {
             Log.e(TAG, "Notification Body: " + remoteMessage.getNotification().getBody());
             handleNotification(remoteMessage.getNotification().getBody());
+           // handleNotification(remoteMessage.getData().get("title"), remoteMessage.getData().get("message"));
         }
 
         // Check if message contains a data payload.
         if (remoteMessage.getData().size() > 0) {
             Log.e(TAG, "Data Payload: " + remoteMessage.getData().toString());
 
+
+
             try {
                 JSONObject json = new JSONObject(remoteMessage.getData().toString());
+                Log.d("dfgsdfg","fdgfd"+json);
                 handleDataMessage(json);
             } catch (Exception e) {
-                Log.e(TAG, "Exception: " + e.getMessage());
+                Log.e(TAG, "zxgbzxvczxc: " + e.getMessage());
             }
         }
     }
 
     private void handleNotification(String message) {
-      /*  if (!NotificationUtils.isAppIsInBackground(getApplicationContext())) {
-            // app is in foreground, broadcast the push message
-            Intent pushNotification = new Intent(Config.PUSH_NOTIFICATION);
-            pushNotification.putExtra("message", message);
-            LocalBroadcastManager.getInstance(this).sendBroadcast(pushNotification);
-
-            // play notification sound
-            NotificationUtils notificationUtils = new NotificationUtils(getApplicationContext());
-            notificationUtils.playNotificationSound();
-            Log.d("dfgsdfgsd","3note");
-        }else{
-            Intent pushNotification = new Intent(Config.PUSH_NOTIFICATION);
-            pushNotification.putExtra("message", message);
-            LocalBroadcastManager.getInstance(this).sendBroadcast(pushNotification);
-
-            // play notification sound
-            NotificationUtils notificationUtils = new NotificationUtils(getApplicationContext());
-            notificationUtils.playNotificationSound();
-            Log.d("dfgdfgfdg","fdhfdgfd");
-            // If the app is in background, firebase itself handles the notification
-        }*/
         Intent pushNotification = new Intent(Config.PUSH_NOTIFICATION);
         pushNotification.putExtra("message", message);
         LocalBroadcastManager.getInstance(this).sendBroadcast(pushNotification);
@@ -86,7 +65,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         // play notification sound
         NotificationUtils notificationUtils = new NotificationUtils(getApplicationContext());
         notificationUtils.playNotificationSound();
-        Log.d("dfgsdfgsd","3note");
+
+
+        Log.d("dfgsdfgsd","3note"+message);
     }
 
    /* private void handleNotification(String message) {
@@ -123,7 +104,18 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         Log.e(TAG, "push json: " + json.toString());
 
         try {
-            JSONObject data = json.getJSONObject("data");
+            //JSONObject data = json.getJSONObject("data");
+            String order_id = json.getString("order_id");
+            Log.e(TAG, "title: " +"order_id"+ order_id);
+            FC_Common.order_id=order_id;
+            Intent intent = new Intent(this, FC_OrderPickedUpActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.putExtra("order_id", FC_Common.order_id);
+            startActivity(intent);
+
+            /*JSONObject data = json.getJSONObject("order_id");
+            Log.e(TAG, "title: " + data);
+
 
             String title = data.getString("title");
             String message = data.getString("message");
@@ -132,15 +124,15 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             String timestamp = data.getString("timestamp");
             JSONObject payload = data.getJSONObject("payload");
 
-            Log.e(TAG, "title: " + title);
+
             Log.e(TAG, "message: " + message);
             Log.e(TAG, "isBackground: " + isBackground);
             Log.e(TAG, "payload: " + payload.toString());
             Log.e(TAG, "imageUrl: " + imageUrl);
-            Log.e(TAG, "timestamp: " + timestamp);
+            Log.e(TAG, "timestamp: " + timestamp);*/
 
 
-            if (!NotificationUtils.isAppIsInBackground(getApplicationContext())) {
+          /*  if (!NotificationUtils.isAppIsInBackground(getApplicationContext())) {
                 // app is in foreground, broadcast the push message
                 Intent pushNotification = new Intent(Config.PUSH_NOTIFICATION);
                 pushNotification.putExtra("message", message);
@@ -162,11 +154,11 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                     // image is present, show notification with image
                     showNotificationMessageWithBigImage(getApplicationContext(), title, message, timestamp, resultIntent, imageUrl);
                 }
-            }
+            }*/
         } catch (JSONException e) {
-            Log.e(TAG, "Json Exception: " + e.getMessage());
+            Log.e(TAG, "ghdxfgbxcg" + e.getMessage());
         } catch (Exception e) {
-            Log.e(TAG, "Exception: " + e.getMessage());
+            Log.e(TAG, "ghdxfgbxcg" + e.getMessage());
         }
     }
 

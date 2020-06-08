@@ -56,15 +56,15 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning,InnerclassSeparator,MissingApplicationIcon,UnusedAttribute">
-        <activity android:name=".FCFragment.FCDashboardFragment.FCHomeFragmentHotelDetailsActivity.FCSearchFragment.FC_SearchHotelDetailsActivity"
-            android:launchMode="singleTop"
+        <activity android:name=".checkoutActivity_New"></activity>
+        <activity
+            android:name=".FCFragment.FCDashboardFragment.FCHomeFragmentHotelDetailsActivity.FCSearchFragment.FC_SearchHotelDetailsActivity"
             android:theme="@style/FCAppStatusBarChange"
             android:windowSoftInputMode="stateAlwaysHidden"
-            tools:ignore="InnerclassSeparator"/>
+            tools:ignore="InnerclassSeparator" />
         <activity android:name=".Testing_New.RegisterTesting" />
         <activity
             android:name=".FCFragment.FCDashboardFragment.FCAccountActivity.FCHelp.Fc_HelpActivity"
-            android:launchMode="singleTop"
             android:theme="@style/FCAppStatusBarChange"
             android:windowSoftInputMode="stateAlwaysHidden"
             tools:ignore="InnerclassSeparator" />
@@ -80,6 +80,7 @@
         -->
         <service
             android:name=".FireBasePushNotification.firebasenotifications.service.MyFirebaseMessagingService"
+            android:directBootAware="true"
             android:exported="false"
             tools:ignore="InnerclassSeparator">
             <intent-filter>
@@ -108,13 +109,11 @@
         </activity>
         <activity
             android:name=".FCFragment.FCDashboardFragment.FC_Couponcode.Fc_Coupon"
-            android:launchMode="singleTop"
             android:theme="@style/FCAppStatusBarChange"
             android:windowSoftInputMode="stateAlwaysHidden"
             tools:ignore="InnerclassSeparator" />
         <activity
             android:name=".FCActivity.FCIntroScreenActivity.FC_IntroScreen"
-            android:launchMode="singleTop"
             android:theme="@style/FCAppTheme"
             android:windowSoftInputMode="stateAlwaysHidden"
             tools:ignore="InnerclassSeparator">
@@ -145,6 +144,17 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity">
+          <!--  <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
+        </activity>
+        <activity android:name=".CheckoutActivityJava">
+
+
         </activity>
         <activity
             android:name=".FCActivity.FCProfile.FC_IntroProfileActivity"
@@ -202,7 +212,6 @@
         </activity>
         <activity
             android:name=".Testing_New.RecyclerViewActivity"
-            android:launchMode="singleTop"
             android:theme="@style/FCAppStatusBarChange"
             android:windowSoftInputMode="stateAlwaysHidden"
             tools:ignore="InnerclassSeparator">
@@ -217,100 +226,98 @@
         </activity>
         <activity
             android:name=".FCFragment.FCDashboardFragment.FCHomeFragment.FC_SearchActivity"
-            android:launchMode="singleTop"
             android:theme="@style/FCAppStatusBarChange"
             android:windowSoftInputMode="stateAlwaysHidden"
             tools:ignore="InnerclassSeparator" />
         <activity
             android:name=".FCFragment.FCDashboardFragment.FCHomeFragmentItemActivity.FC_ItemActivity"
-            android:launchMode="singleTop"
             android:theme="@style/FCFullAppTheme"
             android:windowSoftInputMode="stateAlwaysHidden"
             tools:ignore="InnerclassSeparator" />
         <activity
             android:name=".FCActivity.FCCartActivity.FC_CartActivity"
-            android:launchMode="singleTop"
             android:theme="@style/FCAppStatusBarChange"
             android:windowSoftInputMode="stateAlwaysHidden"
             tools:ignore="InnerclassSeparator" />
         <activity
             android:name=".FCActivity.FCPayment.PaymentActivity"
-            android:launchMode="singleTop"
             android:theme="@style/FCAppStatusBarChange"
             android:windowSoftInputMode="stateAlwaysHidden"
             tools:ignore="InnerclassSeparator" />
         <activity
             android:name=".FCFragment.FCDashboardFragment.FCAccountActivity.FC_OrderHistoryActivity"
-            android:launchMode="singleTop"
             android:theme="@style/FCAppStatusBarChange"
             android:windowSoftInputMode="stateAlwaysHidden"
             tools:ignore="InnerclassSeparator" />
         <activity
             android:name=".FCFragment.FCDashboardFragment.FCAccountActivity.FCOfferActivity.FC_PendingOrderActivity"
-            android:launchMode="singleTop"
+            android:theme="@style/FCAppStatusBarChange"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="InnerclassSeparator" />
+
+        <activity
+            android:name=".FC_Wallet.FC_Wallet"
             android:theme="@style/FCAppStatusBarChange"
             android:windowSoftInputMode="stateAlwaysHidden"
             tools:ignore="InnerclassSeparator" />
         <activity
             android:name=".FCFragment.FCDashboardFragment.FCAccountActivity.FC_FavoritesActivity"
-            android:launchMode="singleTop"
             android:theme="@style/FCAppStatusBarChange"
             android:windowSoftInputMode="stateAlwaysHidden"
             tools:ignore="InnerclassSeparator" />
         <activity
             android:name=".FCFragment.FCDashboardFragment.FCAccountActivity.FC_OffersActivity"
-            android:launchMode="singleTop"
             android:theme="@style/FCAppStatusBarChange"
             android:windowSoftInputMode="stateAlwaysHidden"
             tools:ignore="InnerclassSeparator" />
         <activity
             android:name=".FCFragment.FCDashboardFragment.FCAccountActivity.FC_ReferralsActivity"
-            android:launchMode="singleTop"
             android:theme="@style/FCAppStatusBarChange"
             android:windowSoftInputMode="stateAlwaysHidden"
             tools:ignore="InnerclassSeparator" />
         <activity
             android:name=".FCFragment.FCDashboardFragment.FCAccountActivity.FCManageAddressActivity.FC_ManageAddressActivity"
-            android:launchMode="singleTop"
             android:theme="@style/FCAppStatusBarChange"
             android:windowSoftInputMode="stateAlwaysHidden"
             tools:ignore="InnerclassSeparator" />
         <activity
             android:name=".FCFragment.FCDashboardFragment.FCAccountActivity.FCManageAddressActivity.FC_ManageEditAddressActivity"
-            android:launchMode="singleTop"
             android:theme="@style/FCAppStatusBarChange"
             android:windowSoftInputMode="stateAlwaysHidden"
             tools:ignore="InnerclassSeparator" />
         <activity
             android:name=".FCFragment.FCDashboardFragment.FCAccountActivity.FCManageAddressActivity.FC_ManagelocationPickerActivty"
-            android:launchMode="singleTop"
             android:theme="@style/FCAppStatusBarChange"
             android:windowSoftInputMode="stateAlwaysHidden"
             tools:ignore="InnerclassSeparator" />
         <activity
             android:name=".FCFragment.FCDashboardFragment.FCHomeFragmentHotelDetailsActivity.FC_HotelDetailsActivity"
-            android:launchMode="singleTop"
             android:theme="@style/FCAppStatusBarChange"
             android:windowSoftInputMode="stateAlwaysHidden"
             tools:ignore="InnerclassSeparator" />
         <activity
             android:name=".FCFragment.FCDashboardFragment.FCCartFragmentOrderPickActivity.FC_OrderPickedUpActivity"
             android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
-            android:launchMode="singleTask"
             android:resizeableActivity="true"
             android:supportsPictureInPicture="true"
             android:theme="@style/FCAppStatusBarChange"
             android:windowSoftInputMode="stateAlwaysHidden"
-            tools:ignore="InnerclassSeparator" />
+            tools:ignore="InnerclassSeparator">
+
+            <!--
+        <intent-filter>
+            <action android:name="orders" />
+            <category android:name="android.intent.category.DEFAULT" />
+        </intent-filter>
+            -->
+        </activity>
         <activity
             android:name=".FCFragment.FCDashboardFragment.FCHomeFragmentViewOnMap.FC_ViewOnMapActivity"
-            android:launchMode="singleTop"
             android:theme="@style/FCAppStatusBarChange"
             android:windowSoftInputMode="stateAlwaysHidden"
             tools:ignore="InnerclassSeparator" />
         <activity
             android:name=".FCFragment.FCDashboardFragment.FCHomeFragmentGreatOffersActivity.FCGreatOfferForSetOFHotelsActivity.FC_SetOfHotelsOfferActivity"
-            android:launchMode="singleTop"
             android:theme="@style/FCAppTheme"
             android:windowSoftInputMode="stateAlwaysHidden"
             tools:ignore="InnerclassSeparator">
@@ -326,31 +333,26 @@
         </activity>
         <activity
             android:name=".FCFragment.FCDashboardFragment.FCHomeFragment.FCHomeSeeAllRestaurants.Fc_HomeSeeAllRestaurants"
-            android:launchMode="singleTop"
             android:theme="@style/FCAppStatusBarChange"
             android:windowSoftInputMode="stateAlwaysHidden"
             tools:ignore="InnerclassSeparator" />
         <activity
             android:name=".FCFragment.FCDashboardFragment.FCHomeFragment.FCHomeSeeAllRestaurants.Fc_CuisineSeeAllRestaurants"
-            android:launchMode="singleTop"
             android:theme="@style/FCAppStatusBarChange"
             android:windowSoftInputMode="stateAlwaysHidden"
             tools:ignore="InnerclassSeparator" />
         <activity
             android:name=".FCFragment.FCDashboardFragment.FCHomeFragment.FCTopPickRestaurants.Fc_TopPickRestaurant"
-            android:launchMode="singleTop"
             android:theme="@style/FCAppStatusBarChange"
             android:windowSoftInputMode="stateAlwaysHidden"
             tools:ignore="InnerclassSeparator" />
         <activity
             android:name=".FCFragment.FCDashboardFragment.FCHomeFragmentHotSellersActivity.FC_HotSellersHotelActivity"
-            android:launchMode="singleTop"
             android:theme="@style/FCAppStatusBarChange"
             android:windowSoftInputMode="stateAlwaysHidden"
             tools:ignore="InnerclassSeparator" />
         <activity
             android:name=".Activity.TestRecycleView"
-            android:launchMode="singleTop"
             android:theme="@style/FCAppStatusBarChange"
             android:windowSoftInputMode="stateAlwaysHidden"
             tools:ignore="InnerclassSeparator" />
