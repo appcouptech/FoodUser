@@ -1166,7 +1166,7 @@ public class FC_CartActivity extends AppCompatActivity implements View.OnClickLi
                             FC_Common.OfferCode="";
                             FC_Common.note="";
                             FC_Common.paymentid="";
-
+                            FC_Common.walletchcked="";
                            Intent intent = new Intent(context,FC_OrderPickedUpActivity.class);
                            intent.putExtra("order_id",FC_Common.order_id);
                            startActivity(intent);

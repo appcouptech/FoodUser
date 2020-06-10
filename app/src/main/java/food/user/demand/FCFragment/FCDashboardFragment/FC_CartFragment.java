@@ -1103,7 +1103,7 @@ public class FC_CartFragment extends Fragment implements View.OnClickListener {
                             paymentdialog.dismiss();
                             FC_Common.note="";
                             FC_Common.paymentid="";
-
+                            FC_Common.walletchcked="";
                             Intent intent = new Intent(context, FC_OrderPickedUpActivity.class);
                             intent.putExtra("order_id",FC_Common.order_id);
                             startActivity(intent);
