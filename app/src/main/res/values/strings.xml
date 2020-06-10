@@ -213,7 +213,7 @@
     <string name="cancel_order">Cancel Order</string>
 
     <string name="balance">Balance</string>
-    <string name="withdraw">WithDraw</string>
+    <string name="withdraw">Transactions</string>
     <string name="recharge">Recharge</string>
     <string name="noorders">No Transactions</string>
     <string name="enter_amt">Enter Amount</string>

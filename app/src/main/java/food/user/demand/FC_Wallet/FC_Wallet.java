@@ -57,13 +57,11 @@ public class FC_Wallet extends AppCompatActivity {
     private RecyclerView rv_earningList ;
     private EarningsAdapter earningsAdapter ;
     private ArrayList<WalletObject> WalletObjects = new ArrayList<>();
-    private AC_Textview txt_emptyview,txt_withdraw,txt_recharge;
+    private AC_Textview txt_emptyview;
+    private AC_Textview txt_recharge;
     private AC_Edittext edt_amt;
     private LoaderTextView lt_wallet;
     private ImageView img_backBtn;
-    private AC_Textview txt_toolbarName,txt_cancel;
-    private AC_Textview txt_confirm;
-    private AC_Edittext edt_commentres;
     private BottomSheetDialog paymentdialog;
     private Button payButton;
     private CardInputWidget cardInputWidget;
@@ -105,6 +103,7 @@ public class FC_Wallet extends AppCompatActivity {
                 }
                 else {
                     FC_Common.recharge_amt=edt_amt.getText().toString().trim();
+                    payButton.setEnabled(false);
                     pay();
                 }
             });
@@ -127,11 +126,10 @@ public class FC_Wallet extends AppCompatActivity {
         rv_earningList = findViewById(R.id.rv_earningList);
         txt_emptyview = findViewById(R.id.txt_emptyview);
         lt_wallet = findViewById(R.id.lt_wallet);
-        txt_withdraw = findViewById(R.id.txt_withdraw);
         txt_recharge = findViewById(R.id.txt_recharge);
         img_backBtn.setVisibility(View.VISIBLE);
 
-        txt_toolbarName = findViewById(R.id.txt_toolbarName);
+        AC_Textview txt_toolbarName = findViewById(R.id.txt_toolbarName);
         img_backBtn.setVisibility(View.VISIBLE);
         txt_toolbarName.setVisibility(View.VISIBLE);
         txt_toolbarName.setText(getResources().getString(R.string.wallet));
@@ -423,16 +421,22 @@ public class FC_Wallet extends AppCompatActivity {
                         JSONObject jsonResponse1 = new JSONObject(ServerResponse);
                         FC_Common.status = jsonResponse1.getString("success");
                         if (FC_Common.status.equalsIgnoreCase("1")) {
+                            payButton.setEnabled(true);
                             paymentdialog.dismiss();
                             walletAmount();
+                        }
+                        else {
+                            payButton.setEnabled(true);
                         }
 
                     } catch (JSONException e) {
                         e.printStackTrace();
+                        payButton.setEnabled(true);
                         Log.d("xcgsdgsdgsd", "dfhdf" + e);
                     }
                 }, volleyError -> {
             String value = volleyError.toString();
+            payButton.setEnabled(true);
             Log.d("dfgdffgd","dfgdf"+value);
         }) {
             @Override
@@ -457,6 +461,9 @@ public class FC_Wallet extends AppCompatActivity {
         requestQueue.getCache().clear();
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 
 }

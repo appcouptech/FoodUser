@@ -139,6 +139,7 @@ Context context;
     private AC_Textview lt_orderProcessing, lt_duration ;
     FusedLocationProviderClient mFusedLocationClient;
     Location mLastLocation;
+    Handler handler;
     double CURRENT_latitude, CURRENT_longitude;
     private GoogleSignInClient mGoogleSignInClient;
     List<Location> locationList = new ArrayList<>();
@@ -249,8 +250,20 @@ Context context;
             OrderConfirm();
 
         }*/
-        OrderConfirm();
 
+      /*  handler = new Handler();
+        int delay = 30000; //milliseconds
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                //do something
+                OrderConfirm();
+
+                Log.d("dfgdfgdf","dgsdf");
+                // ItemViewList();
+                handler.postDelayed(this, delay);
+            }
+        }, delay);*/
+        OrderConfirm();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
        // dbRef = database.getReference("/dev/drivers");
         dbRef = database.getReference("/foodcoup/dev/drivers"+FC_Common.orderdriver_id);
@@ -289,12 +302,7 @@ Context context;
             ratingdialog.show();
         });
 
-        txt_submitcancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+        txt_submitcancel.setOnClickListener(v -> onBackPressed());
     }
 
     private void FindViewById() {
@@ -613,7 +621,8 @@ Context context;
                             }
 
                             //if (FC_Common.outfordelivery == 1){
-                           else if (FC_Common.endU_status.equalsIgnoreCase("PICKEDUP")){
+                           else if (FC_Common.endU_status.equalsIgnoreCase("PICKEDUP")||
+                                    FC_Common.endU_status.equalsIgnoreCase("REACHED")){
                                 Log.d("dfghdfgdfgfd","zsrew43re");
                                 ll_cancel.setVisibility(View.GONE);
                                 ll_main.setVisibility(View.VISIBLE);

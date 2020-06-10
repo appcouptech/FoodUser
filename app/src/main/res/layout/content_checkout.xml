@@ -18,6 +18,7 @@
     android:orientation="vertical"
     tools:ignore="MissingConstraints">
     <food.user.demand.FCViews.AC_Textview
+        android:id="@+id/txt_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"

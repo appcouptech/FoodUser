@@ -98,6 +98,8 @@ public class FC_CartFragment extends Fragment implements View.OnClickListener {
     private RecyclerView rv_search;
     private ArrayList<CartFragmentObject> cartActivityObjects ;
     private AC_Textview txt_processToPay;
+    private AC_Edittext edt_amt;
+    private AC_Textview txt_header;
     private AC_Textview txt_address;
     private AC_Textview txt_locationSet;
     private AC_Textview txt_hotelUnavailable ;
@@ -1101,12 +1103,14 @@ public class FC_CartFragment extends Fragment implements View.OnClickListener {
                             paymentdialog.dismiss();
                             FC_Common.note="";
                             FC_Common.paymentid="";
+
                             Intent intent = new Intent(context, FC_OrderPickedUpActivity.class);
                             intent.putExtra("order_id",FC_Common.order_id);
                             startActivity(intent);
                         }
                         else
                         {
+
                             Utils.stopProgressBar();
                             paymentdialog.dismiss();
                             snackBar(FC_Common.message);
@@ -1114,6 +1118,7 @@ public class FC_CartFragment extends Fragment implements View.OnClickListener {
 
                     } catch (JSONException e) {
                         e.printStackTrace();
+
                         Utils.stopProgressBar();
                         snackBar(String.valueOf(e));
                         Log.d("dfghdghfgfdb", "fdhfdh" + e);
@@ -1124,6 +1129,7 @@ public class FC_CartFragment extends Fragment implements View.OnClickListener {
                 error -> {
                     //displaying the error in toast if occurrs
                     Utils.stopProgressBar();
+
                     snackBar(String.valueOf(error));
                     Log.d("dfhfdghfgh", "hfdhdf" + error);
                 }) {
@@ -1133,6 +1139,7 @@ public class FC_CartFragment extends Fragment implements View.OnClickListener {
                 params.put("delivery_date", FC_Common.preordertime);
                 params.put("payment_mode", FC_Common.paymenttype);
                 params.put("note", FC_Common.note);
+                params.put("wallet_check", FC_Common.walletchcked);
                 params.put("paymentmethodid", FC_Common.paymentid);
                 Log.d("getParams: ", "" + params);
                 return params;
@@ -1740,7 +1747,8 @@ public class FC_CartFragment extends Fragment implements View.OnClickListener {
 
     @SuppressLint({"DefaultLocale", "SetTextI18n"})
     private void AccessCheck() {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, FC_URL.URL_WALLETINFO,
+        Utils.playProgressBar(getActivity());
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, FC_URL.ROOTSTRIPE,
                 ServerResponse -> {
 
                     Log.d("ServerResponse", "Splash" + ServerResponse);
@@ -1755,6 +1763,7 @@ public class FC_CartFragment extends Fragment implements View.OnClickListener {
                         stripe = new Stripe(applicationContext, FC_Common.stripe_publickey);
                         if (FC_Common.status.equalsIgnoreCase("1"))
                         {
+                            Utils.stopProgressBar();
                             @SuppressLint("InflateParams") View view1 = getLayoutInflater().inflate(R.layout.activity_checkout, null);
                             FindViewByIdBottomDialogpayment(view1);
                             carddialog = new BottomSheetDialog(context);
@@ -1762,13 +1771,19 @@ public class FC_CartFragment extends Fragment implements View.OnClickListener {
                             carddialog.show();
 
                         }
+                        else {
+                            Utils.stopProgressBar();
+                            Utils.toast(getActivity(),getResources().getString(R.string.reach));
+                        }
 
                     } catch (JSONException e) {
+                        Utils.stopProgressBar();
                         e.printStackTrace();
                         Log.d("xcgsdgsdgsd", "dfhdf" + e);
                     }
                 }, volleyError -> {
             String value = volleyError.toString();
+            Utils.stopProgressBar();
             Log.d("dfgfdgfd","dfgsdfd"+value);
 
         }) {
@@ -1787,11 +1802,20 @@ public class FC_CartFragment extends Fragment implements View.OnClickListener {
         requestQueue.getCache().clear();
     }
 
+    @SuppressLint("SetTextI18n")
     private void FindViewByIdBottomDialogpayment(View view) {
+
         payButton = view.findViewById(R.id.payButton);
+        txt_header = view.findViewById(R.id.txt_header);
+        edt_amt = view.findViewById(R.id.edt_amt);
+        edt_amt.setEnabled(false);
         cardInputWidget = view.findViewById(R.id.cardInputWidget);
 
-        payButton.setOnClickListener(v12 -> { pay(); });
+        edt_amt.setText(FC_Common.Carttotal);
+        txt_header.setText("Total Amount To Pay");
+        payButton.setOnClickListener(v -> {
+            pay();
+        });
     }
 
     private void pay() {
@@ -1807,6 +1831,7 @@ public class FC_CartFragment extends Fragment implements View.OnClickListener {
                 // Create and confirm the PaymentIntent by calling the sample server's /pay endpoint.
                 //pay(result.id, null);
                 FC_Common.paymentid=result.id;
+                FC_Common.paymenttype="CARD";
                 Submitorder();
                // Payment(paymentid);
                 Log.d("gfhdfgdfg","dfgdfg"+result.id);

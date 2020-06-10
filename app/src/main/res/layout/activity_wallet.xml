@@ -78,8 +78,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_20sdp"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
             android:orientation="vertical">
 
             <food.user.demand.FCViews.AC_BoldTextview
@@ -106,8 +106,8 @@
             </food.user.demand.FCUtils.Loader.LoaderTextView>
             <LinearLayout
                 android:layout_marginTop="@dimen/_20ssp"
-                android:layout_marginStart="@dimen/_40ssp"
-                android:layout_marginEnd="@dimen/_20ssp"
+                android:layout_marginStart="@dimen/_10ssp"
+                android:layout_marginEnd="@dimen/_10ssp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
