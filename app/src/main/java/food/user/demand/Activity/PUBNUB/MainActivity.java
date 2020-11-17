@@ -31,10 +31,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_pubnub);
 
         driverButton =  findViewById(R.id.driverButton);
-        passengerButton = (Button) findViewById(R.id.passengerButton);
+        passengerButton =  findViewById(R.id.passengerButton);
 
         initPubnub();
-
         // Send user to Driver Activity or Passenger Activity using intents
         driverButton.setOnClickListener(new View.OnClickListener() {
             @Override
