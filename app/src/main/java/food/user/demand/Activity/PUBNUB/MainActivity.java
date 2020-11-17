@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_pubnub);
 
-        driverButton = (Button) findViewById(R.id.driverButton);
+        driverButton =  findViewById(R.id.driverButton);
         passengerButton = (Button) findViewById(R.id.passengerButton);
 
         initPubnub();
@@ -42,12 +42,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, DriverActivity.class));
             }
         });
-        passengerButton.setOnClickListener(new View.OnClickListener() {
+       /* passengerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, PassengerActivity.class));
             }
-        });
+        });*/
 
 
         if (Build.VERSION.SDK_INT == Build.VERSION_CODES.M) {
