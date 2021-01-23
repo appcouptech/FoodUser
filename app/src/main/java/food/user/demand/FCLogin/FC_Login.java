@@ -43,6 +43,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+
+import food.user.demand.Activity.Distance.Distance_new;
 import food.user.demand.FCActivity.FCDashboard.FC_DashboardActivity;
 import food.user.demand.FCActivity.FCNewUserAddressSet.FC_NewUserIntroActivity;
 import food.user.demand.FCSplash.FC_Splash;
@@ -83,11 +85,10 @@ public class FC_Login extends AppCompatActivity implements NetworkChangeReceiver
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             getWindow().getAttributes().layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
         }
-
+        Utils.adjustFontScale(FC_Login.this,getResources().getConfiguration());
         setContentView(R.layout.fc_login);
         context=FC_Login.this;
         user = FC_SharedPrefManager.getInstance(FC_Login.this).getUser();

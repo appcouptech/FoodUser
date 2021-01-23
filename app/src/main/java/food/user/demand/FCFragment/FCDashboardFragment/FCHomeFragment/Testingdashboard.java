@@ -57,6 +57,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+import food.user.demand.Activity.Distance.Distance_new;
 import food.user.demand.FCFragment.FCDashboardFragment.FCHomeFragment.FCHomeSeeAllRestaurants.Testing_item;
 import food.user.demand.FCFragment.FCDashboardFragment.FCHomeFragment.FCHomeSeeAllRestaurants.Testing_main;
 import food.user.demand.FCPojo.FCHomeFragmentObject.TestObject;
@@ -76,6 +77,7 @@ public class Testingdashboard extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.adjustFontScale(Testingdashboard.this,getResources().getConfiguration());
         setContentView(R.layout.testingdashboard);
         recyclerView=findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);

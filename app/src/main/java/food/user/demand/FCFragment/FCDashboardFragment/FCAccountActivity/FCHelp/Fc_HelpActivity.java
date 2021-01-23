@@ -17,6 +17,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
+import food.user.demand.Activity.Distance.Distance_new;
+import food.user.demand.FCViews.Utils;
 import food.user.demand.R;
 
 public class Fc_HelpActivity extends AppCompatActivity {
@@ -27,6 +29,7 @@ public class Fc_HelpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.adjustFontScale(Fc_HelpActivity.this,getResources().getConfiguration());
         setContentView(R.layout.fc_help);
         expListView =  findViewById(R.id.lvExp);
 

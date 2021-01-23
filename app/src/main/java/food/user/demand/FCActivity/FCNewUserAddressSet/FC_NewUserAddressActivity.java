@@ -78,6 +78,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
+import food.user.demand.Activity.Distance.Distance_new;
 import food.user.demand.Activity.Main2Activity;
 import food.user.demand.FCActivity.FCDashboard.FC_DashboardActivity;
 import food.user.demand.FCActivity.FCProfile.Testing;
@@ -120,6 +121,7 @@ public class FC_NewUserAddressActivity extends AppCompatActivity implements View
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.adjustFontScale(FC_NewUserAddressActivity.this,getResources().getConfiguration());
         setContentView(R.layout.fc_intro_address_activity);
         context = FC_NewUserAddressActivity.this;
         CheckPermission();

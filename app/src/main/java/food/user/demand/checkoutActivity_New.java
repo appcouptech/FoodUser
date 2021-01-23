@@ -29,6 +29,8 @@ import java.lang.reflect.Type;
 import java.util.Map;
 import java.util.Objects;
 
+import food.user.demand.Activity.Distance.Distance_new;
+import food.user.demand.FCViews.Utils;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.MediaType;
@@ -54,6 +56,7 @@ public class checkoutActivity_New extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.adjustFontScale(checkoutActivity_New.this,getResources().getConfiguration());
         setContentView(R.layout.activity_checkout__new);
         startCheckout();
     }

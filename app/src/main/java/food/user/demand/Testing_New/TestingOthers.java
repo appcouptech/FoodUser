@@ -7,6 +7,8 @@ import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import food.user.demand.Activity.Distance.Distance_new;
+import food.user.demand.FCViews.Utils;
 import food.user.demand.R;
 
 public class TestingOthers extends AppCompatActivity {
@@ -17,6 +19,7 @@ public class TestingOthers extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.adjustFontScale(TestingOthers.this,getResources().getConfiguration());
         setContentView(R.layout.activity_testing_others);
         male=(RadioButton)findViewById(R.id.male);
         female=(RadioButton)findViewById(R.id.female);

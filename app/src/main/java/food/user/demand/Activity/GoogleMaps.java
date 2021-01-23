@@ -33,6 +33,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 
+import food.user.demand.Activity.Distance.Distance_new;
+import food.user.demand.FCViews.Utils;
 import food.user.demand.R;
 
 import static com.google.android.gms.location.LocationServices.getFusedLocationProviderClient;
@@ -66,6 +68,7 @@ public class GoogleMaps extends FragmentActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.adjustFontScale(GoogleMaps.this,getResources().getConfiguration());
         setContentView(R.layout.activity_google_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()

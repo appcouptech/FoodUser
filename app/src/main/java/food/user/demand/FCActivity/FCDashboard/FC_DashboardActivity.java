@@ -85,6 +85,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
+import food.user.demand.Activity.Distance.Distance_new;
 import food.user.demand.FCFragment.FCDashboardFragment.FC_AccountFragment;
 import food.user.demand.FCFragment.FCDashboardFragment.FC_CartFragment;
 import food.user.demand.FCFragment.FCDashboardFragment.FC_ExploreFragment;
@@ -126,6 +127,7 @@ public class FC_DashboardActivity extends AppCompatActivity implements View.OnCl
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.adjustFontScale(FC_DashboardActivity.this,getResources().getConfiguration());
         setContentView(R.layout.fc_dasboard);
 
         Log.d("fghfghfdghfg","dash");

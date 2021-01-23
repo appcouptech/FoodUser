@@ -37,6 +37,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import food.user.demand.Activity.Distance.Distance_new;
 import food.user.demand.FCFragment.FCDashboardFragment.FCHomeFragmentHotelDetailsActivity.FC_HotelDetailsActivity;
 import food.user.demand.FCPojo.FCFavoritesObject.FavoritesObject;
 import food.user.demand.FCUtils.Loader.LoaderImageView;
@@ -44,6 +45,7 @@ import food.user.demand.FCUtils.Loader.LoaderTextView;
 import food.user.demand.FCViews.AC_Textview;
 import food.user.demand.FCViews.FC_Common;
 import food.user.demand.FCViews.FC_URL;
+import food.user.demand.FCViews.Utils;
 import food.user.demand.R;
 
 public class FC_FavoritesActivity extends AppCompatActivity {
@@ -62,6 +64,7 @@ public class FC_FavoritesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.adjustFontScale(FC_FavoritesActivity.this,getResources().getConfiguration());
         setContentView(R.layout.activity_fc__favorites);
         context=FC_FavoritesActivity.this;
         FindViewById();

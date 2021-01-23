@@ -33,6 +33,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import food.user.demand.Activity.Distance.Distance_new;
 import food.user.demand.FCActivity.FCProfile.FC_locationPickerActivty;
 import food.user.demand.FCPojo.FCLocationObject.LocationObject;
 import food.user.demand.FCUtils.Loader.LoaderImageView;
@@ -51,6 +52,7 @@ public class TestRecycleView extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.adjustFontScale(TestRecycleView.this,getResources().getConfiguration());
         setContentView(R.layout.text_recycleview);
 
         rv_location = findViewById(R.id.rv_location);

@@ -22,12 +22,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import food.user.demand.Activity.Distance.Distance_new;
 import food.user.demand.FCFragment.FCDashboardFragment.FCCartFragmentOrderPickActivity.FC_OrderPickedUpActivity;
 import food.user.demand.FCUtils.Loader.LoaderTextView;
 import food.user.demand.FCViews.FC_Common;
 import food.user.demand.FCViews.FC_SharedPrefManager;
 import food.user.demand.FCViews.FC_URL;
 import food.user.demand.FCViews.FC_User;
+import food.user.demand.FCViews.Utils;
 import food.user.demand.R;
 
 public class PaymentActivity extends Activity implements PaymentResultListener {
@@ -39,6 +41,7 @@ public class PaymentActivity extends Activity implements PaymentResultListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Utils.adjustFontScale(PaymentActivity.this,getResources().getConfiguration());
         setContentView(R.layout.activity_payment);
 
         Checkout.preload(getApplicationContext());

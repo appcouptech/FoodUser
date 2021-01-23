@@ -28,8 +28,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import food.user.demand.Activity.Distance.Distance_new;
 import food.user.demand.FCViews.FC_Common;
 import food.user.demand.FCViews.FC_URL;
+import food.user.demand.FCViews.Utils;
 
 public class MainActivity extends AppCompatActivity {
     private Stripe stripe;
@@ -37,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.adjustFontScale(MainActivity.this,getResources().getConfiguration());
         setContentView(R.layout.activity_checkout);
         Log.d("dgsdgsd","sdfsdf");
 

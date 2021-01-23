@@ -81,6 +81,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
+import food.user.demand.Activity.Distance.Distance_new;
 import food.user.demand.FCViews.AC_Edittext;
 import food.user.demand.FCViews.AC_Textview;
 import food.user.demand.FCViews.FC_Common;
@@ -117,6 +118,7 @@ View parentLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.adjustFontScale(FC_ManageEditAddressActivity.this,getResources().getConfiguration());
         setContentView(R.layout.fc_intro_address_activity);
 
         CheckPermission();

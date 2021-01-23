@@ -36,6 +36,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+
+import food.user.demand.Activity.Distance.Distance_new;
 import food.user.demand.FCFragment.FCDashboardFragment.FCHomeFragmentHotelDetailsActivity.FC_HotelDetailsActivity;
 import food.user.demand.FCPojo.FCSetOfHotelsOfferObjects.SetOfHotelsOfferObjects;
 import food.user.demand.FCUtils.Loader.LoaderImageView;
@@ -68,6 +70,7 @@ public class FC_SetOfHotelsOfferActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.adjustFontScale(FC_SetOfHotelsOfferActivity.this,getResources().getConfiguration());
         setContentView(R.layout.activity_fc__set_of_hotels_offer);
 context=FC_SetOfHotelsOfferActivity.this;
 

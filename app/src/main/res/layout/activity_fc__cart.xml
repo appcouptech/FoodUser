@@ -83,7 +83,8 @@
         android:text="Time Set"
         android:background="#365369"
         android:textColor="#fff"
-        android:visibility="gone"/>
+        android:visibility="gone"
+        tools:ignore="ObsoleteLayoutParam,RtlHardcoded" />
 
     <View
         android:layout_width="match_parent"
@@ -97,7 +98,7 @@
         android:layout_height="match_parent"
         android:orientation="horizontal"
         android:visibility="gone"
-        android:background="@drawable/cart_empty">
+        >
         <food.user.demand.FCViews.AC_Textview
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -107,6 +108,11 @@
             android:gravity="center">
 
         </food.user.demand.FCViews.AC_Textview>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cart_empty"/>
 
     </LinearLayout>
 

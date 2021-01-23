@@ -40,6 +40,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import food.user.demand.Activity.Distance.Distance_new;
 import food.user.demand.FCPojo.FC_Wallet.WalletObject;
 import food.user.demand.FCUtils.Loader.LoaderTextView;
 import food.user.demand.FCViews.AC_Edittext;
@@ -70,6 +71,7 @@ public class FC_Wallet extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.adjustFontScale(FC_Wallet.this,getResources().getConfiguration());
         setContentView(R.layout.activity_wallet);
         context = FC_Wallet.this;
         FC_User user = FC_SharedPrefManager.getInstance(context).getUser();

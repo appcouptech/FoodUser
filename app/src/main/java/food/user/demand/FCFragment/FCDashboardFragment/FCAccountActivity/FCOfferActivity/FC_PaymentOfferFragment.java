@@ -34,6 +34,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import food.user.demand.FCFragment.FCDashboardFragment.FCAccountActivity.FCManageAddressActivity.FC_ManagelocationPickerActivty;
 import food.user.demand.FCPojo.Fc_CouponObject.CouponObject;
 import food.user.demand.FCUtils.Loader.LoaderTextView;
 import food.user.demand.FCViews.AC_Textview;
@@ -41,6 +42,7 @@ import food.user.demand.FCViews.FC_Common;
 import food.user.demand.FCViews.FC_SharedPrefManager;
 import food.user.demand.FCViews.FC_URL;
 import food.user.demand.FCViews.FC_User;
+import food.user.demand.FCViews.Utils;
 import food.user.demand.FCViews.VerticalLabelView;
 import food.user.demand.R;
 
@@ -67,6 +69,7 @@ private FrameLayout ll_frame;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        Utils.adjustFontScale(Objects.requireNonNull(getActivity()),getResources().getConfiguration());
         return inflater.inflate(R.layout.fragment_fc__payment_offer, container, false);
     }
 

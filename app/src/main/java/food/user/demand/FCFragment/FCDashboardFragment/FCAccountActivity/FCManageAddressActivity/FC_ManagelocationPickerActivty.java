@@ -38,6 +38,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+
+import food.user.demand.Activity.Distance.Distance_new;
 import food.user.demand.FCPojo.FCLocationObject.LocationObject;
 import food.user.demand.FCUtils.Loader.LoaderImageView;
 import food.user.demand.FCUtils.Loader.LoaderTextView;
@@ -63,7 +65,7 @@ public class FC_ManagelocationPickerActivty extends AppCompatActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        Utils.adjustFontScale(FC_ManagelocationPickerActivty.this,getResources().getConfiguration());
         setContentView(R.layout.fc_location_picker_activity);
         String apiKey = "AIzaSyBHMt8kGGgqUc11TluyJOgMrqFJfdaPbYQ";
 

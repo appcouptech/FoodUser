@@ -28,6 +28,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+
+import food.user.demand.Activity.Distance.Distance_new;
 import food.user.demand.FCPojo.FCManageAddress.ManageAddressObject;
 import food.user.demand.FCUtils.Loader.LoaderImageView;
 import food.user.demand.FCViews.AC_Textview;
@@ -50,6 +52,7 @@ public class FC_ManageAddressActivity extends AppCompatActivity implements View.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.adjustFontScale(FC_ManageAddressActivity.this,getResources().getConfiguration());
         setContentView(R.layout.activity_fc__manage_address);
         context=FC_ManageAddressActivity.this;
 

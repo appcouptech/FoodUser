@@ -26,12 +26,14 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import food.user.demand.Activity.Distance.Distance_new;
 import food.user.demand.FCLogin.FC_Login;
 import food.user.demand.FCViews.AC_Textview;
 import food.user.demand.FCViews.FC_Common;
 import food.user.demand.FCViews.FC_SharedPrefManager;
 import food.user.demand.FCViews.FC_URL;
 import food.user.demand.FCViews.FC_User;
+import food.user.demand.FCViews.Utils;
 import food.user.demand.R;
 
 public class FC_ReferralsActivity extends AppCompatActivity {
@@ -45,6 +47,7 @@ public class FC_ReferralsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.adjustFontScale(FC_ReferralsActivity.this,getResources().getConfiguration());
         setContentView(R.layout.activity_fc__referrals);
 
         context= FC_ReferralsActivity.this;

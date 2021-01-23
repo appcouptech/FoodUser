@@ -15,9 +15,11 @@ import android.widget.ImageView;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.tabs.TabLayout;
 
+import food.user.demand.Activity.Distance.Distance_new;
 import food.user.demand.FCFragment.FCDashboardFragment.FCAccountActivity.FCOfferActivity.FC_PaymentOfferFragment;
 import food.user.demand.FCFragment.FCDashboardFragment.FCAccountActivity.FCOfferActivity.FC_RestaurantOfferFragment;
 import food.user.demand.FCViews.FC_Common;
+import food.user.demand.FCViews.Utils;
 import food.user.demand.R;
 
 public class FC_OffersActivity extends AppCompatActivity {
@@ -31,6 +33,7 @@ public class FC_OffersActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.adjustFontScale(FC_OffersActivity.this,getResources().getConfiguration());
         setContentView(R.layout.activity_fc__offers);
 
         FindViewById();

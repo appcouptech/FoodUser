@@ -74,6 +74,8 @@ import java.util.List;
 import java.util.Objects;
 
 
+import food.user.demand.Activity.Distance.Distance_new;
+import food.user.demand.FCViews.Utils;
 import food.user.demand.R;
 
 public class AutoAlertWithMapTravel extends AppCompatActivity implements OnMapReadyCallback {
@@ -104,6 +106,7 @@ public class AutoAlertWithMapTravel extends AppCompatActivity implements OnMapRe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.adjustFontScale(AutoAlertWithMapTravel.this,getResources().getConfiguration());
         setContentView(R.layout.activity_auto_alert_with_map_travel);
 
         handler = new Handler();

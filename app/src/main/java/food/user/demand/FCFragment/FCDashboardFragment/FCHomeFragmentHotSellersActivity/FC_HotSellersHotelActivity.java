@@ -40,6 +40,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+
+import food.user.demand.Activity.Distance.Distance_new;
 import food.user.demand.FCFragment.FCDashboardFragment.FCHomeFragmentHotelDetailsActivity.FC_HotelDetailsActivity;
 import food.user.demand.FCPojo.FCHotSellersHotelActivityObject.HotSellersHotelObject;
 import food.user.demand.FCUtils.Loader.LoaderImageView;
@@ -67,6 +69,7 @@ public class FC_HotSellersHotelActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.adjustFontScale(FC_HotSellersHotelActivity.this,getResources().getConfiguration());
         setContentView(R.layout.fc_home_see_all_restaurants);
         context=FC_HotSellersHotelActivity.this;
         inputMgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);

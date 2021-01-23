@@ -52,6 +52,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+import food.user.demand.Activity.Distance.Distance_new;
 import food.user.demand.FCActivity.FCCartActivity.FC_CartActivity;
 import food.user.demand.FCFragment.FCDashboardFragment.FCHomeFragmentHotelDetailsActivity.FCSearchFragment.FC_SearchHotelDetailsFragment;
 import food.user.demand.FCPojo.FCHomeFragmentObject.TestObject;
@@ -89,6 +90,7 @@ public class RecyclerViewActivity extends AppCompatActivity  implements View.OnC
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.adjustFontScale(RecyclerViewActivity.this,getResources().getConfiguration());
         setContentView(R.layout.activity_fc__hotel_details);
         context=RecyclerViewActivity.this;
         fragmentManagerHotelDetailsActiviy = getSupportFragmentManager();

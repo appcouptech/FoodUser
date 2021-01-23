@@ -33,6 +33,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
+import food.user.demand.Activity.Distance.Distance_new;
+import food.user.demand.FCViews.Utils;
 import food.user.demand.R;
 import io.reactivex.annotations.NonNull;
 
@@ -49,6 +51,7 @@ public class TestActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.adjustFontScale(TestActivity.this,getResources().getConfiguration());
         setContentView(R.layout.activity_test);
         startLocationUpdates();
     }

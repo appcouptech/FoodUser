@@ -34,6 +34,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import food.user.demand.Activity.Distance.Distance_new;
 import food.user.demand.FCPojo.Fc_CouponObject.CouponObject;
 import food.user.demand.FCUtils.Loader.LoaderTextView;
 import food.user.demand.FCViews.AC_Edittext;
@@ -42,6 +43,7 @@ import food.user.demand.FCViews.FC_Common;
 import food.user.demand.FCViews.FC_SharedPrefManager;
 import food.user.demand.FCViews.FC_URL;
 import food.user.demand.FCViews.FC_User;
+import food.user.demand.FCViews.Utils;
 import food.user.demand.FCViews.VerticalLabelView;
 import food.user.demand.R;
 
@@ -60,6 +62,7 @@ public class Fc_Coupon extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.adjustFontScale(Fc_Coupon.this,getResources().getConfiguration());
         setContentView(R.layout.fc_coupon);
 
         context = Fc_Coupon.this ;

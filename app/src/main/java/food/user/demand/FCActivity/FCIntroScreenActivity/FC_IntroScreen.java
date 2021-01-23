@@ -15,7 +15,9 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import food.user.demand.Activity.Distance.Distance_new;
 import food.user.demand.FCLogin.FC_Login;
+import food.user.demand.FCViews.Utils;
 import food.user.demand.R;
 
 public class FC_IntroScreen extends AppCompatActivity {
@@ -31,6 +33,7 @@ public class FC_IntroScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.adjustFontScale(FC_IntroScreen.this,getResources().getConfiguration());
         setContentView(R.layout.activity_intro_screen);
 
         FindViewByID();

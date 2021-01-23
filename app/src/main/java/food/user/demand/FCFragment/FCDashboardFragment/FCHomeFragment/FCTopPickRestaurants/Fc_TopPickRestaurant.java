@@ -43,6 +43,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import food.user.demand.Activity.Distance.Distance_new;
 import food.user.demand.FCActivity.FCCartActivity.FC_CartActivity;
 import food.user.demand.FCFragment.FCDashboardFragment.FCHomeFragmentItemActivity.FC_ItemActivity;
 import food.user.demand.FCPojo.FCTopPickObject.TopPickObject;
@@ -84,6 +85,7 @@ public class Fc_TopPickRestaurant extends AppCompatActivity implements  BottomDi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.adjustFontScale(Fc_TopPickRestaurant.this,getResources().getConfiguration());
         setContentView(R.layout.fc_home_toppick);
         context= Fc_TopPickRestaurant.this;
         inputMgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);

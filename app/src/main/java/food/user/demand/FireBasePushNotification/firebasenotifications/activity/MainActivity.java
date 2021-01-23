@@ -16,6 +16,8 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.google.firebase.messaging.FirebaseMessaging;
 
+import food.user.demand.Activity.Distance.Distance_new;
+import food.user.demand.FCViews.Utils;
 import food.user.demand.FireBasePushNotification.firebasenotifications.app.Config;
 import food.user.demand.FireBasePushNotification.firebasenotifications.util.NotificationUtils;
 import food.user.demand.R;
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.adjustFontScale(MainActivity.this,getResources().getConfiguration());
         setContentView(R.layout.test_mainactivity);
 
         Log.d("gsdgsdfds","dfsdfsdf");

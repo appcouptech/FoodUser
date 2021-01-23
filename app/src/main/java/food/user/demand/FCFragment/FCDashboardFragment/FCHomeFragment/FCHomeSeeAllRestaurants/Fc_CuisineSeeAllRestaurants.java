@@ -42,6 +42,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import food.user.demand.Activity.Distance.Distance_new;
 import food.user.demand.FCFragment.FCDashboardFragment.FCHomeFragmentHotelDetailsActivity.FC_HotelDetailsActivity;
 import food.user.demand.FCPojo.FCHomeFragmentObject.AllRestaurantObject;
 import food.user.demand.FCUtils.Loader.LoaderImageView;
@@ -67,6 +68,7 @@ public class Fc_CuisineSeeAllRestaurants extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.adjustFontScale(Fc_CuisineSeeAllRestaurants.this,getResources().getConfiguration());
         setContentView(R.layout.fc_home_see_all_restaurants);
         context= Fc_CuisineSeeAllRestaurants.this;
         inputMgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);

@@ -32,6 +32,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import food.user.demand.FCViews.Utils;
 import food.user.demand.R;
 
 public class Distance_new extends FragmentActivity implements OnMapReadyCallback {
@@ -43,6 +44,7 @@ public class Distance_new extends FragmentActivity implements OnMapReadyCallback
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.adjustFontScale(Distance_new.this,getResources().getConfiguration());
         setContentView(R.layout.activity_google_maps);
 
        // tvDistanceDuration = (TextView) findViewById(R.id.tv_distance_time);

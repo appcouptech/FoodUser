@@ -45,6 +45,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+import food.user.demand.Activity.Distance.Distance_new;
 import food.user.demand.FCPojo.FCHotelDetailsActivityObject.ItemViewOrderObject;
 import food.user.demand.FCPojo.FCOrderHistoryObject.OrderHistoryObject;
 import food.user.demand.FCUtils.Loader.LoaderCircluarImageView;
@@ -76,6 +77,7 @@ public class FC_OrderHistoryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.adjustFontScale(FC_OrderHistoryActivity.this,getResources().getConfiguration());
         setContentView(R.layout.fragment_fc__order_history);
         context=FC_OrderHistoryActivity.this;
         FindViewById();

@@ -56,6 +56,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import food.user.demand.Activity.Distance.Distance_new;
 import food.user.demand.FCFragment.FCDashboardFragment.FCCartFragmentOrderPickActivity.FC_OrderPickedUpActivity;
 import food.user.demand.FCFragment.FCDashboardFragment.FC_Couponcode.Fc_Coupon;
 import food.user.demand.FCPojo.FCCartActivityObject.CartActivityObject;
@@ -112,6 +113,7 @@ public class FC_CartActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.adjustFontScale(FC_CartActivity.this,getResources().getConfiguration());
         setContentView(R.layout.activity_fc__cart);
         context = FC_CartActivity.this ;
         FindViewById();

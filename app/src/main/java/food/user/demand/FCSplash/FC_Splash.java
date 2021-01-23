@@ -37,6 +37,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import food.user.demand.Activity.Distance.Distance_new;
 import food.user.demand.FCActivity.FCDashboard.FC_DashboardActivity;
 import food.user.demand.FCActivity.FCIntroScreenActivity.FC_IntroScreen;
 import food.user.demand.FCActivity.FCProfile.FC_IntroAddressActivity;
@@ -68,6 +69,7 @@ public class FC_Splash extends AppCompatActivity implements NetworkChangeReceive
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.adjustFontScale(FC_Splash.this,getResources().getConfiguration());
         setContentView(R.layout.fc_splash);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);

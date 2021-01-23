@@ -100,6 +100,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+import food.user.demand.Activity.Distance.Distance_new;
 import food.user.demand.Activity.HttpConnection;
 import food.user.demand.Activity.PathJSONParser;
 import food.user.demand.FCActivity.FCDashboard.FC_DashboardActivity;
@@ -162,6 +163,7 @@ Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.adjustFontScale(FC_OrderPickedUpActivity.this,getResources().getConfiguration());
         setContentView(R.layout.activity_fc__order_picked_up);
         context=FC_OrderPickedUpActivity.this;
         FindViewById();

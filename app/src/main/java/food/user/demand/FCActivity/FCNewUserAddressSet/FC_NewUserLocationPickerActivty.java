@@ -17,9 +17,12 @@ import com.google.android.libraries.places.widget.listener.PlaceSelectionListene
 import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import food.user.demand.Activity.Distance.Distance_new;
 import food.user.demand.FCPojo.FCLocationObject.LocationObject;
 import food.user.demand.FCViews.AC_Textview;
 import food.user.demand.FCViews.FC_Common;
+import food.user.demand.FCViews.Utils;
 import food.user.demand.R;
 
 public class FC_NewUserLocationPickerActivty extends AppCompatActivity implements View.OnClickListener{
@@ -35,7 +38,7 @@ public class FC_NewUserLocationPickerActivty extends AppCompatActivity implement
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        Utils.adjustFontScale(FC_NewUserLocationPickerActivty.this,getResources().getConfiguration());
         setContentView(R.layout.fc_location_picker_activity);
         String apiKey = "AIzaSyBHMt8kGGgqUc11TluyJOgMrqFJfdaPbYQ";
 

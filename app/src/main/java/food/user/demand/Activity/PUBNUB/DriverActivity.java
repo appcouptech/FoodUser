@@ -17,7 +17,9 @@ import com.pubnub.api.models.consumer.PNStatus;
 
 import java.util.LinkedHashMap;
 
+import food.user.demand.Activity.Distance.Distance_new;
 import food.user.demand.Activity.PUBNUB.util.Constants;
+import food.user.demand.FCViews.Utils;
 import food.user.demand.R;
 
 public class DriverActivity extends AppCompatActivity {
@@ -29,6 +31,7 @@ public class DriverActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.adjustFontScale(DriverActivity.this,getResources().getConfiguration());
         setContentView(R.layout.activity_driver);
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);

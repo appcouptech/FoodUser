@@ -30,6 +30,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import food.user.demand.Activity.Distance.Distance_new;
 import food.user.demand.FCPojo.FCLocationObject.LocationObject;
 import food.user.demand.FCViews.FC_Common;
 import food.user.demand.FCViews.FC_URL;
@@ -45,6 +46,7 @@ public class Testing extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.adjustFontScale(Testing.this,getResources().getConfiguration());
         setContentView(R.layout.activity_testing);
         rv_savedaddress=findViewById(R.id.rv_savedaddress);
 

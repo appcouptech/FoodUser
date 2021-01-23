@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import food.user.demand.Activity.Distance.Distance_new;
 import food.user.demand.FCViews.Utils;
 import food.user.demand.Testing_New.Call;
 import food.user.demand.Testing_New.Description;
@@ -75,6 +76,7 @@ public class FC_SearchHotelDetailsActivity extends AppCompatActivity implements 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.adjustFontScale(FC_SearchHotelDetailsActivity.this,getResources().getConfiguration());
         setContentView(R.layout.fragment_fc__search_hotel_details);
         context=FC_SearchHotelDetailsActivity.this;
         FindViewbyId();

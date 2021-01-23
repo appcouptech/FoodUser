@@ -56,6 +56,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+import food.user.demand.Activity.Distance.Distance_new;
 import food.user.demand.FCActivity.FCCartActivity.FC_CartActivity;
 import food.user.demand.FCFragment.FCDashboardFragment.FCHomeFragmentHotelDetailsActivity.FCSearchFragment.FC_SearchHotelDetailsActivity;
 import food.user.demand.FCPojo.FCHotelDetailsActivityObject.MenuListObject;
@@ -107,6 +108,7 @@ public class FC_HotelDetailsActivity extends AppCompatActivity implements View.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.adjustFontScale(FC_HotelDetailsActivity.this,getResources().getConfiguration());
         setContentView(R.layout.activity_fc__hotel_details);
         context = FC_HotelDetailsActivity.this;
         fragmentManagerHotelDetailsActiviy = getSupportFragmentManager();
@@ -587,6 +589,7 @@ public class FC_HotelDetailsActivity extends AppCompatActivity implements View.O
         if (addcheck == 1) {
             //init();
             AllRestaurantList();
+            Log.d("fdhdfhgfd","dfgsdfgsd"+addcheck);
         }
         else if (addcheck == 2){
             @SuppressLint("InflateParams")
@@ -971,6 +974,13 @@ public class FC_HotelDetailsActivity extends AppCompatActivity implements View.O
                 // Attach values for each item
                 //String categoryname   =header.getCategoryname();
                 txt_header.setText(header.getCategoryname());
+                txt_header.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Log.d("dfhdfgdf","Dfghsdfsd");
+
+                    }
+                });
 
             }
         }

@@ -139,7 +139,7 @@ public class FC_AccountFragment extends Fragment implements View.OnClickListener
    private List<ItemViewOrderObject> Listvalues = new ArrayList<>();
     private ItemViewOrderObject ListDatas;
     private AC_Textview txt_emptyview;
-    private AC_Textview txt_myAccount;
+
     private AC_Textview txt_saveBtn;
     private AC_Textview edt_mobile;
     private AC_Textview txt_submit;
@@ -169,6 +169,7 @@ public class FC_AccountFragment extends Fragment implements View.OnClickListener
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        Utils.adjustFontScale(Objects.requireNonNull(getActivity()),getResources().getConfiguration());
         return inflater.inflate(R.layout.fragment_fc__account, container, false);
     }
 
@@ -227,7 +228,7 @@ public class FC_AccountFragment extends Fragment implements View.OnClickListener
         LinearLayout ll_manageAddress = view.findViewById(R.id.ll_manageAddress);
         LinearLayout ll_orderHistory = view.findViewById(R.id.ll_orderHistory);
         LinearLayout ll_pendingOrders = view.findViewById(R.id.ll_pendingOrders);
-        txt_myAccount = view.findViewById(R.id.txt_myAccount);
+       AC_Textview txt_myAccount = view.findViewById(R.id.txt_myAccount);
         txt_userName = view.findViewById(R.id.txt_userName);
         txt_mobileEmail = view.findViewById(R.id.txt_mobileEmail);
         rv_pastOrders = view.findViewById(R.id.rv_pastOrders);
@@ -291,6 +292,7 @@ public class FC_AccountFragment extends Fragment implements View.OnClickListener
         super.onResume();
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
 
@@ -299,7 +301,7 @@ public class FC_AccountFragment extends Fragment implements View.OnClickListener
 
             case R.id.txt_myAccount:
 
-                txt_myAccount.setOnClickListener(view13 -> {
+
 
                     if (ll_myAccountExpandable.getVisibility() == View.VISIBLE) {
 
@@ -322,13 +324,13 @@ public class FC_AccountFragment extends Fragment implements View.OnClickListener
                             img_myAccountTop.setVisibility(View.GONE);
 
                         });
-                    }                    });
+                    }
 
                 break;
 
             case R.id.ll_myAccount:
 
-                ll_myAccount.setOnClickListener(view14 -> {
+
 
                     if (ll_myAccountExpandable.getVisibility() == View.VISIBLE) {
 
@@ -351,12 +353,12 @@ public class FC_AccountFragment extends Fragment implements View.OnClickListener
                             img_myAccountTop.setVisibility(View.GONE);
 
                         });
-                    }                    });
+                    }
 
                 break;
             case R.id.img_myAccountRight:
 
-                img_myAccountRight.setOnClickListener(view12 -> {
+
 
                     img_myAccountRight.setVisibility(View.GONE);
                     img_myAccountTop.setVisibility(View.VISIBLE);
@@ -369,7 +371,7 @@ public class FC_AccountFragment extends Fragment implements View.OnClickListener
                         img_myAccountTop.setVisibility(View.GONE);
 
                     });
-                });
+
 
                 break;
 

@@ -63,6 +63,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import food.user.demand.Activity.Distance.Distance_new;
 import food.user.demand.FCLogin.FC_Login;
 import food.user.demand.FCViews.AC_Edittext;
 import food.user.demand.FCViews.CircleImageView;
@@ -104,6 +105,7 @@ public class FC_NewUserIntroActivity extends AppCompatActivity implements View.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.adjustFontScale(FC_NewUserIntroActivity.this,getResources().getConfiguration());
         setContentView(R.layout.fc_intro_profile);
 
 

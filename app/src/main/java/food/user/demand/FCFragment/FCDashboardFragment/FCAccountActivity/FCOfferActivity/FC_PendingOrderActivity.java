@@ -75,6 +75,7 @@ public class FC_PendingOrderActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.adjustFontScale(FC_PendingOrderActivity.this,getResources().getConfiguration());
         setContentView(R.layout.fragment_fc__order_history);
         context= FC_PendingOrderActivity.this;
         FindViewById();

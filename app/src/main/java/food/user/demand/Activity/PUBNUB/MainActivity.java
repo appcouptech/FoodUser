@@ -15,19 +15,19 @@ import androidx.core.content.ContextCompat;
 import com.pubnub.api.PNConfiguration;
 import com.pubnub.api.PubNub;
 
+import food.user.demand.Activity.Distance.Distance_new;
 import food.user.demand.Activity.PUBNUB.util.Constants;
+import food.user.demand.FCViews.Utils;
 import food.user.demand.R;
 
 
 public class MainActivity extends AppCompatActivity {
-
     public static PubNub pubnub; // Pubnub instance
-
     Button driverButton, passengerButton; // Buttons that redirect user to proper view
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.adjustFontScale(MainActivity.this,getResources().getConfiguration());
         setContentView(R.layout.activity_new_pubnub);
 
         driverButton =  findViewById(R.id.driverButton);

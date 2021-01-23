@@ -52,6 +52,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import food.user.demand.Activity.Distance.Distance_new;
 import food.user.demand.FCFragment.FCDashboardFragment.FCCartFragmentOrderPickActivity.FC_OrderPickedUpActivity;
 import food.user.demand.FCFragment.FCDashboardFragment.FCHomeFragmentHotelDetailsActivity.FC_HotelDetailsActivity;
 import food.user.demand.FCPojo.FCHomeFragmentViewOnMapObject.FC_ViewOnMapObject;
@@ -62,6 +63,7 @@ import food.user.demand.FCViews.FC_Common;
 import food.user.demand.FCViews.FC_SharedPrefManager;
 import food.user.demand.FCViews.FC_URL;
 import food.user.demand.FCViews.FC_User;
+import food.user.demand.FCViews.Utils;
 import food.user.demand.R;
 
 public class FC_ViewOnMapActivity extends AppCompatActivity  implements OnMapReadyCallback {
@@ -80,6 +82,7 @@ public class FC_ViewOnMapActivity extends AppCompatActivity  implements OnMapRea
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.adjustFontScale(FC_ViewOnMapActivity.this,getResources().getConfiguration());
         setContentView(R.layout.activity_fc__view_on_map);
 
         context=FC_ViewOnMapActivity.this;

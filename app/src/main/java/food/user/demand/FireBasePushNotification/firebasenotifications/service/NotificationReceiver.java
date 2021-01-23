@@ -6,10 +6,8 @@ import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.util.Log;
-
 import androidx.legacy.content.WakefulBroadcastReceiver;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-
 import food.user.demand.FireBasePushNotification.firebasenotifications.app.Config;
 import food.user.demand.FireBasePushNotification.firebasenotifications.util.NotificationUtils;
 

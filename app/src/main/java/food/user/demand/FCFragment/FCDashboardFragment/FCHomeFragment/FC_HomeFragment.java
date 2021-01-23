@@ -39,6 +39,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+
+import food.user.demand.FCActivity.FCCartActivity.FC_CartAddressActivity;
 import food.user.demand.FCActivity.FCProfile.FC_locationPickerActivty;
 import food.user.demand.FCFragment.FCDashboardFragment.FCAccountActivity.FC_OffersActivity;
 import food.user.demand.FCFragment.FCDashboardFragment.FCCartFragmentOrderPickActivity.FC_OrderPickedUpActivity;
@@ -127,6 +129,7 @@ public class FC_HomeFragment extends Fragment implements View.OnClickListener ,B
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        Utils.adjustFontScale(getActivity(),getResources().getConfiguration());
         return inflater.inflate(R.layout.fragment_fc__home, container, false);
 
     }
@@ -533,7 +536,6 @@ public class FC_HomeFragment extends Fragment implements View.OnClickListener ,B
                 orderdialog.setContentView(view1);
                 orderdialog.show();
                 break;
-
         }
     }
     //GreatOffer Async Task Start//

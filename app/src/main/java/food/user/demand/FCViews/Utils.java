@@ -10,10 +10,12 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -31,6 +33,8 @@ import java.io.InputStream;
 import java.util.Locale;
 
 import food.user.demand.R;
+
+import static android.content.Context.WINDOW_SERVICE;
 
 public class Utils {
     public static final String id = "id";
@@ -346,6 +350,16 @@ public class Utils {
         } else {
             return false;
         }
+    }
+
+    public static void adjustFontScale(final Activity context,Configuration configuration)
+    {
+        configuration.fontScale = (float) 1.0;
+        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+        WindowManager wm = (WindowManager) context.getSystemService(WINDOW_SERVICE);
+        wm.getDefaultDisplay().getMetrics(metrics);
+        metrics.scaledDensity = configuration.fontScale * metrics.density;
+        context.getResources().updateConfiguration(configuration, metrics);
     }
 
 }

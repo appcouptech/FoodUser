@@ -35,6 +35,8 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
+
+import food.user.demand.Activity.Distance.Distance_new;
 import food.user.demand.FCFragment.FCDashboardFragment.FCHomeFragmentHotelDetailsActivity.FC_HotelDetailsActivity;
 import food.user.demand.FCPojo.FCExploreFragmentObject.RecentSearchObject;
 import food.user.demand.FCPojo.FCExploreFragmentObject.SearchObject;
@@ -61,6 +63,7 @@ public class FC_SearchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.adjustFontScale(FC_SearchActivity.this,getResources().getConfiguration());
         setContentView(R.layout.fragment_fc__explore);
         context=FC_SearchActivity.this;
         FindViewById();

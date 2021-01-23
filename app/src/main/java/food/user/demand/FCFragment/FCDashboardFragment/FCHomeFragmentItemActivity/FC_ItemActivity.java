@@ -32,6 +32,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import food.user.demand.Activity.Distance.Distance_new;
 import food.user.demand.FCActivity.FCCartActivity.FC_CartActivity;
 import food.user.demand.FCUtils.BottomDailog.BottomDialogFragmentAddonProducts;
 import food.user.demand.FCUtils.Loader.LoaderTextView;
@@ -69,6 +70,7 @@ public class FC_ItemActivity extends AppCompatActivity implements View.OnClickLi
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             getWindow().getAttributes().layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
         }
+        Utils.adjustFontScale(FC_ItemActivity.this,getResources().getConfiguration());
         setContentView(R.layout.activity_item);
 
         context=FC_ItemActivity.this;

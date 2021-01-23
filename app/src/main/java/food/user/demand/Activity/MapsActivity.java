@@ -31,6 +31,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.List;
 
+import food.user.demand.Activity.Distance.Distance_new;
+import food.user.demand.FCViews.Utils;
 import food.user.demand.R;
 
 public class MapsActivity extends AppCompatActivity
@@ -46,6 +48,7 @@ public class MapsActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.adjustFontScale(MapsActivity.this,getResources().getConfiguration());
         setContentView(R.layout.activity_maps);
 
         getSupportActionBar().setTitle("Map Location Activity");
