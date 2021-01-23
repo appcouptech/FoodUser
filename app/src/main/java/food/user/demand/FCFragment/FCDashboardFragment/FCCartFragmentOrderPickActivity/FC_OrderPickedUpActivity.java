@@ -608,7 +608,7 @@ Context context;
                                 txt_driver.setText(FC_Common.ordername);
 
                                 img_driver_call.setOnClickListener(v -> {
-                                    if (Build.VERSION.SDK_INT < 23) {
+                                   /* if (Build.VERSION.SDK_INT < 23) {
                                         phoneCall();
                                     } else {
                                         if (ActivityCompat.checkSelfPermission(FC_OrderPickedUpActivity.this,
@@ -618,7 +618,10 @@ Context context;
                                             final String[] PERMISSIONS_STORAGE = {Manifest.permission.CALL_PHONE};
                                             ActivityCompat.requestPermissions(FC_OrderPickedUpActivity.this, PERMISSIONS_STORAGE, 9);
                                         }
-                                    }
+                                    }*/
+                                    Intent inSOS = new Intent(Intent.ACTION_DIAL);
+                                    inSOS.setData(Uri.parse("tel:" + FC_Common.ordermobile));
+                                    startActivity(inSOS);
                                 });
                             }
 
@@ -675,7 +678,7 @@ Context context;
                                 txt_driver.setText(FC_Common.ordername);
 
                                 img_driver_call.setOnClickListener(v -> {
-                                    if (Build.VERSION.SDK_INT < 23) {
+                                    /*if (Build.VERSION.SDK_INT < 23) {
                                         phoneCall();
                                     } else {
                                         if (ActivityCompat.checkSelfPermission(FC_OrderPickedUpActivity.this,
@@ -685,7 +688,12 @@ Context context;
                                             final String[] PERMISSIONS_STORAGE = {Manifest.permission.CALL_PHONE};
                                             ActivityCompat.requestPermissions(FC_OrderPickedUpActivity.this, PERMISSIONS_STORAGE, 9);
                                         }
-                                    }
+                                    }*/
+
+                                    Intent inSOS = new Intent(Intent.ACTION_DIAL);
+                                    inSOS.setData(Uri.parse("tel:" + FC_Common.ordermobile));
+                                    startActivity(inSOS);
+
                                 });
 
                                 FucedLocation();
@@ -879,7 +887,7 @@ Context context;
         timerThread.start();
     }
 
-    private void phoneCall() {
+    /*private void phoneCall() {
 
         if (ActivityCompat.checkSelfPermission(context,
                 Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
@@ -889,7 +897,7 @@ Context context;
         } else {
             snackBar("You don't assign permission.");
         }
-    }
+    }*/
 
     private void enableLoc() {
 
