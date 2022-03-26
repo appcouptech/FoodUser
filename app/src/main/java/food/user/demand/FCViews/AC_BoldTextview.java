@@ -11,19 +11,19 @@ import android.widget.TextView;
 public class AC_BoldTextview extends TextView {
     public AC_BoldTextview(Context context) {
         super(context);
-        Typeface face=Typeface.createFromAsset(context.getAssets(), "fonts/RobotoSlab-Bold.ttf");
+        Typeface face=Typeface.createFromAsset(context.getAssets(), "fonts/SourceSansPro-Bold.ttf");
         this.setTypeface(face);
     }
 
     public AC_BoldTextview(Context context, AttributeSet attrs) {
         super(context, attrs);
-        Typeface face=Typeface.createFromAsset(context.getAssets(), "fonts/RobotoSlab-Bold.ttf");
+        Typeface face=Typeface.createFromAsset(context.getAssets(), "fonts/SourceSansPro-Bold.ttf");
         this.setTypeface(face);
     }
 
     public AC_BoldTextview(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        Typeface face=Typeface.createFromAsset(context.getAssets(), "fonts/RobotoSlab-Bold.ttf");
+        Typeface face=Typeface.createFromAsset(context.getAssets(), "fonts/SourceSansPro-Bold.ttf");
         this.setTypeface(face);
     }
 

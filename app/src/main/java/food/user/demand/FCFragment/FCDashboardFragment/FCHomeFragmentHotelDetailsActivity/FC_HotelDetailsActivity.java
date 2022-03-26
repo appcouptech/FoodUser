@@ -385,11 +385,22 @@ public class FC_HotelDetailsActivity extends AppCompatActivity implements View.O
                             vector_android_button.setLikeDrawable(getResources().getDrawable(R.drawable.favorites));
                             vector_android_button.setUnlikeDrawable(getResources().getDrawable(R.drawable.favorites));
                         }
-                        if (FC_Common.dish_id.equalsIgnoreCase("1")) {
+
+
+                        if (FC_Common.dish_id.equalsIgnoreCase("1"))
+                        {
                             ll_vegNonVegType.setVisibility(View.GONE);
                             img_VegNonVeg.setBackgroundResource(R.drawable.veg);
                         } else {
                             ll_vegNonVegType.setVisibility(View.VISIBLE);
+                            img_VegNonVeg.setBackgroundResource(R.drawable.non_veg);
+                        }
+
+                        if (FC_Common.typeNonVeg.equalsIgnoreCase("1"))
+                        {
+                            img_VegNonVeg.setBackgroundResource(R.drawable.veg);
+                        }
+                        else {
                             img_VegNonVeg.setBackgroundResource(R.drawable.non_veg);
                         }
 

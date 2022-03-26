@@ -12,19 +12,19 @@ public class AC_Edittext extends EditText {
 
     public AC_Edittext(Context context) {
         super(context);
-        Typeface face=Typeface.createFromAsset(context.getAssets(), "fonts/RobotoSlab-Regular.ttf");
+        Typeface face=Typeface.createFromAsset(context.getAssets(), "fonts/SourceSansPro-Regular.ttf");
         this.setTypeface(face);
     }
 
     public AC_Edittext(Context context, AttributeSet attrs) {
         super(context, attrs);
-        Typeface face=Typeface.createFromAsset(context.getAssets(), "fonts/RobotoSlab-Regular.ttf");
+        Typeface face=Typeface.createFromAsset(context.getAssets(), "fonts/SourceSansPro-Regular.ttf");
         this.setTypeface(face);
     }
 
     public AC_Edittext(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        Typeface face=Typeface.createFromAsset(context.getAssets(), "fonts/RobotoSlab-Regular.ttf");
+        Typeface face=Typeface.createFromAsset(context.getAssets(), "fonts/SourceSansPro-Regular.ttf");
         this.setTypeface(face);
     }
 

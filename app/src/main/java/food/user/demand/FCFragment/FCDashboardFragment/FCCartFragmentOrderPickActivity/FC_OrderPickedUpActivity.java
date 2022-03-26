@@ -253,8 +253,8 @@ Context context;
 
         }*/
 
-      /*  handler = new Handler();
-        int delay = 30000; //milliseconds
+        handler = new Handler();
+        int delay = 15000; //milliseconds
         handler.postDelayed(new Runnable() {
             public void run() {
                 //do something
@@ -264,8 +264,8 @@ Context context;
                 // ItemViewList();
                 handler.postDelayed(this, delay);
             }
-        }, delay);*/
-        OrderConfirm();
+        }, delay);
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
        // dbRef = database.getReference("/dev/drivers");
         dbRef = database.getReference("/foodcoup/dev/drivers"+FC_Common.orderdriver_id);
@@ -982,15 +982,7 @@ Context context;
         mLocationRequest.setFastestInterval(24000);
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
         mLocationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
-        /*if (FC_Common.endU_status.equalsIgnoreCase("CANCELLED"))
-        {
-            Log.e("TAG", "Gps already enabled");
-        }
-        else
-        {
-            OrderConfirm();
 
-        }*/
         OrderConfirm();
 
     }
@@ -1050,15 +1042,7 @@ Context context;
                 }
 
                 driverlocation();
-              /*  if (FC_Common.endU_status.equalsIgnoreCase("CANCELLED"))
-                {
-                    Log.e("TAG", "Gps already enabled");
-                }
-                else
-                {
-                    OrderConfirm();
 
-                }*/
                 OrderConfirm();
             }
         }

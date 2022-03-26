@@ -13,19 +13,19 @@ public class AC_Textview extends TextView {
 
     public AC_Textview(Context context) {
         super(context);
-        Typeface face=Typeface.createFromAsset(context.getAssets(), "fonts/RobotoSlab-Regular.ttf");
+        Typeface face=Typeface.createFromAsset(context.getAssets(), "fonts/SourceSansPro-Regular.ttf");
         this.setTypeface(face);
     }
 
     public AC_Textview(Context context, AttributeSet attrs) {
         super(context, attrs);
-        Typeface face=Typeface.createFromAsset(context.getAssets(), "fonts/RobotoSlab-Regular.ttf");
+        Typeface face=Typeface.createFromAsset(context.getAssets(), "fonts/SourceSansPro-Regular.ttf");
         this.setTypeface(face);
     }
 
     public AC_Textview(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        Typeface face=Typeface.createFromAsset(context.getAssets(), "fonts/RobotoSlab-Regular.ttf");
+        Typeface face=Typeface.createFromAsset(context.getAssets(), "fonts/SourceSansPro-Regular.ttf");
         this.setTypeface(face);
     }
 

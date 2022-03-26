@@ -22,7 +22,7 @@ public class LoaderTextView extends AppCompatTextView implements LoaderView {
     public LoaderTextView(Context context) {
         super(context);
         init(null);
-        Typeface face=Typeface.createFromAsset(context.getAssets(), "fonts/RobotoSlab-Regular.ttf");
+        Typeface face=Typeface.createFromAsset(context.getAssets(), "fonts/SourceSansPro-Regular.ttf");
         this.setTypeface(face);
 
     }
@@ -30,7 +30,7 @@ public class LoaderTextView extends AppCompatTextView implements LoaderView {
     public LoaderTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(attrs);
-        Typeface face=Typeface.createFromAsset(context.getAssets(), "fonts/RobotoSlab-Regular.ttf");
+        Typeface face=Typeface.createFromAsset(context.getAssets(), "fonts/SourceSansPro-Regular.ttf");
         this.setTypeface(face);
 
     }
@@ -38,7 +38,7 @@ public class LoaderTextView extends AppCompatTextView implements LoaderView {
     public LoaderTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(attrs);
-        Typeface face=Typeface.createFromAsset(context.getAssets(), "fonts/RobotoSlab-Regular.ttf");
+        Typeface face=Typeface.createFromAsset(context.getAssets(), "fonts/SourceSansPro-Regular.ttf");
         this.setTypeface(face);
 
     }

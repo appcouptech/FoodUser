@@ -298,7 +298,7 @@ public class FC_AccountFragment extends Fragment implements View.OnClickListener
 
         switch (view.getId()) {
 
-
+            case R.id.ll_myAccount:
             case R.id.txt_myAccount:
 
 
@@ -328,34 +328,7 @@ public class FC_AccountFragment extends Fragment implements View.OnClickListener
 
                 break;
 
-            case R.id.ll_myAccount:
 
-
-
-                    if (ll_myAccountExpandable.getVisibility() == View.VISIBLE) {
-
-                        Log.d("dgdfgdfg","dfgdfgfd");
-                        img_myAccountRight.setVisibility(View.VISIBLE);
-                        img_myAccountTop.setVisibility(View.GONE);
-                        ll_myAccountExpandable.setVisibility(View.GONE);
-                        // Its visible
-                    } else {
-                        // Either gone or invisible
-                        Log.d("dgdfgdfg","123213dfgdfgfd");
-                        img_myAccountRight.setVisibility(View.GONE);
-                        img_myAccountTop.setVisibility(View.VISIBLE);
-                        ll_myAccountExpandable.setVisibility(View.VISIBLE);
-
-                        img_myAccountTop.setOnClickListener(view141 -> {
-
-                            ll_myAccountExpandable.setVisibility(View.GONE);
-                            img_myAccountRight.setVisibility(View.VISIBLE);
-                            img_myAccountTop.setVisibility(View.GONE);
-
-                        });
-                    }
-
-                break;
             case R.id.img_myAccountRight:
 
 

@@ -13,6 +13,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -252,8 +253,10 @@ public class Fc_Coupon extends AppCompatActivity {
                 holder.txt_cards.setText(cardOffersObjects.get(position).getCards());
                 holder.ll_main.setOnClickListener(v -> {
                     FC_Common.couponcodeid=cardOffersObjects.get(position).getId();
-                    FC_Common.couponcode=cardOffersObjects.get(position).getOffer_code();
-                    UpdateCoupon();
+                    FC_Common.couponcodeid=cardOffersObjects.get(position).getId();
+                    FC_Common.OfferCode=cardOffersObjects.get(position).getOffer_code();
+                   // UpdateCoupon();
+                    ApplyPromoCode();
                 });
 
             } }
@@ -346,7 +349,7 @@ public class Fc_Coupon extends AppCompatActivity {
                 Map<String, String> params = new HashMap<>();
                 params.put("couponcodeid", FC_Common.couponcodeid);
                 params.put("couponcode", FC_Common.couponcode);
-                Log.d("getParams: ", "" + params);
+                Log.d("getParam", "" + params);
                 return params;
             }
             @Override
@@ -385,7 +388,7 @@ public class Fc_Coupon extends AppCompatActivity {
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, FC_URL.URL_PROMOCODE,
                 response -> {
-                    Log.d("", ">>" + response);
+                    Log.d("fghjdfgdfg", ">>" + response);
                     try {
                         JSONObject obj = new JSONObject(response);
                         FC_Common.success = obj.getString("success");
@@ -395,12 +398,15 @@ public class Fc_Coupon extends AppCompatActivity {
                         {
 
                             onBackPressed();
+                           // snackBar(FC_Common.message);
+                            Toast.makeText(Fc_Coupon.this, FC_Common.message, Toast.LENGTH_SHORT).show();
                         }
                         else
                         {
                             FC_Common.OfferCode="";
                             onBackPressed();
-                            snackBar(FC_Common.message);
+                           // snackBar(FC_Common.message);
+                            Toast.makeText(Fc_Coupon.this, FC_Common.message, Toast.LENGTH_SHORT).show();
                         }
 
                     } catch (JSONException e) {
@@ -421,7 +427,7 @@ public class Fc_Coupon extends AppCompatActivity {
                 Map<String, String> params = new HashMap<>();
                 params.put("offer_code", FC_Common.OfferCode);
                 params.put("partner_id", FC_Common.Cartrestaurant_id);
-                Log.d("getParams: ", "" + params);
+                Log.d("getParam", "" + params);
                 return params;
             }
             @Override

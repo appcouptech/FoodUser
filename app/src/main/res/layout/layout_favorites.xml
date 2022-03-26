@@ -96,6 +96,8 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="@dimen/_2sdp"
                 android:paddingEnd="@dimen/_2sdp"
+                android:maxLines="1"
+                android:ellipsize="end"
                 android:paddingBottom="@dimen/_2sdp"
                 style="@style/FC_verySmallTextView"/>
 

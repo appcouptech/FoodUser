@@ -21,21 +21,21 @@ public class LoaderBoldTextView extends AppCompatTextView implements LoaderView 
 
     public LoaderBoldTextView(Context context) {
         super(context);
-        Typeface face=Typeface.createFromAsset(context.getAssets(), "fonts/RobotoSlab-Bold.ttf");
+        Typeface face=Typeface.createFromAsset(context.getAssets(), "fonts/SourceSansPro-Bold.ttf");
         this.setTypeface(face);
         init(null);
     }
 
     public LoaderBoldTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        Typeface face=Typeface.createFromAsset(context.getAssets(), "fonts/RobotoSlab-Bold.ttf");
+        Typeface face=Typeface.createFromAsset(context.getAssets(), "fonts/SourceSansPro-Bold.ttf");
         this.setTypeface(face);
         init(attrs);
     }
 
     public LoaderBoldTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        Typeface face=Typeface.createFromAsset(context.getAssets(), "fonts/RobotoSlab-Bold.ttf");
+        Typeface face=Typeface.createFromAsset(context.getAssets(), "fonts/SourceSansPro-Bold.ttf");
         this.setTypeface(face);
         init(attrs);
     }
