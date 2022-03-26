@@ -65,6 +65,7 @@
                     android:background="@drawable/rec_apply_btn_bg_blue"
                     android:text="@string/enable_location"
                     android:textSize="@dimen/_8ssp"
+                    android:visibility="visible"
                     android:textColor="#fff"/>
 
 

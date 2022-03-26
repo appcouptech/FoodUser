@@ -118,11 +118,14 @@ public class FC_DashboardActivity extends AppCompatActivity implements View.OnCl
     double latitude; // latitude
     double longitude;
     Marker mCurrLocationMarker;
-    FusedLocationProviderClient mFusedLocationClient;
+   public static FusedLocationProviderClient mFusedLocationClient;
     Location mLastLocation;
     private int backStack,logOut;
 
     public static FragmentManager fragmentManager;
+
+
+
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -243,8 +246,8 @@ public class FC_DashboardActivity extends AppCompatActivity implements View.OnCl
 
         }
     }
-    private void CheckPermission() {
-        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+    public  void CheckPermission() {
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(FC_DashboardActivity.this);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map_intro_address);
@@ -273,6 +276,7 @@ public class FC_DashboardActivity extends AppCompatActivity implements View.OnCl
         }
 
     }
+
 
     private boolean hasGPSDevice(Context context) {
         final LocationManager mgr = (LocationManager) context

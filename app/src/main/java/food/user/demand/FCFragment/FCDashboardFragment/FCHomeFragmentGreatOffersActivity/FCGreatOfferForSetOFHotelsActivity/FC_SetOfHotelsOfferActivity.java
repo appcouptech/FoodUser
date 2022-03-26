@@ -368,7 +368,7 @@ context=FC_SetOfHotelsOfferActivity.this;
                     holder.txt_timeOut.setVisibility(View.VISIBLE);
                 }
                 holder.ll_itemViewFocus.setOnClickListener(view -> {
-
+                    FC_Common.restaurantid=hotelsOfferObjects.get(position).getId();
                     Intent hoteldetails = new Intent(FC_SetOfHotelsOfferActivity.this, FC_HotelDetailsActivity.class);
                     hoteldetails.putExtra("hotelid", FC_Common.restaurantid);
                     hoteldetails.putExtra("recent_search","0");

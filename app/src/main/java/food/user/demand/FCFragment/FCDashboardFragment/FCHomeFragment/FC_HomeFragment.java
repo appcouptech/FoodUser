@@ -1,16 +1,22 @@
 package food.user.demand.FCFragment.FCDashboardFragment.FCHomeFragment;
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -25,6 +31,8 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.snackbar.Snackbar;
 import com.squareup.picasso.MemoryPolicy;
@@ -41,6 +49,7 @@ import java.util.Map;
 import java.util.Objects;
 
 import food.user.demand.FCActivity.FCCartActivity.FC_CartAddressActivity;
+import food.user.demand.FCActivity.FCDashboard.FC_DashboardActivity;
 import food.user.demand.FCActivity.FCProfile.FC_locationPickerActivty;
 import food.user.demand.FCFragment.FCDashboardFragment.FCAccountActivity.FC_OffersActivity;
 import food.user.demand.FCFragment.FCDashboardFragment.FCCartFragmentOrderPickActivity.FC_OrderPickedUpActivity;
@@ -259,7 +268,64 @@ public class FC_HomeFragment extends Fragment implements View.OnClickListener ,B
         FC_Common.filter_price_min = String.valueOf(user.getfilter_price_min());
         FC_Common.filter_price_max = String.valueOf(user.getfilter_price_max());
         txt_selectlocation.setText(FC_Common.location_type);
+
+        Log.d("fghfdhdfg","dfhfdgfd"+FC_Common.location_type);
+
+
+       /* if (FC_Common.gpsenabled.equalsIgnoreCase("false"))
+        {
+             AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());
+            LayoutInflater inflater = getLayoutInflater();
+            @SuppressLint("InflateParams") View dialogView = inflater.inflate(R.layout.custom_device_location_off_alert, null);
+            dialogBuilder.setView(dialogView);
+
+            AlertDialog alertDialog = dialogBuilder.create();
+            alertDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            alertDialog.setCancelable(false);
+            Objects.requireNonNull(alertDialog.getWindow()).setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+            WindowManager.LayoutParams wmlp = alertDialog.getWindow().getAttributes();
+            wmlp.gravity = Gravity.TOP | Gravity.START;
+            wmlp.x = 30;   //x position
+            wmlp.y = 30;   //y position
+
+            AC_Textview txt_noThanks = dialogView.findViewById(R.id.txt_noThanks);
+            AC_Textview txt_enableLocation = dialogView.findViewById(R.id.txt_enableLocation);
+            txt_noThanks.setOnClickListener(view1 -> alertDialog.dismiss());
+           *//* txt_enableLocation.setOnClickListener(v -> {
+                FC_DashboardActivity.CheckPermission1();
+                alertDialog.dismiss();
+            });*//*
+            alertDialog.show();
+        }
+        else {
+            AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());
+            LayoutInflater inflater = getLayoutInflater();
+            @SuppressLint("InflateParams") View dialogView = inflater.inflate(R.layout.custom_location_set_alert, null);
+            dialogBuilder.setView(dialogView);
+
+            AlertDialog alertDialog = dialogBuilder.create();
+            alertDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            alertDialog.setCancelable(false);
+            Objects.requireNonNull(alertDialog.getWindow()).setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+            WindowManager.LayoutParams wmlp = alertDialog.getWindow().getAttributes();
+            wmlp.gravity = Gravity.TOP | Gravity.START;
+            wmlp.x = 30;   //x position
+            wmlp.y = 30;   //y position
+            alertDialog.dismiss();
+            AC_Textview txt_got_it = dialogView.findViewById(R.id.txt_got_it);
+            AC_Textview txt_currentLocation = dialogView.findViewById(R.id.txt_currentLocation);
+            txt_currentLocation.setText("Welcome To "+ FC_Common.location_type);
+
+            txt_got_it.setOnClickListener(view1 -> alertDialog.dismiss());
+
+            alertDialog.show();
+
+
+        }*/
     }
+
+
+
 
     @SuppressLint("SetTextI18n")
     private void FindViewById(View view) {

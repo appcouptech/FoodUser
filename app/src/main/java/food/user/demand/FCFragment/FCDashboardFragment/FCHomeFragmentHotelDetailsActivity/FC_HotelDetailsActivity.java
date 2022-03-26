@@ -147,7 +147,8 @@ public class FC_HotelDetailsActivity extends AppCompatActivity implements View.O
             FC_Common.restaurantid = (String) bundle.get("hotelid");
             FC_Common.recent_search = (String) bundle.get("recent_search");
 
-            Log.d("fhdfgdfg", "dfgdfgfd" + FC_Common.recent_search);
+            Log.d("xgsdgsdgsd", "dfgdfgfd" + FC_Common.recent_search);
+            Log.d("xgsdgsdgsd", "dfgdfgfd" + FC_Common.restaurantid);
         }
 
 
@@ -572,7 +573,8 @@ public class FC_HotelDetailsActivity extends AppCompatActivity implements View.O
                 params.put("term", "");
                 params.put("recent_search", FC_Common.recent_search);
                 params.put("vn_type", FC_Common.typeNonVeg);
-                Log.d("getParams: ", "" + params);
+                Log.d("getParams", "" + params);
+                Log.d("getParams", "" + FC_URL.URL_PRODUCTLIST);
                 return params;
             }
 
