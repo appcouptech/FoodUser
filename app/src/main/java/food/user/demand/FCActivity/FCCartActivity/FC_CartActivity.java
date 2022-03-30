@@ -29,6 +29,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
@@ -110,6 +111,7 @@ public class FC_CartActivity extends AppCompatActivity implements View.OnClickLi
     private CheckBox  chk_wallet ;
     private BottomSheetDialog carddialog;
     InputMethodManager inputMgr;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -1179,6 +1181,7 @@ public class FC_CartActivity extends AppCompatActivity implements View.OnClickLi
                             Utils.stopProgressBar();
                             paymentdialog.dismiss();
                             snackBar(FC_Common.message);
+
                         }
 
                     } catch (JSONException e) {
@@ -1201,19 +1204,25 @@ public class FC_CartActivity extends AppCompatActivity implements View.OnClickLi
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
-                params.put("delivery_date", FC_Common.preordertime);
-                params.put("payment_mode", FC_Common.paymenttype);
-                params.put("note", FC_Common.note);
-                params.put("wallet_check", FC_Common.walletchcked);
-                params.put("paymentmethodid", FC_Common.paymentid);
-                Log.d("getParams: ", "" + params);
+                Log.d("Fghdfhdfhgdf","sdg"+cartcounter);
+               // if (cartcounter==1){
+                   // cartcounter++;
+                    params.put("delivery_date", FC_Common.preordertime);
+                    params.put("payment_mode", FC_Common.paymenttype);
+                    params.put("note", FC_Common.note);
+                    params.put("wallet_check", FC_Common.walletchcked);
+                    params.put("paymentmethodid", FC_Common.paymentid);
+                    Log.d("sdhgsdgfsdfsd", "" + params);
+               // }
+
                 return params;
             }
             @Override
             public Map<String, String> getHeaders()  {
                 Map<String, String> params = new HashMap<>();
-                Log.d("getParams: ", "" + params);
+
                 params.put("Authorization", FC_Common.token_type+" "+FC_Common.access_token);
+                Log.d("sdhgsdgfsdfsd", "" + params);
                 return params;
             }
         };
@@ -1221,6 +1230,10 @@ public class FC_CartActivity extends AppCompatActivity implements View.OnClickLi
         // request queue
         RequestQueue requestQueue = Volley.newRequestQueue(Objects.requireNonNull(context).getApplicationContext());
         requestQueue.add(stringRequest);
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                30000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
     }
 
@@ -1455,7 +1468,7 @@ public class FC_CartActivity extends AppCompatActivity implements View.OnClickLi
         StringRequest stringRequest = new StringRequest(Request.Method.GET, FC_URL.ROOTSTRIPE,
                 ServerResponse -> {
 
-                    Log.d("ServerResponse", "Splash" + ServerResponse);
+                    Log.d("fgjhdfgdfgdf", "Splash" + ServerResponse);
                     try {
 
                         JSONObject jsonResponse1 = new JSONObject(ServerResponse);
@@ -1514,7 +1527,10 @@ public class FC_CartActivity extends AppCompatActivity implements View.OnClickLi
         edt_amt.setText(FC_Common.Carttotal);
         txt_header.setText("Total Amount To Pay");
         payButton.setOnClickListener(v -> {
-            pay();
+            if (cartcounter==0) {
+                cartcounter++;
+                pay();
+            }
         });
     }
 
@@ -1531,7 +1547,10 @@ public class FC_CartActivity extends AppCompatActivity implements View.OnClickLi
                 //pay(result.id, null);
                 FC_Common.paymentid=result.id;
                 FC_Common.paymenttype="CARD";
-                Submitorder();
+
+                    Submitorder();
+
+
                 Log.d("gfhdfgdfg","dfgdfg"+result.id);
                 Log.d("gfhdfgdfg","dfgdfg"+FC_Common.paymentid);
             }

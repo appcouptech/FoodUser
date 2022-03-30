@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/examples/FoodUser/app/src/main/res/layout/activity_checkout.xml" value="0.20416666666666666" />
+        <entry key="..\:/examples/FoodUser/app/src/main/res/layout/activity_fc__cart.xml" value="0.25" />
+        <entry key="..\:/examples/FoodUser/app/src/main/res/layout/activity_fc__hotel_details.xml" value="0.20416666666666666" />
+        <entry key="..\:/examples/FoodUser/app/src/main/res/layout/activity_razor.xml" value="0.20102564102564102" />
+        <entry key="..\:/examples/FoodUser/app/src/main/res/layout/content_checkout.xml" value="0.20416666666666666" />
+        <entry key="..\:/examples/FoodUser/app/src/main/res/layout/fc_dasboard.xml" value="0.20416666666666666" />
+        <entry key="..\:/examples/FoodUser/app/src/main/res/layout/fc_home_see_all_restaurants.xml" value="0.20416666666666666" />
+        <entry key="..\:/examples/FoodUser/app/src/main/res/layout/fragment_fc__home.xml" value="0.20416666666666666" />
+        <entry key="..\:/examples/FoodUser/app/src/main/res/layout/layout_recommended_items.xml" value="0.20416666666666666" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
       <profile-state>
@@ -39,7 +54,7 @@
       </profile-state>
     </entry>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

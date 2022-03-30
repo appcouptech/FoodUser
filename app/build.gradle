@@ -98,7 +98,7 @@ dependencies {
     implementation 'me.bendik.simplerangeview:simplerangeview:0.2.0'
     implementation 'com.github.vihtarb:tooltip:0.1.9'
     implementation 'com.github.ozodrukh:CircularReveal:1.1.0'
-
+    implementation 'com.razorpay:checkout:1.6.6'
     /*Payment Gatewaynew*/
     //noinspection GradleCompatible
     implementation 'com.android.support:customtabs:28.0.0'

@@ -125,6 +125,13 @@
             android:name=".FCLogin.FC_Login"
             android:theme="@style/FCAppTheme"
             tools:ignore="InnerclassSeparator" />
+        <activity android:name=".FCActivity.FCCartActivity.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".FCSplash.FC_Splash"
             android:clearTaskOnLaunch="true"
@@ -134,11 +141,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/FCAppTheme"
             tools:ignore="InnerclassSeparator,LockedOrientationActivity">
-            <intent-filter>
+          <!--  <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>-->
         </activity>
         <activity android:name=".MainActivity">
           <!--  <intent-filter>

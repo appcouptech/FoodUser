@@ -714,13 +714,19 @@ Context context;
                                     dialogcounter=1;
                                 }
                                 else {
-                                    Log.d("dfgsdfsdf","sdfasds"+dialogcounter);
-                                    @SuppressLint("InflateParams")
-                                    View view1 = getLayoutInflater().inflate(R.layout.layout_rating, null);
-                                    FindViewByIdBottomDialogRating(view1);
-                                    ratingdialog = new BottomSheetDialog(context);
-                                    ratingdialog.setContentView(view1);
-                                    ratingdialog.show();
+                                    try {
+                                        Log.d("dfgsdfsdf","sdfasds"+dialogcounter);
+                                        @SuppressLint("InflateParams")
+                                        View view1 = getLayoutInflater().inflate(R.layout.layout_rating, null);
+                                        FindViewByIdBottomDialogRating(view1);
+                                        ratingdialog = new BottomSheetDialog(context);
+                                        ratingdialog.setContentView(view1);
+                                        ratingdialog.show();
+                                    }
+                                    catch(RuntimeException ex){
+                                        ex.printStackTrace();
+                                    }
+
                                 }
 
                                 lt_orderProcessing.setVisibility(View.VISIBLE);
