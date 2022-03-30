@@ -32,6 +32,7 @@ public class FC_URL
     private static final String ROOTITEM= "/item";
     private static final String ROOTRATE= "/rate";
     private static final String ROOTCANCEL= "/cancel";
+    private static final String ROOTPAYMENT= "/payment";
 
     //ROOT_URL //
     public static  String ROOT_URL_check = "https://foodcoupdemo3.appcoup.com/api/user";
@@ -106,6 +107,7 @@ public class FC_URL
     //ROOT_URL + ROOT_SEND//
     public static final String URL_PAYMENT_GATEWAY= ROOT_URL+"/pay-gateway"+ROOT_PHP;
     public static final String URL_PAYMENT= ROOT_URL+ROOT_SEND+"/order"+ROOT_PHP;
+    public static final String URL_PAYMENT_STATUS= ROOT_URL+ROOTPAYMENT+"/status"+ROOT_PHP;
     //ROOT_URL + ROOT_RECENT//
     public static final String URL_RECENTSEARCH= ROOT_URL+ROOT_RECENT+"/search"+ROOT_PHP;
 

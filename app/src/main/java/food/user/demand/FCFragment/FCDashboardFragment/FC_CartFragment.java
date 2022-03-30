@@ -2039,15 +2039,104 @@ Utils.playProgressBar(getActivity());
         requestQueue.getCache().clear();
     }*/
 
+    private void pay_check_status(String status,String payment_id) {
+        Utils.playProgressBar(getActivity());
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, FC_URL.URL_PAYMENT_STATUS,
+                response -> {
+                    Log.d("sdfsdgsdg", ">>" + response);
+                    Log.d("sdfsdgsdg", ">>" + FC_URL.URL_PAYMENT_GATEWAY);
+                    try {
+                        JSONObject obj = new JSONObject(response);
+                        FC_Common.success = obj.getString("success");
+                        //FC_Common.payment_key = obj.getString("payment_gateway");
+                        // FC_Common.message = obj.getString("message");
+                        Log.d("ghfghfghf", "fhfgdhfd" + obj);
+                        if (FC_Common.success.equalsIgnoreCase("1"))
+                        {
+                            Utils.stopProgressBar();
+                            FC_Common.note = "";
+                            FC_Common.paymentid = "";
+                            FC_Common.walletchcked = "";
+                            Intent intent = new Intent(context, FC_OrderPickedUpActivity.class);
+                            intent.putExtra("order_id", FC_Common.order_id);
+                            startActivity(intent);
+
+                        }
+                        else
+                        {
+
+                            Utils.stopProgressBar();
+
+                            //snackBar(FC_Common.message);
+
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        snackBar(String.valueOf(e));
+
+                        Utils.stopProgressBar();
+                        Log.d("dfghdghfgfdb", "fdhfdh" + e);
+                        // Intent setOfHotels = new Intent(getActivity(), FC_SetOfHotelsOfferActivity.class);
+
+                    }
+                },
+                error -> {
+                    //displaying the error in toast if occurrs
+                    Utils.stopProgressBar();
+
+                    snackBar(String.valueOf(error));
+                    Log.d("dfhfdghfgh", "hfdhdf" + error);
+                }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                Log.d("Fghdfhdfhgdf","sdg"+cartcounter);
+                // if (cartcounter==1){
+                // cartcounter++;
+                params.put("order_id", FC_Common.order_id);
+                params.put("payment_status", status);
+                params.put("payment_id", payment_id);
+
+                Log.d("sdhgsdgfsdfsd", "" + FC_URL.ROOT_URL_check);
+                // }
+
+                return params;
+            }
+            @Override
+            public Map<String, String> getHeaders()  {
+                Map<String, String> params = new HashMap<>();
+
+                params.put("Authorization", FC_Common.token_type+" "+FC_Common.access_token);
+                Log.d("sdhgsdgfsdfsd", "" + params);
+                return params;
+            }
+        };
+
+        // request queue
+        RequestQueue requestQueue = Volley.newRequestQueue(Objects.requireNonNull(context).getApplicationContext());
+        requestQueue.add(stringRequest);
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                30000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+    }
+
     @Override
     public void onPaymentSuccess(String s) {
         //result.setText("Transaction ID : "+s);
         Log.d("dfgdgsdgd","dfgdsgdf"+s);
+        String status="success";
+        pay_check_status(status,s);
+
         Toast.makeText(getActivity(), "Payment DONE Successfully!",Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onPaymentError(int i, String s) {
+        String status="failed";
+        pay_check_status(status,s);
         Toast.makeText(getActivity(), "ERROR : "+s,Toast.LENGTH_SHORT).show();
     }
 
