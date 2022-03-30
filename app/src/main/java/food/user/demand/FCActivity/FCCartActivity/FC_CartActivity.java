@@ -1,6 +1,7 @@
 package food.user.demand.FCActivity.FCCartActivity;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -23,6 +24,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,6 +38,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.snackbar.Snackbar;
+import com.razorpay.Checkout;
+import com.razorpay.PaymentResultListener;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
@@ -74,7 +78,8 @@ import food.user.demand.FCViews.FC_User;
 import food.user.demand.FCViews.Utils;
 import food.user.demand.R;
 
-public class FC_CartActivity extends AppCompatActivity implements View.OnClickListener, BottomDialogFragment.Addresschange{
+public class FC_CartActivity extends AppCompatActivity implements View.OnClickListener,
+        BottomDialogFragment.Addresschange, PaymentResultListener {
     View parentLayout;
     Snackbar bar;
     LikeButton vector_android_button;
@@ -92,6 +97,7 @@ public class FC_CartActivity extends AppCompatActivity implements View.OnClickLi
     private Stripe stripe;
     FrameLayout frame_payment;
     View view_payment;
+    int payAmount = 0;
     LoaderTextView lt_totalCurrency,lt_taxCurrency,lt_discountCurrency,lt_delCurrency,lt_itemCurrency,lt_wallet,lt_currency,lt_preorder,lt_restaurantName,lt_cuisines,lt_restaurantAddress,lt_restaurantPhone,lt_totalTax,lt_totalAmount,lt_itemTotal,lt_deliveryFee,lt_totalDiscount;
     private ArrayList<CartActivityObject> cartActivityObjects;
     Context context ;
@@ -472,32 +478,9 @@ public class FC_CartActivity extends AppCompatActivity implements View.OnClickLi
                 /*Intent orderpick = new Intent(context, FC_OrderPickedUpActivity.class);
                 startActivity(orderpick);*/
 
-                @SuppressLint("InflateParams")
-                View view1 = getLayoutInflater().inflate(R.layout.bottom_payment_gateway, null);
-                FindViewByIdBottomDialog(view1);
-                paymentdialog = new BottomSheetDialog(context);
-                paymentdialog.setContentView(view1);
-                paymentdialog.show();
-                txt_cashon.setOnClickListener(v -> {
-                    FC_Common.paymentid="";
-                    FC_Common.paymenttype="CASH";
-                    Submitorder();
-                });
-                txt_paytm.setOnClickListener(v -> {
+                pay_check();
 
-                   /* Intent intent = new Intent(FC_CartActivity.this, PaymentActivity.class);
-                    intent.putExtra("Cartrestaurant_name",FC_Common.Cartrestaurant_name);
-                    intent.putExtra("Cartcurrency",FC_Common.Cartcurrency);
-                    intent.putExtra("Carttotal",FC_Common.Carttotal);
-                    intent.putExtra("mobile",FC_Common.mobile);
-                    intent.putExtra("email",FC_Common.email);
-                    intent.putExtra("CARD",FC_Common.paymenttype);
-                    intent.putExtra("NOTE",FC_Common.note);
-                    startActivity(intent);*/
 
-                    AccessCheck();
-
-                });
                 break;
 
         }
@@ -1151,6 +1134,104 @@ public class FC_CartActivity extends AppCompatActivity implements View.OnClickLi
 
     }
 
+    private void pay_check() {
+        Utils.playProgressBar(FC_CartActivity.this);
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, FC_URL.URL_PAYMENT_GATEWAY,
+                response -> {
+                    Log.d("sdfsdgsdg", ">>" + response);
+                    Log.d("sdfsdgsdg", ">>" + FC_URL.URL_PAYMENT_GATEWAY);
+                    try {
+                        JSONObject obj = new JSONObject(response);
+                        FC_Common.success = obj.getString("success");
+                        FC_Common.payment_key = obj.getString("payment_gateway");
+                       // FC_Common.message = obj.getString("message");
+                        Log.d("ghfghfghf", "fhfgdhfd" + obj);
+                        if (FC_Common.success.equalsIgnoreCase("1"))
+                        {
+                            Utils.stopProgressBar();
+                            @SuppressLint("InflateParams")
+                            View view1 = getLayoutInflater().inflate(R.layout.bottom_payment_gateway, null);
+                            FindViewByIdBottomDialog(view1);
+                            paymentdialog = new BottomSheetDialog(context);
+                            paymentdialog.setContentView(view1);
+                            paymentdialog.show();
+                            txt_cashon.setOnClickListener(v -> {
+                                FC_Common.paymentid="";
+                                FC_Common.paymenttype="CASH";
+                                Submitorder();
+                            });
+                            txt_paytm.setOnClickListener(v -> {
+                                if(FC_Common.payment_key.equalsIgnoreCase("1")){
+                                    AccessCheck();
+                                }
+                                else {
+                                    FC_Common.paymenttype="CARD";
+                                    Submitorder();
+                                }
+
+
+                            });
+
+                        }
+                        else
+                        {
+
+                            Utils.stopProgressBar();
+
+                            //snackBar(FC_Common.message);
+
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        snackBar(String.valueOf(e));
+
+                        Utils.stopProgressBar();
+                        Log.d("dfghdghfgfdb", "fdhfdh" + e);
+                        // Intent setOfHotels = new Intent(getActivity(), FC_SetOfHotelsOfferActivity.class);
+
+                    }
+                },
+                error -> {
+                    //displaying the error in toast if occurrs
+                    Utils.stopProgressBar();
+
+                    snackBar(String.valueOf(error));
+                    Log.d("dfhfdghfgh", "hfdhdf" + error);
+                }) {
+           /* @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                Log.d("Fghdfhdfhgdf","sdg"+cartcounter);
+                // if (cartcounter==1){
+                // cartcounter++;
+                params.put("url", FC_URL.ROOT_URL_check);
+
+                Log.d("sdhgsdgfsdfsd", "" + FC_URL.ROOT_URL_check);
+                // }
+
+                return params;
+            }*/
+            @Override
+            public Map<String, String> getHeaders()  {
+                Map<String, String> params = new HashMap<>();
+
+                params.put("Authorization", FC_Common.token_type+" "+FC_Common.access_token);
+                Log.d("sdhgsdgfsdfsd", "" + params);
+                return params;
+            }
+        };
+
+        // request queue
+        RequestQueue requestQueue = Volley.newRequestQueue(Objects.requireNonNull(context).getApplicationContext());
+        requestQueue.add(stringRequest);
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                30000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+    }
+
     private void Submitorder() {
         Utils.playProgressBar(FC_CartActivity.this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, FC_URL.URL_PAYMENT,
@@ -1164,16 +1245,71 @@ public class FC_CartActivity extends AppCompatActivity implements View.OnClickLi
                         Log.d("ghfghfghf", "fhfgdhfd" + obj);
                         if (FC_Common.success.equalsIgnoreCase("1"))
                         {
-                            Utils.stopProgressBar();
-                            FC_Common.order_id = obj.getString("order_id");
-                            paymentdialog.dismiss();
-                            FC_Common.OfferCode="";
-                            FC_Common.note="";
-                            FC_Common.paymentid="";
-                            FC_Common.walletchcked="";
-                           Intent intent = new Intent(context,FC_OrderPickedUpActivity.class);
-                           intent.putExtra("order_id",FC_Common.order_id);
-                           startActivity(intent);
+                            if (FC_Common.payment_key.equalsIgnoreCase("1")) {
+                                Utils.stopProgressBar();
+                                FC_Common.order_id = obj.getString("order_id");
+                                paymentdialog.dismiss();
+                                FC_Common.OfferCode = "";
+                                FC_Common.note = "";
+                                FC_Common.paymentid = "";
+                                FC_Common.walletchcked = "";
+                                Intent intent = new Intent(context, FC_OrderPickedUpActivity.class);
+                                intent.putExtra("order_id", FC_Common.order_id);
+                                startActivity(intent);
+                            }
+                            else {
+                                payAmount = Integer.parseInt(String.valueOf(lt_totalAmount.getText().toString()));
+                               // lt_totalAmount
+                                Checkout.preload(getApplicationContext());
+
+                                Utils.stopProgressBar();
+                                FC_Common.order_id = obj.getString("order_id");
+                                paymentdialog.dismiss();
+                                payAmount = payAmount * 100;
+                                final String pay = String.valueOf(payAmount);
+
+                                Checkout checkout = new Checkout();
+                                checkout.setKeyID("rzp_test_OnV4xcxLMYD5cD");
+                                /**
+                                 * Instantiate Checkout
+                                 */
+
+                                /**
+                                 * Set your logo here
+                                 */
+                                checkout.setImage(R.drawable.foodcoup_pay);
+
+                                /**
+                                 * Reference to current activity
+                                 */
+                                final Activity activity = FC_CartActivity.this;
+
+                                /**
+                                 * Pass your payment options to the Razorpay Checkout as a JSONObject
+                                 */
+                                try {
+                                    JSONObject options = new JSONObject();
+
+                                    options.put("name", FC_Common.name);
+                                    options.put("description", "Reference No. #654321");
+                                    options.put("image", "https://s3.amazonaws.com/rzp-mobile/images/rzp.png");
+//            options.put("order_id", "order_DBJOWzybf0sJbb");//from response of step 3.
+                                    options.put("theme.color", "#e10005");
+                                    options.put("currency", "INR");
+                                    options.put("amount", pay);//pass amount in currency subunits
+                                    options.put("prefill.email", FC_Common.email);
+                                    options.put("prefill.contact",FC_Common.mobile);
+                                    JSONObject retryObj = new JSONObject();
+                                    retryObj.put("enabled", true);
+                                    retryObj.put("max_count", 4);
+                                    options.put("retry", retryObj);
+
+                                    checkout.open(activity, options);
+
+                                } catch(Exception e) {
+                                    Log.e("TAG", "Error in starting Razorpay Checkout", e);
+                                }
+                            }
                         }
                         else
                         {
@@ -1210,6 +1346,7 @@ public class FC_CartActivity extends AppCompatActivity implements View.OnClickLi
                     params.put("delivery_date", FC_Common.preordertime);
                     params.put("payment_mode", FC_Common.paymenttype);
                     params.put("note", FC_Common.note);
+                    params.put("payment_gateway", FC_Common.payment_key);
                     params.put("wallet_check", FC_Common.walletchcked);
                     params.put("paymentmethodid", FC_Common.paymentid);
                     Log.d("sdhgsdgfsdfsd", "" + params);
@@ -1614,4 +1751,17 @@ public class FC_CartActivity extends AppCompatActivity implements View.OnClickLi
         requestQueue.add(stringRequest);
         requestQueue.getCache().clear();
     }*/
+
+    @Override
+    public void onPaymentSuccess(String s) {
+        //result.setText("Transaction ID : "+s);
+        Log.d("dfgdgsdgd","dfgdsgdf"+s);
+        Toast.makeText(FC_CartActivity.this, "Payment DONE Successfully!",Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onPaymentError(int i, String s) {
+        Toast.makeText(FC_CartActivity.this, "ERROR : "+s,Toast.LENGTH_SHORT).show();
+    }
+
 }

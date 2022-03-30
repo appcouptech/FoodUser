@@ -4,9 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/examples/FoodUser/app/src/main/res/layout/activity_checkout.xml" value="0.20416666666666666" />
-        <entry key="..\:/examples/FoodUser/app/src/main/res/layout/activity_fc__cart.xml" value="0.25" />
+        <entry key="..\:/examples/FoodUser/app/src/main/res/layout/activity_fc__cart.xml" value="0.22" />
         <entry key="..\:/examples/FoodUser/app/src/main/res/layout/activity_fc__hotel_details.xml" value="0.20416666666666666" />
         <entry key="..\:/examples/FoodUser/app/src/main/res/layout/activity_razor.xml" value="0.20102564102564102" />
+        <entry key="..\:/examples/FoodUser/app/src/main/res/layout/bottom_payment_gateway.xml" value="0.20102564102564102" />
         <entry key="..\:/examples/FoodUser/app/src/main/res/layout/content_checkout.xml" value="0.20416666666666666" />
         <entry key="..\:/examples/FoodUser/app/src/main/res/layout/fc_dasboard.xml" value="0.20416666666666666" />
         <entry key="..\:/examples/FoodUser/app/src/main/res/layout/fc_home_see_all_restaurants.xml" value="0.20416666666666666" />

@@ -11,6 +11,7 @@ public class FC_Common extends Activity {
     public static String success = "";
     public static String note = "";
     public static String paymentid = "";
+    public static String payment_key = "";
     public static String todayDate = "";
     public static String cancel_order_note = "";
     public static String CuisineItemId = "";

@@ -34,6 +34,7 @@ public class FC_URL
     private static final String ROOTCANCEL= "/cancel";
 
     //ROOT_URL //
+    public static  String ROOT_URL_check = "https://foodcoupdemo3.appcoup.com/api/user";
     public static final String URL_TEST= "https://foodcoup.appcoup.com/api/driver/stripekey";
     public static final String URL_LOGIN= ROOT_URL+"/login"+ROOT_PHP;
     public static final String URL_LOGINOTP= ROOT_URL+"/otp"+ROOT_PHP;
@@ -103,6 +104,7 @@ public class FC_URL
     public static final String URL_FAVOURITEDELETE= ROOT_URL+ROOT_FAVOURITE+"/delete"+ROOT_PHP;
 
     //ROOT_URL + ROOT_SEND//
+    public static final String URL_PAYMENT_GATEWAY= ROOT_URL+"/pay-gateway"+ROOT_PHP;
     public static final String URL_PAYMENT= ROOT_URL+ROOT_SEND+"/order"+ROOT_PHP;
     //ROOT_URL + ROOT_RECENT//
     public static final String URL_RECENTSEARCH= ROOT_URL+ROOT_RECENT+"/search"+ROOT_PHP;
