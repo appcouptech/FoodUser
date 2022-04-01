@@ -72,6 +72,7 @@ import food.user.demand.FCFragment.FCDashboardFragment.FCCartFragmentOrderPickAc
 import food.user.demand.FCFragment.FCDashboardFragment.FC_Couponcode.Fc_Coupon;
 import food.user.demand.FCPojo.FCCartFragmentObject.CartFragmentObject;
 import food.user.demand.FCPojo.FCLocationObject.LocationObject;
+import food.user.demand.FCUtils.BottomDailog.BottomDialogFragment;
 import food.user.demand.FCUtils.LikeButton.LikeButton;
 import food.user.demand.FCUtils.Loader.LoaderImageView;
 import food.user.demand.FCUtils.Loader.LoaderTextView;
@@ -418,16 +419,13 @@ public class FC_CartFragment extends Fragment implements View.OnClickListener, P
         switch (view.getId()){
 
             case R.id.txt_addAddressToProcess :
+            case R.id.txt_addAddress :
 
                 Intent addAddressToProcess = new Intent(getActivity(), FC_CartAddressActivity.class);
                 startActivity(addAddressToProcess);
                 break;
 
-            case R.id.txt_addAddress :
 
-                Intent addAddress = new Intent(getActivity(), FC_CartAddressActivity.class);
-                startActivity(addAddress);
-                break;
             case R.id.edt_promoCode :
 
                 Intent promocode = new Intent(getActivity(), Fc_Coupon.class);
@@ -448,6 +446,10 @@ public class FC_CartFragment extends Fragment implements View.OnClickListener, P
                 dialog = new BottomSheetDialog(context);
                 dialog.setContentView(view1);
                 dialog.show();
+               /* BottomDialogFragment addPhotoBottomDialogFragment =
+                        BottomDialogFragment.newInstance();
+                addPhotoBottomDialogFragment.show(getActivity().getSupportFragmentManager(),
+                        "add_photo_dialog_fragment");*/
                 break;
 
             case R.id.img_backBtn:
@@ -484,7 +486,7 @@ public class FC_CartFragment extends Fragment implements View.OnClickListener, P
                 pay_check();
 
 
-                Log.d("fdghfdhgfdg","fdhgfdghgfh");
+                Log.d("dfhdfhdfhdfhdf","fdhgfdghgfh");
                 break;
         }
     }
@@ -506,7 +508,7 @@ public class FC_CartFragment extends Fragment implements View.OnClickListener, P
                             Utils.stopProgressBar();
                             @SuppressLint("InflateParams")
                             View view1 = getLayoutInflater().inflate(R.layout.bottom_payment_gateway, null);
-                            FindViewByIdBottomDialog(view1);
+                            FindViewByIdBottomDialog1(view1);
                             paymentdialog = new BottomSheetDialog(context);
                             paymentdialog.setContentView(view1);
                             paymentdialog.show();
@@ -539,7 +541,7 @@ public class FC_CartFragment extends Fragment implements View.OnClickListener, P
 
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        snackBar(String.valueOf(e));
+                      //  snackBar(String.valueOf(e));
 
                         Utils.stopProgressBar();
                         Log.d("dfghdghfgfdb", "fdhfdh" + e);
@@ -551,7 +553,7 @@ public class FC_CartFragment extends Fragment implements View.OnClickListener, P
                     //displaying the error in toast if occurrs
                     Utils.stopProgressBar();
 
-                    snackBar(String.valueOf(error));
+                  //  snackBar(String.valueOf(error));
                     Log.d("dfhfdghfgh", "hfdhdf" + error);
                 }) {
             /* @Override
@@ -773,7 +775,7 @@ public class FC_CartFragment extends Fragment implements View.OnClickListener, P
 
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        snackBar("Hotseller"+e);
+                      //  snackBar("Hotseller"+e);
                         Utils.stopProgressBar();
                         /*final int counter_AllResataurant = cartcounter++;
                         Utils.log(context, "countervalue" +"A:"+counter_AllResataurant);
@@ -787,7 +789,7 @@ public class FC_CartFragment extends Fragment implements View.OnClickListener, P
             //displaying the error in toast if occurrs
             String error_value = String.valueOf(error);
             Utils.stopProgressBar();
-            snackBar("Hotsellernew"+error_value);
+          //  snackBar("Hotsellernew"+error_value);
             Utils.log(context, "dfgdfgdfg" + "dfgfd" + error);
             Log.d("dfgfdgfdg", "d324dffgfdgdf" + error);
            /* final int counter_AllResataurant = cartcounter++;
@@ -1020,7 +1022,7 @@ public class FC_CartFragment extends Fragment implements View.OnClickListener, P
 
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        snackBar(String.valueOf(e));
+                     //   snackBar(String.valueOf(e));
                         Log.d("dfghdghfgfdb", "fdhfdh" + e);
                         // Intent setOfHotels = new Intent(getActivity(), FC_SetOfHotelsOfferActivity.class);
 
@@ -1028,7 +1030,7 @@ public class FC_CartFragment extends Fragment implements View.OnClickListener, P
                 },
                 error -> {
                     //displaying the error in toast if occurrs
-                    snackBar(String.valueOf(error));
+                   // snackBar(String.valueOf(error));
                     Log.d("dfhfdghfgh", "hfdhdf" + error);
                 }) {
             @Override
@@ -1075,7 +1077,7 @@ public class FC_CartFragment extends Fragment implements View.OnClickListener, P
 
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        snackBar(String.valueOf(e));
+                      //  snackBar(String.valueOf(e));
                         Log.d("dfghdghfgfdb", "fdhfdh" + e);
                         // Intent setOfHotels = new Intent(getActivity(), FC_SetOfHotelsOfferActivity.class);
 
@@ -1083,7 +1085,7 @@ public class FC_CartFragment extends Fragment implements View.OnClickListener, P
                 },
                 error -> {
                     //displaying the error in toast if occurrs
-                    snackBar(String.valueOf(error));
+                   // snackBar(String.valueOf(error));
                     Log.d("dfhfdghfgh", "hfdhdf" + error);
                 }) {
             @Override
@@ -1131,7 +1133,7 @@ public class FC_CartFragment extends Fragment implements View.OnClickListener, P
 
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        snackBar(String.valueOf(e));
+                       // snackBar(String.valueOf(e));
                         Log.d("dfghdghfgfdb", "fdhfdh" + e);
                         // Intent setOfHotels = new Intent(getActivity(), FC_SetOfHotelsOfferActivity.class);
 
@@ -1139,7 +1141,7 @@ public class FC_CartFragment extends Fragment implements View.OnClickListener, P
                 },
                 error -> {
                     //displaying the error in toast if occurrs
-                    snackBar(String.valueOf(error));
+                   // snackBar(String.valueOf(error));
                     Log.d("dfhfdghfgh", "hfdhdf" + error);
                 }) {
             @Override
@@ -1257,7 +1259,7 @@ public class FC_CartFragment extends Fragment implements View.OnClickListener, P
                         e.printStackTrace();
 
                         Utils.stopProgressBar();
-                        snackBar(String.valueOf(e));
+                      //  snackBar(String.valueOf(e));
                         Log.d("dfghdghfgfdb", "fdhfdh" + e);
                         // Intent setOfHotels = new Intent(getActivity(), FC_SetOfHotelsOfferActivity.class);
 
@@ -1267,7 +1269,7 @@ public class FC_CartFragment extends Fragment implements View.OnClickListener, P
                     //displaying the error in toast if occurrs
                     Utils.stopProgressBar();
 
-                    snackBar(String.valueOf(error));
+                  //  snackBar(String.valueOf(error));
                     Log.d("dfhfdghfgh", "hfdhdf" + error);
                 }) {
             @Override
@@ -1315,7 +1317,7 @@ public class FC_CartFragment extends Fragment implements View.OnClickListener, P
 
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        snackBar(String.valueOf(e));
+                      //  snackBar(String.valueOf(e));
                         Log.d("dfghdghfgfdb", "fdhfdh" + e);
                         // Intent setOfHotels = new Intent(getActivity(), FC_SetOfHotelsOfferActivity.class);
 
@@ -1323,7 +1325,7 @@ public class FC_CartFragment extends Fragment implements View.OnClickListener, P
                 },
                 error -> {
                     //displaying the error in toast if occurrs
-                    snackBar(String.valueOf(error));
+                   // snackBar(String.valueOf(error));
                     Log.d("dfhfdghfgh", "hfdhdf" + error);
                 }) {
             @Override
@@ -1402,7 +1404,7 @@ public class FC_CartFragment extends Fragment implements View.OnClickListener, P
                     } catch (JSONException e) {
                         e.printStackTrace();
                         Utils.stopProgressBar();
-                        snackBar(getResources().getString(R.string.reach));
+                      //  snackBar(getResources().getString(R.string.reach));
                         Log.d("dfghdghfgfdb", "fdhfdh" + e);
                         // Intent setOfHotels = new Intent(getActivity(), FC_SetOfHotelsOfferActivity.class);
 
@@ -1411,7 +1413,7 @@ public class FC_CartFragment extends Fragment implements View.OnClickListener, P
                 error -> {
                     Utils.stopProgressBar();
                     //displaying the error in toast if occurrs
-                    snackBar(getResources().getString(R.string.reach));
+                  //  snackBar(getResources().getString(R.string.reach));
                     Log.d("dfhfdghfgh", "hfdhdf" + error);
                 }) {
             @Override
@@ -1440,6 +1442,8 @@ public class FC_CartFragment extends Fragment implements View.OnClickListener, P
     public void onDestroy() {
         super.onDestroy();
     }
+
+
 
     private void FindViewByIdBottomDialog(View view) {
 
@@ -1526,7 +1530,7 @@ public class FC_CartFragment extends Fragment implements View.OnClickListener, P
                 }, error -> {
                     //displaying the error in toast if occurrs
                     String error_value = String.valueOf(error);
-                    snackBar(error_value);
+                  //  snackBar(error_value);
                     Utils.log(context, "dfgdfgdfg" + "dfgfd" + error);
                     Log.d("dfgfdgfdg", "d324dffgfdgdf" + error);
                     locationlist();
@@ -1839,7 +1843,7 @@ public class FC_CartFragment extends Fragment implements View.OnClickListener, P
                     }
                 }, volleyError -> {
                     String value = volleyError.toString();
-                    snackBar(value);
+                //    snackBar(value);
                 }) {
             @Override
             public Map<String, String> getHeaders() {
@@ -2130,14 +2134,14 @@ Utils.playProgressBar(getActivity());
         String status="success";
         pay_check_status(status,s);
 
-        Toast.makeText(getActivity(), "Payment DONE Successfully!",Toast.LENGTH_SHORT).show();
+    //    Toast.makeText(getActivity(), "Payment DONE Successfully!",Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onPaymentError(int i, String s) {
         String status="failed";
         pay_check_status(status,s);
-        Toast.makeText(getActivity(), "ERROR : "+s,Toast.LENGTH_SHORT).show();
+       // Toast.makeText(getActivity(), "ERROR : "+s,Toast.LENGTH_SHORT).show();
     }
 
 }

@@ -679,7 +679,7 @@ public class FC_CartActivity extends AppCompatActivity implements View.OnClickLi
                     } catch (JSONException e) {
                         e.printStackTrace();
                         Utils.stopProgressBar();
-                        snackBar("Hotseller"+e);
+                       // snackBar("Hotseller"+e);
                        /* final int counter_AllResataurant = cartcounter++;
                         Utils.log(context, "countervalue" +"A:"+counter_AllResataurant);
                         if (counter_AllResataurant<5) {
@@ -692,7 +692,7 @@ public class FC_CartActivity extends AppCompatActivity implements View.OnClickLi
                     //displaying the error in toast if occurrs
                     String error_value = String.valueOf(error);
             Utils.stopProgressBar();
-                    snackBar("Hotsellernew"+error_value);
+                   // snackBar("Hotsellernew"+error_value);
                     Utils.log(context, "dfgdfgdfg" + "dfgfd" + error);
                     Log.d("dfgfdgfdg", "d324dffgfdgdf" + error);
                     /*final int counter_AllResataurant = cartcounter++;
@@ -989,7 +989,7 @@ public class FC_CartActivity extends AppCompatActivity implements View.OnClickLi
 
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        snackBar(String.valueOf(e));
+                       // snackBar(String.valueOf(e));
                         Log.d("dfghdghfgfdb", "fdhfdh" + e);
                         // Intent setOfHotels = new Intent(getActivity(), FC_SetOfHotelsOfferActivity.class);
 
@@ -997,7 +997,7 @@ public class FC_CartActivity extends AppCompatActivity implements View.OnClickLi
                 },
                 error -> {
                     //displaying the error in toast if occurrs
-                    snackBar(String.valueOf(error));
+                    //snackBar(String.valueOf(error));
                     Log.d("dfhfdghfgh", "hfdhdf" + error);
                 }) {
             @Override
@@ -1053,7 +1053,7 @@ public class FC_CartActivity extends AppCompatActivity implements View.OnClickLi
                 },
                 error -> {
                     //displaying the error in toast if occurrs
-                    snackBar(String.valueOf(error));
+                   // snackBar(String.valueOf(error));
                     Log.d("dfhfdghfgh", "hfdhdf" + error);
                 }) {
             @Override
@@ -1101,7 +1101,7 @@ public class FC_CartActivity extends AppCompatActivity implements View.OnClickLi
 
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        snackBar(String.valueOf(e));
+                       // snackBar(String.valueOf(e));
                         Log.d("dfghdghfgfdb", "fdhfdh" + e);
                         // Intent setOfHotels = new Intent(getActivity(), FC_SetOfHotelsOfferActivity.class);
 
@@ -1109,7 +1109,7 @@ public class FC_CartActivity extends AppCompatActivity implements View.OnClickLi
                 },
                 error -> {
                     //displaying the error in toast if occurrs
-                    snackBar(String.valueOf(error));
+                    //snackBar(String.valueOf(error));
                     Log.d("dfhfdghfgh", "hfdhdf" + error);
                 }) {
             @Override
@@ -1186,7 +1186,7 @@ public class FC_CartActivity extends AppCompatActivity implements View.OnClickLi
 
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        snackBar(String.valueOf(e));
+                      //  snackBar(String.valueOf(e));
 
                         Utils.stopProgressBar();
                         Log.d("dfghdghfgfdb", "fdhfdh" + e);
@@ -1198,7 +1198,7 @@ public class FC_CartActivity extends AppCompatActivity implements View.OnClickLi
                     //displaying the error in toast if occurrs
                     Utils.stopProgressBar();
 
-                    snackBar(String.valueOf(error));
+                  //  snackBar(String.valueOf(error));
                     Log.d("dfhfdghfgh", "hfdhdf" + error);
                 }) {
            /* @Override
@@ -1324,7 +1324,7 @@ public class FC_CartActivity extends AppCompatActivity implements View.OnClickLi
 
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        snackBar(String.valueOf(e));
+                      //  snackBar(String.valueOf(e));
 
                         Utils.stopProgressBar();
                         Log.d("dfghdghfgfdb", "fdhfdh" + e);
@@ -1336,7 +1336,7 @@ public class FC_CartActivity extends AppCompatActivity implements View.OnClickLi
                     //displaying the error in toast if occurrs
                     Utils.stopProgressBar();
 
-                    snackBar(String.valueOf(error));
+                  //  snackBar(String.valueOf(error));
                     Log.d("dfhfdghfgh", "hfdhdf" + error);
                 }) {
             @Override
@@ -1394,7 +1394,7 @@ public class FC_CartActivity extends AppCompatActivity implements View.OnClickLi
 
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        snackBar(String.valueOf(e));
+                      //  snackBar(String.valueOf(e));
                         Log.d("dfghdghfgfdb", "fdhfdh" + e);
                         // Intent setOfHotels = new Intent(getActivity(), FC_SetOfHotelsOfferActivity.class);
 
@@ -1402,7 +1402,7 @@ public class FC_CartActivity extends AppCompatActivity implements View.OnClickLi
                 },
                 error -> {
                     //displaying the error in toast if occurrs
-                    snackBar(String.valueOf(error));
+                  //  snackBar(String.valueOf(error));
                     Log.d("dfhfdghfgh", "hfdhdf" + error);
                 }) {
             @Override
@@ -1801,7 +1801,7 @@ public class FC_CartActivity extends AppCompatActivity implements View.OnClickLi
 
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        snackBar(String.valueOf(e));
+                       // snackBar(String.valueOf(e));
 
                         Utils.stopProgressBar();
                         Log.d("dfghdghfgfdb", "fdhfdh" + e);
@@ -1813,7 +1813,7 @@ public class FC_CartActivity extends AppCompatActivity implements View.OnClickLi
                     //displaying the error in toast if occurrs
                     Utils.stopProgressBar();
 
-                    snackBar(String.valueOf(error));
+                   // snackBar(String.valueOf(error));
                     Log.d("dfhfdghfgh", "hfdhdf" + error);
                 }) {
              @Override
@@ -1857,7 +1857,7 @@ public class FC_CartActivity extends AppCompatActivity implements View.OnClickLi
         Log.d("dfgdgsdgd","dfgdsgdf"+s);
         String status="success";
         pay_check_status(status,s);
-        Toast.makeText(FC_CartActivity.this, "Payment DONE Successfully!",Toast.LENGTH_SHORT).show();
+       // Toast.makeText(FC_CartActivity.this, "Payment DONE Successfully!",Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -1865,7 +1865,7 @@ public class FC_CartActivity extends AppCompatActivity implements View.OnClickLi
         String status="failed";
         pay_check_status(status,s);
 
-        Toast.makeText(FC_CartActivity.this, "ERROR : "+s,Toast.LENGTH_SHORT).show();
+       // Toast.makeText(FC_CartActivity.this, "ERROR : "+s,Toast.LENGTH_SHORT).show();
     }
 
 }
