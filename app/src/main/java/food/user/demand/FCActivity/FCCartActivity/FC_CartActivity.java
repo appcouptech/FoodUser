@@ -62,9 +62,11 @@ import java.util.Map;
 import java.util.Objects;
 
 import food.user.demand.Activity.Distance.Distance_new;
+import food.user.demand.FCActivity.FCDashboard.FC_DashboardActivity;
 import food.user.demand.FCFragment.FCDashboardFragment.FCCartFragmentOrderPickActivity.FC_OrderPickedUpActivity;
 import food.user.demand.FCFragment.FCDashboardFragment.FC_Couponcode.Fc_Coupon;
 import food.user.demand.FCPojo.FCCartActivityObject.CartActivityObject;
+import food.user.demand.FCSplash.FC_Splash;
 import food.user.demand.FCUtils.BottomDailog.BottomDialogFragment;
 import food.user.demand.FCUtils.LikeButton.LikeButton;
 import food.user.demand.FCUtils.Loader.LoaderTextView;
@@ -1553,7 +1555,20 @@ public class FC_CartActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onBackPressed() {
-      super.onBackPressed();
+
+
+      if(FC_Common.order_id.equalsIgnoreCase("")){
+          super.onBackPressed();
+      }
+      else {
+          Intent intent = new Intent(FC_CartActivity.this, FC_DashboardActivity.class);
+          intent.putExtra("location_name", FC_Common.location_name);
+          intent.putExtra("location_type", FC_Common.location_type);
+          intent.putExtra("latitude", FC_Common.latitude);
+          intent.putExtra("longitude", FC_Common.longitude);
+          intent.putExtra("gpsenabled", FC_Common.gpsenabled);
+          startActivity(intent);
+      }
     }
 
     private void FindViewByIdBottomDialog(View view) {

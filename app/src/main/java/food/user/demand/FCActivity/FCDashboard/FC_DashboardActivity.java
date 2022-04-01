@@ -431,22 +431,28 @@ public class FC_DashboardActivity extends AppCompatActivity implements View.OnCl
 
             case R.id.ll_cart :
 
-                backStack = 1;
+                try {
+                    backStack = 1;
 
-                img_home.setBackgroundResource(R.drawable.home);
-                img_explore.setBackgroundResource(R.drawable.explore);
-                img_cart.setBackgroundResource(R.drawable.cart_s);
-                img_account.setBackgroundResource(R.drawable.account);
-                txt_home.setTextColor(getResources().getColor(R.color.colorgrey));
-                txt_explore.setTextColor(getResources().getColor(R.color.colorgrey));
-                txt_cart.setTextColor(getResources().getColor(R.color.txt_site_red_color));
-                txt_account.setTextColor(getResources().getColor(R.color.colorgrey));
+                    img_home.setBackgroundResource(R.drawable.home);
+                    img_explore.setBackgroundResource(R.drawable.explore);
+                    img_cart.setBackgroundResource(R.drawable.cart_s);
+                    img_account.setBackgroundResource(R.drawable.account);
+                    txt_home.setTextColor(getResources().getColor(R.color.colorgrey));
+                    txt_explore.setTextColor(getResources().getColor(R.color.colorgrey));
+                    txt_cart.setTextColor(getResources().getColor(R.color.txt_site_red_color));
+                    txt_account.setTextColor(getResources().getColor(R.color.colorgrey));
 
-                Fragment cartFragment = new FC_CartFragment();
-                FragmentTransaction fragmentTransactionCart = fragmentManager.beginTransaction();
-               // fragmentTransactionCart.setCustomAnimations(R.anim.slide_up, R.anim.slide_down);
-                fragmentTransactionCart.replace(R.id.fl_fcDashboardFragment, cartFragment);
-                fragmentTransactionCart.commit();
+                    Fragment cartFragment = new FC_CartFragment();
+                    FragmentTransaction fragmentTransactionCart = fragmentManager.beginTransaction();
+                    // fragmentTransactionCart.setCustomAnimations(R.anim.slide_up, R.anim.slide_down);
+                    fragmentTransactionCart.replace(R.id.fl_fcDashboardFragment, cartFragment);
+                    fragmentTransactionCart.commit();
+                }
+                catch (RuntimeException ex){
+                    ex.printStackTrace();
+                }
+
 
                 break;
 
