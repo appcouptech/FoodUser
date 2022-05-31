@@ -1163,6 +1163,7 @@ public class FC_CartActivity extends AppCompatActivity implements View.OnClickLi
                                 Submitorder();
                             });
                             txt_paytm.setOnClickListener(v -> {
+
                                 if(FC_Common.payment_key.equalsIgnoreCase("1")){
                                     AccessCheck();
                                 }
@@ -1247,7 +1248,9 @@ public class FC_CartActivity extends AppCompatActivity implements View.OnClickLi
                         Log.d("ghfghfghf", "fhfgdhfd" + obj);
                         if (FC_Common.success.equalsIgnoreCase("1"))
                         {
-                            if (FC_Common.payment_key.equalsIgnoreCase("1")) {
+                            if (FC_Common.paymenttype.equalsIgnoreCase("CASH")) {
+
+
                                 Utils.stopProgressBar();
                                 FC_Common.order_id = obj.getString("order_id");
                                 paymentdialog.dismiss();
@@ -1260,56 +1263,58 @@ public class FC_CartActivity extends AppCompatActivity implements View.OnClickLi
                                 startActivity(intent);
                             }
                             else {
-                                payAmount = Integer.parseInt(String.valueOf(lt_totalAmount.getText().toString()));
-                               // lt_totalAmount
-                                Checkout.preload(getApplicationContext());
+                                if (FC_Common.payment_key.equalsIgnoreCase("2")) {
+                                    payAmount = Integer.parseInt(String.valueOf(lt_totalAmount.getText().toString()));
+                                    // lt_totalAmount
+                                    Checkout.preload(getApplicationContext());
 
-                                Utils.stopProgressBar();
-                                FC_Common.order_id = obj.getString("order_id");
-                                paymentdialog.dismiss();
-                                payAmount = payAmount * 100;
-                                final String pay = String.valueOf(payAmount);
+                                    Utils.stopProgressBar();
+                                    FC_Common.order_id = obj.getString("order_id");
+                                    paymentdialog.dismiss();
+                                    payAmount = payAmount * 100;
+                                    final String pay = String.valueOf(payAmount);
 
-                                Checkout checkout = new Checkout();
-                                checkout.setKeyID("rzp_test_OnV4xcxLMYD5cD");
-                                /**
-                                 * Instantiate Checkout
-                                 */
+                                    Checkout checkout = new Checkout();
+                                    checkout.setKeyID("rzp_test_OnV4xcxLMYD5cD");
+                                    /**
+                                     * Instantiate Checkout
+                                     */
 
-                                /**
-                                 * Set your logo here
-                                 */
-                                checkout.setImage(R.drawable.foodcoup_pay);
+                                    /**
+                                     * Set your logo here
+                                     */
+                                    checkout.setImage(R.drawable.foodcoup_pay);
 
-                                /**
-                                 * Reference to current activity
-                                 */
-                                final Activity activity = FC_CartActivity.this;
+                                    /**
+                                     * Reference to current activity
+                                     */
+                                    final Activity activity = FC_CartActivity.this;
 
-                                /**
-                                 * Pass your payment options to the Razorpay Checkout as a JSONObject
-                                 */
-                                try {
-                                    JSONObject options = new JSONObject();
+                                    /**
+                                     * Pass your payment options to the Razorpay Checkout as a JSONObject
+                                     */
+                                    try {
+                                        JSONObject options = new JSONObject();
 
-                                    options.put("name", FC_Common.name);
-                                    options.put("description", "Reference No. #654321");
-                                    options.put("image", "https://s3.amazonaws.com/rzp-mobile/images/rzp.png");
+                                        options.put("name", FC_Common.name);
+                                        options.put("description", "Reference No. #654321");
+                                        options.put("image", "https://s3.amazonaws.com/rzp-mobile/images/rzp.png");
 //            options.put("order_id", "order_DBJOWzybf0sJbb");//from response of step 3.
-                                    options.put("theme.color", "#e10005");
-                                    options.put("currency", "INR");
-                                    options.put("amount", pay);//pass amount in currency subunits
-                                    options.put("prefill.email", FC_Common.email);
-                                    options.put("prefill.contact",FC_Common.mobile);
-                                    JSONObject retryObj = new JSONObject();
-                                    retryObj.put("enabled", true);
-                                    retryObj.put("max_count", 4);
-                                    options.put("retry", retryObj);
+                                        options.put("theme.color", "#e10005");
+                                        options.put("currency", "INR");
+                                        options.put("amount", pay);//pass amount in currency subunits
+                                        options.put("prefill.email", FC_Common.email);
+                                        options.put("prefill.contact", FC_Common.mobile);
+                                        JSONObject retryObj = new JSONObject();
+                                        retryObj.put("enabled", true);
+                                        retryObj.put("max_count", 4);
+                                        options.put("retry", retryObj);
 
-                                    checkout.open(activity, options);
+                                        checkout.open(activity, options);
 
-                                } catch(Exception e) {
-                                    Log.e("TAG", "Error in starting Razorpay Checkout", e);
+                                    } catch (Exception e) {
+                                        Log.e("TAG", "Error in starting Razorpay Checkout", e);
+                                    }
                                 }
                             }
                         }
@@ -1345,10 +1350,13 @@ public class FC_CartActivity extends AppCompatActivity implements View.OnClickLi
                 Log.d("Fghdfhdfhgdf","sdg"+cartcounter);
                // if (cartcounter==1){
                    // cartcounter++;
+                /*if(FC_Common.paymenttype.equalsIgnoreCase("CARD")){
+                    params.put("payment_gateway", FC_Common.payment_key);
+                }*/
                     params.put("delivery_date", FC_Common.preordertime);
                     params.put("payment_mode", FC_Common.paymenttype);
                     params.put("note", FC_Common.note);
-                    params.put("payment_gateway", FC_Common.payment_key);
+
                     params.put("wallet_check", FC_Common.walletchcked);
                     params.put("paymentmethodid", FC_Common.paymentid);
                     Log.d("sdhgsdgfsdfsd", "" + params);
@@ -1827,6 +1835,7 @@ public class FC_CartActivity extends AppCompatActivity implements View.OnClickLi
                  params.put("payment_id", payment_id);
 
                  Log.d("sdhgsdgfsdfsd", "" + FC_URL.ROOT_URL_check);
+                 Log.d("sdhgsdgfsdfsd", "" + params);
                  // }
 
                  return params;
